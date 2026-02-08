@@ -52,7 +52,7 @@ The repository contains this list of projects and [Innovative Projects](./Innova
 *Tools that use IoT and AI to prove environmental impact on-chain.*
 
 * [**Hedera Guardian**](https://github.com/hashgraph/guardian) - A massive open-source Policy Workflow Engine (PWE) that digitizes ESG methodologies. It creates auditable, tokenized quantitative outcomes (like carbon offsets) using the Hedera Consensus Service.
-* [**Open Forest Protocol (OFP)**](https://github.com/open-forest-protocol) - A scalable, open protocol that allows forest projects to Measure, Report, and Verify forestation data using blockchain for transparency.
+* [**Open Forest Protocol (OFP)**](https://www.openforestprotocol.org/) - A scalable, open protocol that allows forest projects to Measure, Report, and Verify forestation data using blockchain for transparency.
 * [**GainForest**](https://github.com/GainForest) - A decentralized fund using Artificial Intelligence to measure and reward sustainable nature stewardship, compatible with Solana and Ethereum.
 * [**Veritree**](https://veritree.com/) - (Cardano-based) A planting verification platform that uses blockchain to secure tree planting data, preventing double-counting and ensuring permanence.
 
