@@ -2,9 +2,7 @@
 
 A curated list of awesome blockchain projects, open-source software, standards, and distributed ledger technologies dedicated to sustainability, climate action, and the green economy.
 
-
 The repository contains this list of projects and [Innovative Projects](./Innovative%20Projects/README.md) - Innovative projects, work in progress, proposals only.
-
 
 
 **Scope:** This list focuses on software, protocols, and tools that utilize Distributed Ledger Technology (DLT) to solve environmental challenges (Regenerative Finance, dMRV, Circular Economy, Energy Grids).
@@ -127,12 +125,13 @@ This part of the documentation (this list) is licensed under the [Creative Commo
 
 #### **Works cited**
 
-1. Energy Web Releases Energy Web X Lightpaper and Technology ..., accessed February 8, 2026, [https://medium.com/energy-web-insights/energy-web-releases-energy-web-x-lightpaper-and-technology-roadmap-cc7aa4af1b38](https://medium.com/energy-web-insights/energy-web-releases-energy-web-x-lightpaper-and-technology-roadmap-cc7aa4af1b38)  
-2. Stakeholders' Perceptions of the Peer-to-Peer Energy Trading ..., accessed February 8, 2026, [https://www.mdpi.com/1996-1073/17/19/4956](https://www.mdpi.com/1996-1073/17/19/4956)  
-3. Vechain Daily Discussion \- November 05, 2024 \- Reddit, accessed February 8, 2026, [https://www.reddit.com/r/Vechain/comments/1gk6491/vechain\_daily\_discussion\_november\_05\_2024/](https://www.reddit.com/r/Vechain/comments/1gk6491/vechain_daily_discussion_november_05_2024/)  
-4. Algorand & sustainability | Algorand, accessed February 8, 2026, [https://www.algorand.foundation/sustainability](https://www.algorand.foundation/sustainability)  
-5. Circular Protocol \- Blockchains \- Alchemy, accessed February 8, 2026, [https://www.alchemy.com/dapps/circular-protocol](https://www.alchemy.com/dapps/circular-protocol)  
-6. 2025 Hedera Hashgraph, LLC., accessed February 8, 2026, [https://files.hedera.com/Hedera\_QuickStart\_20250224\_v2.pdf?utm\_source=chatgpt.com](https://files.hedera.com/Hedera_QuickStart_20250224_v2.pdf?utm_source=chatgpt.com)  
-7. KlimaDAO JAPAN starts a pilot for the blockchain-based carbon credit market "KlimaDAO JAPAN MARKET." OPTAGE provides wallet, and Mizuho Financial Group offers practical support. \- News Releases | OPTAGE, accessed February 8, 2026, [https://optage.co.jp/en/press/2024/003.html](https://optage.co.jp/en/press/2024/003.html)  
-8. The Carbon Credit Tokenization Patent, issued Friday June 20th, Pioneers a Scalable, Stablecoin AI-Driven Blockchain Platform for Generating, Trading, and Monetizing Carbon Credits \- Datavault AI Inc. (DVLT), accessed February 8, 2026, [https://ir.datavaultsite.com/news-events/press-releases/detail/338/the-carbon-credit-tokenization-patent-issued-friday-june](https://ir.datavaultsite.com/news-events/press-releases/detail/338/the-carbon-credit-tokenization-patent-issued-friday-june)  
-9. (PDF) AI-Enhanced Blockchain Networks for Climate Change ..., accessed February 8, 2026, [https://www.researchgate.net/publication/394517770\_AI-Enhanced\_Blockchain\_Networks\_for\_Climate\_Change\_Monitoring\_and\_Carbon\_Credit\_Verification](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification)
+1. The Green Ledger [https://andreibesleaga.substack.com/p/the-green-ledger](https://andreibesleaga.substack.com/p/the-green-ledger)
+2. Energy Web Releases Energy Web X Lightpaper and Technology ..., accessed February 8, 2026, [https://medium.com/energy-web-insights/energy-web-releases-energy-web-x-lightpaper-and-technology-roadmap-cc7aa4af1b38](https://medium.com/energy-web-insights/energy-web-releases-energy-web-x-lightpaper-and-technology-roadmap-cc7aa4af1b38)  
+3. Stakeholders' Perceptions of the Peer-to-Peer Energy Trading ..., accessed February 8, 2026, [https://www.mdpi.com/1996-1073/17/19/4956](https://www.mdpi.com/1996-1073/17/19/4956)  
+4. Vechain Daily Discussion \- November 05, 2024 \- Reddit, accessed February 8, 2026, [https://www.reddit.com/r/Vechain/comments/1gk6491/vechain\_daily\_discussion\_november\_05\_2024/](https://www.reddit.com/r/Vechain/comments/1gk6491/vechain_daily_discussion_november_05_2024/)  
+5. Algorand & sustainability | Algorand, accessed February 8, 2026, [https://www.algorand.foundation/sustainability](https://www.algorand.foundation/sustainability)  
+6. Circular Protocol \- Blockchains \- Alchemy, accessed February 8, 2026, [https://www.alchemy.com/dapps/circular-protocol](https://www.alchemy.com/dapps/circular-protocol)  
+7. 2025 Hedera Hashgraph, LLC., accessed February 8, 2026, [https://files.hedera.com/Hedera\_QuickStart\_20250224\_v2.pdf?utm\_source=chatgpt.com](https://files.hedera.com/Hedera_QuickStart_20250224_v2.pdf?utm_source=chatgpt.com)  
+8. KlimaDAO JAPAN starts a pilot for the blockchain-based carbon credit market "KlimaDAO JAPAN MARKET." OPTAGE provides wallet, and Mizuho Financial Group offers practical support. \- News Releases | OPTAGE, accessed February 8, 2026, [https://optage.co.jp/en/press/2024/003.html](https://optage.co.jp/en/press/2024/003.html)  
+9. The Carbon Credit Tokenization Patent, issued Friday June 20th, Pioneers a Scalable, Stablecoin AI-Driven Blockchain Platform for Generating, Trading, and Monetizing Carbon Credits \- Datavault AI Inc. (DVLT), accessed February 8, 2026, [https://ir.datavaultsite.com/news-events/press-releases/detail/338/the-carbon-credit-tokenization-patent-issued-friday-june](https://ir.datavaultsite.com/news-events/press-releases/detail/338/the-carbon-credit-tokenization-patent-issued-friday-june)  
+10. (PDF) AI-Enhanced Blockchain Networks for Climate Change ..., accessed February 8, 2026, [https://www.researchgate.net/publication/394517770\_AI-Enhanced\_Blockchain\_Networks\_for\_Climate\_Change\_Monitoring\_and\_Carbon\_Credit\_Verification](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification)
