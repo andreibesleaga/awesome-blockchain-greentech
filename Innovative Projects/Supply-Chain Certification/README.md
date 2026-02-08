@@ -42,6 +42,8 @@ graph LR
 
 ```
 
+![alt text](image.png)
+
 #### **Sustainability and Compliance Impact**
 
 * **Waste Reduction:** Eliminates the need for paper certificates and plastic stickers.

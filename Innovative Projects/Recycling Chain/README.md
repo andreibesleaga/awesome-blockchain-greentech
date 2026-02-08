@@ -11,6 +11,8 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 * **Interoperability:** Standards-aligned identifiers (GS1/EPCIS) and exportable attestations for regulators and EPR reporting.
 * **Scalability:** Support for item-level (high value) and batch-level (commodities) tracking, with merge/split events.
 
+![alt text](image.png)
+
 ### **Participants and Roles**
 
 * **Manufacturers (OEMs):** Register items/batches at birth; bind labels; publish composition and EPR metadata.
@@ -42,6 +44,8 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 ### **Lifecycle and Workflows**
 
+![alt text](image-1.png)
+
 #### **1. Birth and Label Binding**
 
 * **Register Item:** Manufacturer mints ItemToken with composition and EPR metadata.
@@ -69,12 +73,15 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 #### **5. Recycled Content and Claims**
 
+![alt text](image-2.png)
+
 * **Mint MaterialTokens:** Trace recovered materials with provenance back to source ItemTokens.
 * **Redeem/Retire:** Brands buy and burn MaterialTokens to substantiate recycled content claims in new packaging.
 
 ### **Architecture and Smart Contracts**
 
 * **Deployment Pattern:** Hybrid approach. A **Permissioned Core** (Hyperledger/Corda) allows for industry governance and high throughput, while **Public Proofs** (Ethereum L2/Polygon) are anchored periodically for consumer transparency and trust.
+![alt text](image-3.png)
 * **Core Contracts/Services:**
 * **Registry:** Participant onboarding, roles (RBAC), and DID resolution.
 * **Token Contracts:** ERC-like interfaces with restricted mint/burn logic.
