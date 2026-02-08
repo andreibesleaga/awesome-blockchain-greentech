@@ -14,4 +14,4 @@ This section presents systems proposals addressing ecological challenges. Each i
 
 ## License
 
-The work in this directory (list of projects) is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+The work in this directory (list of projects) is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/), Andrei Nicolae Besleaga.
