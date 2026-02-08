@@ -2,7 +2,7 @@
 
 A curated list of awesome blockchain projects, open-source software, standards, and distributed ledger technologies dedicated to sustainability, climate action, and the green economy.
 
-The repository contains this list of projects and [Innovative Projects](./Innovative%20Projects/README.md) - Innovative projects, work in progress, proposals only.
+The repository contains this list of projects and [Innovative Projects](./Innovative%20Projects/README.md) - works in progress, proposals only.
 
 
 **Scope:** This list focuses on software, protocols, and tools that utilize Distributed Ledger Technology (DLT) to solve environmental challenges (Regenerative Finance, dMRV, Circular Economy, Energy Grids).
