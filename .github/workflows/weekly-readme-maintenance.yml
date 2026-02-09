@@ -95,6 +95,9 @@ jobs:
           labels: |
             automated
             maintenance
+          add-paths: |
+            link_check_report.md
+            new_projects_report.md
       
       - name: Comment on failure
         if: failure()
