@@ -70,10 +70,10 @@ def extract_existing_repos(content):
             repo = repo.rstrip('.,;:)')
             repos.add(f"{owner}/{repo}")
         else:
-            # Track organizations/profiles without specific repos
+            # Track organizations/profiles that appear as standalone URLs (e.g., github.com/owner without /repo)
             orgs.add(owner)
     
-    # Also exclude any repo from tracked organizations
+    # Mark all repos from these organizations for exclusion during project discovery
     for org in orgs:
         # Add a pattern to match any repo from this org
         repos.add(f"{org}/*")
