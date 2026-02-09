@@ -9,12 +9,39 @@ import sys
 import requests
 from pathlib import Path
 import time
+from urllib.parse import urlparse
 
 # Configuration
 TIMEOUT = 10
 MAX_RETRIES = 2
 RETRY_DELAY = 2
-USER_AGENT = 'Mozilla/5.0 (compatible; AwesomeBlockchainGreentechBot/1.0)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+
+# Domains that aggressively block bot requests
+SKIP_DOMAINS = [
+    'researchgate.net',
+    'reddit.com',
+    'medium.com',
+    'substack.com',
+    'mdpi.com',
+]
+
+def is_skip_domain(url):
+    """Check if a URL's domain matches any skip domain."""
+    try:
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower()
+        # Remove 'www.' prefix if present
+        if domain.startswith('www.'):
+            domain = domain[4:]
+        
+        # Check if domain matches or is a subdomain of any skip domain
+        for skip_domain in SKIP_DOMAINS:
+            if domain == skip_domain or domain.endswith('.' + skip_domain):
+                return True
+        return False
+    except Exception:
+        return False
 
 def extract_links_from_markdown(content):
     """Extract all URLs from markdown content."""
@@ -37,7 +64,8 @@ def check_url(url, retries=MAX_RETRIES):
     """Check if a URL is accessible."""
     headers = {
         'User-Agent': USER_AGENT,
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9'
     }
     
     for attempt in range(retries + 1):
@@ -96,25 +124,45 @@ def main():
     print("🔍 Extracting links...")
     links = extract_links_from_markdown(content)
     
-    print(f"Found {len(links)} links\n")
+    print(f"Found {len(links)} links")
+    
+    # Deduplicate links by URL (keep first occurrence)
+    seen_urls = set()
+    unique_links = []
+    for link in links:
+        if link['url'] not in seen_urls:
+            seen_urls.add(link['url'])
+            unique_links.append(link)
+    
+    if len(unique_links) < len(links):
+        print(f"Deduplicated to {len(unique_links)} unique URLs\n")
+    else:
+        print()
     
     results = {
         'success': [],
         'failed': [],
-        'skipped': 0
+        'skipped_anchor': 0,
+        'skipped_bot_protected': 0
     }
     
     # Check each link
-    for i, link in enumerate(links, 1):
+    for i, link in enumerate(unique_links, 1):
         url = link['url']
         
         # Skip anchors and relative links
         if url.startswith('#') or not url.startswith('http'):
-            print(f"[{i}/{len(links)}] ⏭️  Skipping: {url}")
-            results['skipped'] += 1
+            print(f"[{i}/{len(unique_links)}] ⏭️  Skipping: {url}")
+            results['skipped_anchor'] += 1
             continue
         
-        print(f"[{i}/{len(links)}] Checking: {url}")
+        # Skip bot-protected domains
+        if is_skip_domain(url):
+            print(f"[{i}/{len(unique_links)}] ⏭️  Skipping (bot-protected): {url}")
+            results['skipped_bot_protected'] += 1
+            continue
+        
+        print(f"[{i}/{len(unique_links)}] Checking: {url}")
         result = check_url(url)
         
         if result['status'] == 'success':
@@ -129,12 +177,16 @@ def main():
     
     # Generate report
     total_checked = len(results['success']) + len(results['failed'])
+    total_skipped = results['skipped_anchor'] + results['skipped_bot_protected']
     print("\n" + "="*60)
     print("📊 LINK CHECK REPORT")
     print("="*60)
     print(f"Total links found: {len(links)}")
+    print(f"Unique URLs: {len(unique_links)}")
     print(f"Links checked: {total_checked}")
-    print(f"Links skipped: {results['skipped']}")
+    print(f"Links skipped (total): {total_skipped}")
+    print(f"  - Anchors/relative: {results['skipped_anchor']}")
+    print(f"  - Bot-protected: {results['skipped_bot_protected']}")
     print(f"✅ Successful: {len(results['success'])}")
     print(f"❌ Failed: {len(results['failed'])}")
     print()
@@ -146,8 +198,11 @@ def main():
             f.write(f"**Date:** {time.strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n")
             f.write(f"## Summary\n\n")
             f.write(f"- Total links found: {len(links)}\n")
+            f.write(f"- Unique URLs: {len(unique_links)}\n")
             f.write(f"- Links checked: {total_checked}\n")
-            f.write(f"- Links skipped: {results['skipped']}\n")
+            f.write(f"- Links skipped (total): {total_skipped}\n")
+            f.write(f"  - Anchors/relative: {results['skipped_anchor']}\n")
+            f.write(f"  - Bot-protected: {results['skipped_bot_protected']}\n")
             f.write(f"- ✅ Successful: {len(results['success'])}\n")
             f.write(f"- ❌ Failed: {len(results['failed'])}\n\n")
             
