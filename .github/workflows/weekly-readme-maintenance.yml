@@ -28,7 +28,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 markdown
+          pip install -r .github/scripts/requirements.txt
       
       - name: Check links in README.md
         id: check-links
