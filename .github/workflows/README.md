@@ -1,6 +1,6 @@
 # Weekly README Maintenance Workflow
 
-This workflow automatically runs every Monday at 9:00 AM UTC to maintain the quality and relevance of the repository's README.md file.
+This workflow automatically runs every Friday at 9:00 AM UTC to maintain the quality and relevance of the repository's README.md file.
 
 ## What it does
 
