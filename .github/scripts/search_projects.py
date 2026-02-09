@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
 Project discovery script for README.md
-Searches GitHub and web for new blockchain greentech projects similar to existing ones.
+Searches GitHub for new blockchain greentech projects similar to existing ones.
 """
 
 import os
 import re
 import sys
-import json
 import time
 import requests
 from pathlib import Path
@@ -58,20 +57,34 @@ def get_github_token():
 
 def extract_existing_repos(content):
     """Extract GitHub repository URLs from README."""
-    # Match GitHub URLs
-    github_pattern = r'https?://github\.com/([^/\s\)]+)/([^/\s\)]+)'
+    # Match GitHub URLs, capturing owner and optional repo
+    github_pattern = r'https?://github\.com/([^/\s\)]+)(?:/([^/\s\)]+))?'
     matches = re.findall(github_pattern, content)
     
     repos = set()
+    orgs = set()
+    
     for owner, repo in matches:
-        # Clean up repo name (remove trailing chars)
-        repo = repo.rstrip('.,;:)')
-        repos.add(f"{owner}/{repo}")
+        if repo:
+            # Clean up repo name (remove trailing chars)
+            repo = repo.rstrip('.,;:)')
+            repos.add(f"{owner}/{repo}")
+        else:
+            # Track organizations/profiles without specific repos
+            orgs.add(owner)
+    
+    # Also exclude any repo from tracked organizations
+    for org in orgs:
+        # Add a pattern to match any repo from this org
+        repos.add(f"{org}/*")
     
     return repos
 
-def search_github_repos(query, existing_repos, token=''):
+def search_github_repos(query, existing_repos, token='', rate_limit_errors=None):
     """Search GitHub for repositories matching the query."""
+    if rate_limit_errors is None:
+        rate_limit_errors = []
+    
     headers = {
         'User-Agent': USER_AGENT,
         'Accept': 'application/vnd.github.v3+json'
@@ -93,7 +106,9 @@ def search_github_repos(query, existing_repos, token=''):
         response = requests.get(search_url, headers=headers, params=params, timeout=TIMEOUT)
         
         if response.status_code == 403:
-            print(f"  ⚠️  Rate limited or forbidden")
+            error_msg = f"Rate limited or forbidden for query: {query}"
+            print(f"  ⚠️  {error_msg}")
+            rate_limit_errors.append(error_msg)
             return []
         
         if response.status_code != 200:
@@ -106,8 +121,13 @@ def search_github_repos(query, existing_repos, token=''):
         for item in data.get('items', []):
             full_name = item['full_name']
             
-            # Skip if already in README
+            # Skip if already in README (exact match or org match)
             if full_name in existing_repos:
+                continue
+            
+            # Check if this repo's owner has an org-level entry
+            owner = full_name.split('/')[0]
+            if f"{owner}/*" in existing_repos:
                 continue
             
             # Extract relevant info
@@ -179,6 +199,7 @@ def main():
     
     # Search for new projects in each category
     all_discoveries = defaultdict(list)
+    rate_limit_errors = []
     
     for category, queries in SEARCH_QUERIES.items():
         print(f"\n{'='*60}")
@@ -187,7 +208,7 @@ def main():
         
         for query in queries:
             print(f"\n  Query: {query}")
-            repos = search_github_repos(query, existing_repos, token)
+            repos = search_github_repos(query, existing_repos, token, rate_limit_errors)
             
             # Filter for relevance
             relevant_repos = [r for r in repos if is_relevant_project(r, category)]
@@ -210,15 +231,27 @@ def main():
     total_discoveries = sum(len(repos) for repos in all_discoveries.values())
     print(f"Total new projects found: {total_discoveries}\n")
     
-    if total_discoveries > 0:
+    if rate_limit_errors:
+        print(f"⚠️  Encountered {len(rate_limit_errors)} rate limit errors")
+    
+    if total_discoveries > 0 or rate_limit_errors:
         report_path = Path('new_projects_report.md')
         with report_path.open('w', encoding='utf-8') as f:
             f.write("# New Projects Discovery Report\n\n")
             f.write(f"**Date:** {time.strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n")
             f.write(f"**Total discoveries:** {total_discoveries}\n\n")
             
-            f.write("## Suggested Additions\n\n")
-            f.write("The following projects were discovered and may be relevant to add to the README:\n\n")
+            if rate_limit_errors:
+                f.write("## ⚠️ Rate Limit Errors\n\n")
+                f.write("The following queries encountered rate limiting or access issues:\n\n")
+                for error in rate_limit_errors:
+                    f.write(f"- {error}\n")
+                f.write("\n")
+                f.write("**Note:** Consider running the workflow again later or check the GitHub token permissions.\n\n")
+            
+            if total_discoveries > 0:
+                f.write("## Suggested Additions\n\n")
+                f.write("The following projects were discovered and may be relevant to add to the README:\n\n")
             
             for category, repos in all_discoveries.items():
                 if repos:

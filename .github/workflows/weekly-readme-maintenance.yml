@@ -9,7 +9,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  issues: write
 
 jobs:
   check-links-and-discover:
@@ -49,8 +48,23 @@ jobs:
         run: |
           if [ -f "link_check_report.md" ] || [ -f "new_projects_report.md" ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
+            
+            # Check what type of findings we have
+            if [ -f "link_check_report.md" ]; then
+              echo "has_link_report=true" >> $GITHUB_OUTPUT
+            else
+              echo "has_link_report=false" >> $GITHUB_OUTPUT
+            fi
+            
+            if [ -f "new_projects_report.md" ]; then
+              echo "has_project_report=true" >> $GITHUB_OUTPUT
+            else
+              echo "has_project_report=false" >> $GITHUB_OUTPUT
+            fi
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "has_link_report=false" >> $GITHUB_OUTPUT
+            echo "has_project_report=false" >> $GITHUB_OUTPUT
           fi
       
       - name: Create Pull Request
@@ -67,11 +81,11 @@ jobs:
             
             ### Link Check Results
             
-            ${{ steps.check-links.outcome == 'success' && '✅ All links are working correctly!' || '⚠️ Some links need attention. See report below.' }}
+            ${{ steps.check-changes.outputs.has_link_report == 'true' && '⚠️ Some links need attention. See `link_check_report.md` below.' || '✅ All links are working correctly!' }}
             
             ### New Project Discoveries
             
-            ${{ steps.search-projects.outcome == 'success' && '🔍 Found potential new projects to add. See report below.' || 'ℹ️ No new projects found this week.' }}
+            ${{ steps.check-changes.outputs.has_project_report == 'true' && '🔍 Found potential new projects or encountered issues. See `new_projects_report.md` below.' || 'ℹ️ No new projects found this week.' }}
             
             ---
             

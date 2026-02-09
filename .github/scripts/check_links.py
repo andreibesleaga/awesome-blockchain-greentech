@@ -7,7 +7,6 @@ Verifies all links in the README are accessible and returns valid status codes.
 import re
 import sys
 import requests
-from urllib.parse import urlparse
 from pathlib import Path
 import time
 
@@ -97,12 +96,12 @@ def main():
     print("🔍 Extracting links...")
     links = extract_links_from_markdown(content)
     
-    print(f"Found {len(links)} links to check\n")
+    print(f"Found {len(links)} links\n")
     
     results = {
         'success': [],
         'failed': [],
-        'total': len(links)
+        'skipped': 0
     }
     
     # Check each link
@@ -112,6 +111,7 @@ def main():
         # Skip anchors and relative links
         if url.startswith('#') or not url.startswith('http'):
             print(f"[{i}/{len(links)}] ⏭️  Skipping: {url}")
+            results['skipped'] += 1
             continue
         
         print(f"[{i}/{len(links)}] Checking: {url}")
@@ -128,10 +128,13 @@ def main():
         time.sleep(0.5)
     
     # Generate report
+    total_checked = len(results['success']) + len(results['failed'])
     print("\n" + "="*60)
     print("📊 LINK CHECK REPORT")
     print("="*60)
-    print(f"Total links checked: {results['total']}")
+    print(f"Total links found: {len(links)}")
+    print(f"Links checked: {total_checked}")
+    print(f"Links skipped: {results['skipped']}")
     print(f"✅ Successful: {len(results['success'])}")
     print(f"❌ Failed: {len(results['failed'])}")
     print()
@@ -142,7 +145,9 @@ def main():
             f.write("# Link Check Report\n\n")
             f.write(f"**Date:** {time.strftime('%Y-%m-%d %H:%M:%S UTC')}\n\n")
             f.write(f"## Summary\n\n")
-            f.write(f"- Total links checked: {results['total']}\n")
+            f.write(f"- Total links found: {len(links)}\n")
+            f.write(f"- Links checked: {total_checked}\n")
+            f.write(f"- Links skipped: {results['skipped']}\n")
             f.write(f"- ✅ Successful: {len(results['success'])}\n")
             f.write(f"- ❌ Failed: {len(results['failed'])}\n\n")
             
