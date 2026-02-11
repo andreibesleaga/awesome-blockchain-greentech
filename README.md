@@ -114,16 +114,3 @@ Contributions are welcome! Please ensure any software added is verified as activ
 
 ## **License**
 This part of the documentation (this list) is licensed under the [Creative Commons Attribution 4.0 International License (CC BY SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
-
-#### **Works cited**
-
-1. [The Green Ledger](https://andreibesleaga.substack.com/p/the-green-ledger)
-2. [Energy Web Releases Energy Web X Lightpaper and Technology ...](https://medium.com/energy-web-insights/energy-web-releases-energy-web-x-lightpaper-and-technology-roadmap-cc7aa4af1b38), accessed February 8, 2026
-3. [Stakeholders' Perceptions of the Peer-to-Peer Energy Trading ...](https://www.mdpi.com/1996-1073/17/19/4956), accessed February 8, 2026
-4. [Vechain Daily Discussion - November 05, 2024 - Reddit](https://www.reddit.com/r/Vechain/comments/1gk6491/vechain_daily_discussion_november_05_2024/), accessed February 8, 2026
-5. [Algorand & sustainability | Algorand](https://www.algorand.foundation/sustainability), accessed February 8, 2026
-6. [Circular Protocol - Blockchains - Alchemy](https://www.alchemy.com/dapps/circular-protocol), accessed February 8, 2026
-7. [2025 Hedera Hashgraph, LLC.](https://files.hedera.com/Hedera_QuickStart_20250224_v2.pdf?utm_source=chatgpt.com), accessed February 8, 2026
-8. [KlimaDAO JAPAN starts a pilot... - News Releases | OPTAGE](https://optage.co.jp/en/press/2024/003.html), accessed February 8, 2026
-9. [The Carbon Credit Tokenization Patent... - Datavault AI Inc. (DVLT)](https://ir.datavaultsite.com/news-events/press-releases/detail/338/the-carbon-credit-tokenization-patent-issued-friday-june), accessed February 8, 2026
-10. [(PDF) AI-Enhanced Blockchain Networks for Climate Change ...](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification), accessed February 8, 2026
