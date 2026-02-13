@@ -114,3 +114,5 @@ Contributions are welcome! Please ensure any software added is verified as activ
 
 ## **License**
 This part of the documentation (this list) is licensed under the [Creative Commons Attribution 4.0 International License (CC BY SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+
+The work in Innovative Projects directory is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/), Andrei Nicolae Besleaga. [https://github.com/andreibesleaga/awesome-blockchain-greentech](https://github.com/andreibesleaga/awesome-blockchain-greentech)
