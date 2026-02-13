@@ -1,4 +1,4 @@
-# **Awesome Blockchain & Greentech** [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# **Awesome Blockchain Greentech** [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 A curated list of awesome blockchain projects, open-source software, standards, and distributed ledger technologies dedicated to sustainability, climate action, and the green economy.
 
