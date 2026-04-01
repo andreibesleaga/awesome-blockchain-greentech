@@ -1,6 +1,7 @@
 ## Innovative Projects
 
-This section presents systems proposals addressing ecological challenges. Each is described in terms of motivation, architecture, data flow, sustainability impact, and technically and ecologically suitable choices.
+This section presents work-in-progress systems proposals addressing ecological challenges. 
+Each is described in terms of motivation, architecture, data flow, sustainability impact, and technically and ecologically suitable choices.
 
 
 - [Certification Supply-Chain](./Certification%20Supply-Chain/README.md)
