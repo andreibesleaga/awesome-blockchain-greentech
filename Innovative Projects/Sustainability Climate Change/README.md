@@ -67,7 +67,7 @@ The simplest implementable subset (what [SPEC.md](SPEC.md) and [ARCH.md](ARCH.md
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Of all six projects in this catalogue, a *carbon-credit registry running on a non-SFC-compliant chain* would be the most self-defeating. This project therefore conforms strictly to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Of all six projects in this catalogue, a *carbon-credit registry running on a non-SFC-compliant chain* would be the most self-defeating. This project therefore conforms strictly to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework:
 
 * **Energy (criterion 1).** Hot path on **Hedera with Guardian** (carbon-negative aBFT) or **Hyperledger Fabric** (consortium, general-purpose servers). Total measured energy < **1 GWh / yr** network-wide; the system's own footprint is published as part of every signed audit bundle.
 * **Hardware lifecycle (criterion 2).** No ASICs; all nodes general-purpose; `nodeProfile` declared per Operator.
