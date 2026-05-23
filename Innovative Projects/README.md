@@ -5,7 +5,7 @@ Work-in-progress system proposals addressing ecological challenges with Distribu
 ### Projects
 
 * [**Certification Supply-Chain**](./Certification%20Supply-Chain/README.md) — Blockchain-based supply-chain certification using laser marking and tokenisation.
-* [**Healthcare Pharma**](./Healthcare%20Pharma/README.md) — Prescriptions, patient records and pharmacy interchange on a fingerprint-and-policy ledger.
+* [**Healthcare Pharma**](./Healthcare%20Pharma/README.md) — Prescriptions, patient records and pharmacy interchange on a ledger.
 * [**Paperless Billing**](./Paperless%20Billing/README.md) — Ledger-anchored digital receipts and B2B invoices.
 * [**Recycling Chain**](./Recycling%20Chain/README.md) — End-to-end product traceability from manufacture to material recovery.
 * [**Roaming Data Exchange**](./Roaming%20Data%20Exchange/README.md) — Cross-operator roaming for telecom and EV charging on a shared identity + settlement layer.
