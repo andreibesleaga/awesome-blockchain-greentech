@@ -2,8 +2,10 @@
 
 A curated list of awesome blockchain projects, open-source software, standards, and distributed ledger technologies dedicated to sustainability, climate action, and the green economy.
 
-The repository contains this list of projects and: [Innovative Projects](./Innovative%20Projects/README.md) - works in progress proposals.
+The repository contains:
 
+* **The curated list** (this file) — third-party projects and standards, organised by theme.
+* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all aligned to a shared **Sustainability-First Consensus (SFC)** engineering profile that operationalises the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
 
 **Scope:** This list focuses on software, protocols, and tools that utilize Distributed Ledger Technology (DLT) to solve environmental challenges (Regenerative Finance, dMRV, Circular Economy, Energy Grids).
 
@@ -113,6 +115,10 @@ The repository contains this list of projects and: [Innovative Projects](./Innov
 Contributions are welcome! Please ensure any software added is verified as active and relevant to the 2025-2026 sustainability landscape.
 
 ## **License**
-This part of the documentation (this list) is licensed under the [Creative Commons Attribution 4.0 International License (CC BY SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
 
-The work in Innovative Projects directory is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/), Andrei Nicolae Besleaga. [https://github.com/andreibesleaga/awesome-blockchain-greentech](https://github.com/andreibesleaga/awesome-blockchain-greentech)
+This repository is dual-licensed:
+
+* **The curated list** (this `README.md` and the [LICENSE](./LICENSE) file at the root) is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+* **The [Innovative Projects](./Innovative%20Projects/) directory** (original system proposals: README + PRD + SPEC + ARCH per project, plus `SFC_COMPLIANCE.md`) is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/), © Andrei Nicolae Besleaga. See [Innovative Projects/LICENSE](./Innovative%20Projects/LICENSE) for the full text.
+
+Repository: [https://github.com/andreibesleaga/awesome-blockchain-greentech](https://github.com/andreibesleaga/awesome-blockchain-greentech)

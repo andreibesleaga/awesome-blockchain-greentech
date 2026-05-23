@@ -11,7 +11,7 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 * **Interoperability:** Standards-aligned identifiers (GS1/EPCIS) and exportable attestations for regulators and EPR reporting.
 * **Scalability:** Support for item-level (high value) and batch-level (commodities) tracking, with merge/split events.
 
-![alt text](image.png)
+![RecyclingChain high-level concept: items flow from manufacture through custody, collection and recycling, anchored on a ledger.](image.png)
 
 ### **Participants and Roles**
 
@@ -27,12 +27,10 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 ### **Data Model and Identifiers**
 
 * **ItemToken (Non-Fungible):** Represents a single high-value product/asset.
-* **Core fields:** `itemId` (DID/URN), `manufacturerId`, `model`, `serial`, `manufactureDate`, `composition`.
-* **State:** `currentOwner`, `custodyStatus`, `locationHint`, `lifecycleStage`.
-
-
+  * **Core fields:** `itemId` (DID/URN), `manufacturerId`, `model`, `serial`, `manufactureDate`, `composition`.
+  * **State:** `currentOwner`, `custodyStatus`, `locationHint`, `lifecycleStage`.
 * **BatchToken (Semi-Fungible):** For lots (e.g., plastic bottles); supports split/merge operations.
-* **MaterialToken (Fungible):** Represents recovered material outputs (e.g., rPET flakes, Recycled Copper). Enables proof of recycled content claims.
+* **MaterialToken (Fungible):** Represents recovered material outputs (e.g., rPET flakes, recycled copper). Enables proof of recycled content claims.
 
 **Event Types (Append-Only):**
 
@@ -44,7 +42,7 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 ### **Lifecycle and Workflows**
 
-![alt text](image-1.png)
+![Lifecycle workflow: birth, custody, consumer, collection, decommission and material recovery events on the ledger.](image-1.png)
 
 #### **1. Birth and Label Binding**
 
@@ -65,15 +63,13 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 * **Lock for Processing:** Recycler emits `DecommissionRequested` to prevent the asset from being "recycled" twice (double-spending).
 * **RecycleCompleted:** Final, signed attestation containing:
-* **Method:** (e.g., Mechanical, Pyrometallurgical).
-* **Yields:** % by material; links to newly minted MaterialTokens.
-* **Residues:** Hazardous outputs and their legal disposition.
-
-
+  * **Method:** (e.g., mechanical, pyrometallurgical).
+  * **Yields:** % by material; links to newly minted MaterialTokens.
+  * **Residues:** Hazardous outputs and their legal disposition.
 
 #### **5. Recycled Content and Claims**
 
-![alt text](image-2.png)
+![Recycled content claim flow: recovered materials minted as MaterialTokens and retired by brands to substantiate green claims.](image-2.png)
 
 * **Mint MaterialTokens:** Trace recovered materials with provenance back to source ItemTokens.
 * **Redeem/Retire:** Brands buy and burn MaterialTokens to substantiate recycled content claims in new packaging.
@@ -81,13 +77,15 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 ### **Architecture and Smart Contracts**
 
 * **Deployment Pattern:** Hybrid approach. A **Permissioned Core** (Hyperledger/Corda) allows for industry governance and high throughput, while **Public Proofs** (Ethereum L2/Polygon) are anchored periodically for consumer transparency and trust.
-![alt text](image-3.png)
+
+![Hybrid deployment: permissioned core ledger anchored periodically to a public L2 for consumer-facing proofs.](image-3.png)
+
 * **Core Contracts/Services:**
-* **Registry:** Participant onboarding, roles (RBAC), and DID resolution.
-* **Token Contracts:** ERC-like interfaces with restricted mint/burn logic.
-* **Lockbox:** Prevents concurrent decommission or duplicate recycling claims.
-* **RewardsVault:** Handles deposits (DRS), bounties, and eco-credits.
-* **Oracle Adapters:** Interfaces for verifiable inputs (IoT scales, spectrometers).
+  * **Registry:** Participant onboarding, roles (RBAC), and DID resolution.
+  * **Token Contracts:** ERC-like interfaces with restricted mint/burn logic.
+  * **Lockbox:** Prevents concurrent decommission or duplicate recycling claims.
+  * **RewardsVault:** Handles deposits (DRS), bounties, and eco-credits.
+  * **Oracle Adapters:** Interfaces for verifiable inputs (IoT scales, spectrometers).
 
 
 
@@ -101,20 +99,19 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 **Canonical JSON Fields:**
 
-```json
+```jsonc
 {
-  "id": "RC-RO-ARG-2025-000123",
+  "id":  "RC-RO-ARG-2025-000123",
   "mfd": "2025-08-20",
-  "b": "4B192A",          // short batch code
-  "s": "MFA298_pubkey"   // issuer key hint
+  "b":   "4B192A",         // short batch code
+  "s":   "MFA298_pubkey"   // issuer key hint
 }
-
 ```
 
 * **Anti-Tamper Options:**
-* **Holographic Destruct Labels:** Physical tamper evidence if removed.
-* **Laser Etching:** Direct part marking to alleviate label swapping risks on hard goods.
-* **NFC Secure Element:** For counterfeit-prone categories (cryptographically non-clonable).
+  * **Holographic Destruct Labels:** Physical tamper evidence if removed.
+  * **Laser Etching:** Direct part marking to alleviate label-swapping risks on hard goods.
+  * **NFC Secure Element:** For counterfeit-prone categories (cryptographically non-clonable).
 
 
 
@@ -124,8 +121,8 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 * **Event Signing:** Every event is signed by the actor’s private key; the ledger verifies the signature against the Registry whitelist.
 * **GDPR Alignment:** strictly no PII on-chain. Consumer interactions are pseudonymous. "Right to be forgotten" is achieved by keeping personal data off-chain.
 * **Fraud Controls:**
-* **Single Decommission:** The `Lockbox` contract enforces one active decommission process per ItemID.
-* **Mass Balance Checks:** The system flags anomalies if an MRF claims to recycle more material weight than they digitally accepted into custody.
+  * **Single Decommission:** The `Lockbox` contract enforces one active decommission process per ItemID.
+  * **Mass-Balance Checks:** The system flags anomalies if an MRF claims to recycle more material weight than they digitally accepted into custody.
 
 
 
@@ -153,5 +150,21 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 * **Network Model:** Consortium vs. Public Layer 2 vs. Hybrid.
 * **Deposit Logic:** Who receives the unclaimed deposits (the system, the state, or a green fund)?
 * **Data Schema:** Alignment with the EU Digital Product Passport (DPP) standards.
+
+### **Sustainability-First Consensus (SFC) Compliance**
+
+RecyclingChain is designed to satisfy all four [SFC criteria](../SFC_COMPLIANCE.md) defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+
+* **Energy (criterion 1).** Hot-path on **Hyperledger Fabric** (consortium BFT, general-purpose servers). Daily Merkle anchor on **Polygon zkEVM**. Combined measured energy budget < **1 GWh / yr** network-wide.
+* **Hardware lifecycle (criterion 2).** Every peer node runs on general-purpose x86 / arm64 servers; no ASICs anywhere in the design. Hardware reuse / WEEE-recycling policy mandatory in every operator's Registry record.
+* **Carbon accountability (criterion 3).** Operators publish monthly `EnergyAttested` + `CarbonAttested` events ([SFC_COMPLIANCE.md §4](../SFC_COMPLIANCE.md)), measured via CCRI methodology + Electricity Maps grid intensity. Net Zero invariant `scope2 + scope3 ≤ offsets` checked by the verifier.
+* **Regulatory readiness (criterion 4).** Sustainability API (`/v1/sustainability/*`) returns signed CSRD / ESRS E1 disclosures.
+
+### **Companion Documents**
+
+* [PRD.md](PRD.md) — Product Requirements Document.
+* [SPEC.md](SPEC.md) — Technical Specification (data model, events, APIs).
+* [ARCH.md](ARCH.md) — Architecture (components, deployment, trust boundaries).
+* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — Shared Sustainability-First Consensus profile.
 
 ---
