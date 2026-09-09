@@ -153,7 +153,7 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 ### **Sustainability-First Consensus (SFC) Compliance**
 
-RecyclingChain is designed to satisfy all four [SFC criteria](../SFC_COMPLIANCE.md) defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+RecyclingChain is designed to satisfy all four [SFC criteria](../SFC_COMPLIANCE.md) defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot-path on **Hyperledger Fabric** (consortium BFT, general-purpose servers). Daily Merkle anchor on **Polygon zkEVM**. Combined measured energy budget < **1 GWh / yr** network-wide.
 * **Hardware lifecycle (criterion 2).** Every peer node runs on general-purpose x86 / arm64 servers; no ASICs anywhere in the design. Hardware reuse / WEEE-recycling policy mandatory in every operator's Registry record.

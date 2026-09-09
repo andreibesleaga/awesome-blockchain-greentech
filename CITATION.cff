@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use these designs or the SFC engineering profile, please cite this deposit and the framework paper listed under references."
+title: "Sustainability-First Distributed Ledger Systems: Six Reference Designs and a Shared SFC Engineering Profile"
+abstract: >-
+  Six original distributed-ledger system designs addressing ecological challenges in supply-chain
+  certification, healthcare and pharmacy interchange, paperless billing, recycling and material
+  recovery, cross-operator roaming, and carbon-credit MRV. All six share one Sustainability-First
+  Consensus engineering profile that turns sustainability criteria into verifiable properties: an
+  annual energy budget, hardware-lifecycle constraints, signed on-chain energy and carbon attestations
+  with a Net-Zero invariant, a conformance API, and a rule separating hot-path from anchor-only
+  ledger platforms. All work is documented at design level; no system is implemented or deployed.
+type: dataset
+authors:
+  - family-names: Besleaga
+    given-names: Andrei Nicolae
+    orcid: "https://orcid.org/0009-0001-3464-5283"
+    country: RO
+    city: Bucharest
+license: CC-BY-SA-4.0
+version: "1.1"
+keywords:
+  - distributed ledger technology
+  - blockchain
+  - sustainability
+  - green computing
+  - reference architecture
+  - carbon accounting
+  - CSRD
+  - supply chain
+  - traceability
+  - decentralized identifiers
+repository-code: "https://github.com/andreibesleaga/awesome-blockchain-greentech"
+references:
+  - type: article
+    title: '"Sustainability-First Consensus" Ledgers for a Green Digital Future'
+    authors:
+      - family-names: Besleaga
+        given-names: Andrei Nicolae
+        orcid: "https://orcid.org/0009-0001-3464-5283"
+    year: 2026
+    publisher:
+      name: Association for Computing Machinery
+    doi: 10.1145/3809296
+    notes: "Accepted; in press. The DOI resolves once ACM publishes."

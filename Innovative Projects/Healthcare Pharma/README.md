@@ -20,6 +20,9 @@ Current centralized or paper-based healthcare systems suffer from data fragmenta
 
 #### **Data Flow Diagram**
 
+![Component view: a patient DApp grants permission to an access-control smart contract; doctors and hospitals write encrypted records to off-chain IPFS storage and log the hashes to the DLT hash registry; pharmacies query the hash, verify access and retrieve the data.](architecture.png)
+
+
 ```mermaid
 graph TD
     User[Patient DApp] -->|Grants Permission| SC[Smart Contract: Access Control]
@@ -85,7 +88,7 @@ Healthcare applications demand strict adherence to data integrity, privacy, and 
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (HSM-bound institutional keys, general-purpose servers); daily Merkle anchor on **Polygon zkEVM**. Total measured energy < **1 GWh / yr** network-wide.
 * **Hardware lifecycle (criterion 2).** No ASICs; peers on general-purpose servers; per-operator `nodeProfile` declares purchase / retirement / WEEE-certified reuse.

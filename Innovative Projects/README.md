@@ -28,7 +28,7 @@ All six projects share a single sustainability profile applied as a verifiable e
 
 The underlying framework is:
 
-> Besleaga, A. N. (2026). *"Sustainability-First Consensus" Ledgers for a Green Digital Future.* Association for Computing Machinery. https://doi.org/10.1145/3809296
+> Besleaga, A. N. (2026). *"Sustainability-First Consensus" Ledgers for a Green Digital Future.* Association for Computing Machinery. https://doi.org/10.1145/3809296 — *accepted; in press. The DOI resolves once ACM publishes.*
 > ORCID: [0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283)
 
 Any deployment that uses or builds on these projects MUST cite the paper above.
@@ -39,6 +39,4 @@ Any deployment that uses or builds on these projects MUST cite the paper above.
 
 ### License
 
-The work in this directory is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/), Andrei Nicolae Besleaga. See [LICENSE](./LICENSE) in this folder for the full text.
-
-This differs from the [parent repository's license](../LICENSE), which covers the curated list itself.
+The work in this directory is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/), © Andrei Nicolae Besleaga. See [LICENSE](./LICENSE) in this folder for the full text; it is the same licence that covers the rest of the repository.

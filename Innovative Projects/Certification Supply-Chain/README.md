@@ -33,6 +33,9 @@ Supply chains for ecological or fair-trade goods (e.g., organic foods, luxury go
 
 #### **Data Flow Architecture**
 
+![End-to-end flow: a laser marker engraves a unique identifier on the product; mobile and IoT scanners read it; IoT sensor readings and scan events are signed and passed to an off-chain relayer, which submits transactions to the ledger's smart contract and event log; an off-chain worker emits alerts, rewards and payouts, and consumers verify item history.](architecture.png)
+
+
 ```mermaid
 graph LR
     Laser[Laser Marker] -->|1. Engrave UID| Product
@@ -70,7 +73,7 @@ graph LR
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-This project conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+This project conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **Hyperledger Fabric** or **VeChainThor**; daily Merkle anchor on **Polygon zkEVM**. Combined measured energy budget < **1 GWh / yr** network-wide.
 * **Hardware lifecycle (criterion 2).** General-purpose servers only; no ASICs; reuse / WEEE-certified recycling policy in every operator's Registry record.

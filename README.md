@@ -194,7 +194,7 @@ The repository contains:
 * [**DePIN Urban Monitoring**](https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1626695/full) *(Academic Pilot)* — Decentralised IoT-sensor deployment in Nairobi, Kenya, monitoring environmental variables for urban green spaces; documents cost reduction and fractional income for community data collectors.
 * [**AI-Enhanced Verification Framework**](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification) *(Research Proposal)* — Architecture combining "Brilliant Contracts" with satellite-imagery analysis (U-Net / ResNet-50) for automated carbon-credit verification (>94 % claimed accuracy).
 * [**BlockRoam**](https://arxiv.org/abs/2005.04571) *(Academic Reference)* — Peer-reviewed blockchain-based roaming-management system for mobile networks; PoS consensus + Stackelberg-game incentive model.
-* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga 2026)](https://doi.org/10.1145/3809296) *(Accepted,Communications of ACM)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory.
+* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga 2026)](https://doi.org/10.1145/3809296) *(accepted; in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory.
 
 ## **Regulations, Compliance & Governance Frameworks**
 
@@ -259,13 +259,10 @@ The repository contains:
 
 ## **Contributing**
 
-Contributions are welcome to the curated list. See [CONTRIBUTING.md](./CONTRIBUTING.md). Note that the [Innovative Projects](./Innovative%20Projects/) subdirectory is licensed CC BY-NC-ND 4.0 and does not require external PRs.
+Contributions are welcome to the curated list. See [CONTRIBUTING.md](./CONTRIBUTING.md). The [Innovative Projects](./Innovative%20Projects/) subdirectory holds the maintainer's original system designs; please raise issues there rather than pull requests.
 
 ## **License**
 
-This repository is dual-licensed:
-
-* **The curated list** (this `README.md` and the [LICENSE](./LICENSE) file at the root) is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
-* **The [Innovative Projects](./Innovative%20Projects/) directory** (original system proposals: README + PRD + SPEC + ARCH per project, plus `SFC_COMPLIANCE.md`) is licensed under a [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/), © Andrei Nicolae Besleaga. See [Innovative Projects/LICENSE](./Innovative%20Projects/LICENSE) for the full text.
+The whole repository — the curated list and the [Innovative Projects](./Innovative%20Projects/) directory alike — is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/), © Andrei Nicolae Besleaga. See [LICENSE](./LICENSE) for the full text.
 
 Repository: [https://github.com/andreibesleaga/awesome-blockchain-greentech](https://github.com/andreibesleaga/awesome-blockchain-greentech)

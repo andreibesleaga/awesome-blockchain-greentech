@@ -11,7 +11,7 @@ This repository has **two parts with different rules**:
 | Part | What it is | Contributions accepted? |
 |---|---|---|
 | The curated list (root `README.md`) | Third-party projects, standards and tools | ✅ Yes — PRs welcome, see below. |
-| [`Innovative Projects/`](./Innovative%20Projects/) | Original system proposals authored by the maintainer (README + PRD + SPEC + ARCH per project, plus `SFC_COMPLIANCE.md`) | ⚠ Restricted — this content is licensed **CC BY-NC-ND 4.0** (no derivatives). External PRs that modify these files cannot be merged. Issues and discussion are welcome. Suggestions and corrections may be incorporated by the maintainer with credit. |
+| [`Innovative Projects/`](./Innovative%20Projects/) | Original system proposals authored by the maintainer (README + PRD + SPEC + ARCH per project, plus `SFC_COMPLIANCE.md`) | Licensed **CC BY-SA 4.0**, like the rest of the repository. Issues and discussion are welcome; corrections and improvements may be incorporated by the maintainer with credit. |
 
 ## How to contribute to the curated list
 
@@ -34,6 +34,6 @@ This repository has **two parts with different rules**:
 
 ## License
 
-By contributing **to the curated list**, you agree that your contribution will be licensed under the curated list's [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](./LICENSE).
+By contributing, you agree that your contribution will be licensed under this repository's [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](./LICENSE).
 
-Contributions **to `Innovative Projects/`** are not solicited (the directory is CC BY-NC-ND 4.0). If you spot a factual error there, please open an issue; the maintainer will address it.
+For `Innovative Projects/`, which contains the maintainer's original system designs, please open an issue rather than a pull request if you spot a factual error; the maintainer will address it.

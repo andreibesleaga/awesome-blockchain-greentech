@@ -18,6 +18,9 @@ Telecommunications and electric-vehicle (EV) charging both rely on **roaming**: 
 
 #### **Data Flow & Logic**
 
+![Sequence: the user wallet presents a zero-knowledge proof of a valid credential to the foreign operator, which verifies it and looks up the home operator DID through the roaming gateway; the gateway reserves funds against a pre-posted bond, access is granted, service is delivered, a signed session record is submitted, and micro-settlement follows after the dispute window. Timings shown are design targets, not measurements.](architecture.png)
+
+
 1. **User Onboarding:** The user creates a DID stored in a mobile wallet. The **Home Operator** (e.g., a mobile network operator, an eMSP, or a utility) issues a Verifiable Credential attesting to the user's plan, fair-use limit and a creditworthiness flag.
 2. **Roaming Request:** The user reaches a **Foreign Operator** (e.g., an OCPI-network EV charger in France or a visited mobile network). The wallet generates a ZK-proof confirming a valid contract with a Registry-listed Home Operator.
 3. **Verification & Access:** The Foreign Operator's system verifies the proof on-chain through the Roaming Gateway. Access is granted in 1–2 s end-to-end (achievable on Fabric/Hedera-class throughput; subject to physical media latency).
@@ -76,7 +79,7 @@ sequenceDiagram
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (aligned with the GSMA eBusiness Network) or **Hedera** (carbon-negative aBFT). Anchor on Polygon zkEVM. Combined measured energy budget < **1 GWh / yr** network-wide.
 * **Hardware lifecycle (criterion 2).** General-purpose servers only; no ASICs; each Operator declares `nodeProfile` with WEEE-certified retirement.

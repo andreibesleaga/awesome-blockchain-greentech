@@ -6,7 +6,7 @@
 
 This profile applies the framework defined in:
 
-> Besleaga, A. N. (2026). *"Sustainability-First Consensus" Ledgers for a Green Digital Future.* Association for Computing Machinery. https://doi.org/10.1145/3809296
+> Besleaga, A. N. (2026). *"Sustainability-First Consensus" Ledgers for a Green Digital Future.* Association for Computing Machinery. https://doi.org/10.1145/3809296 — *accepted; in press. The DOI resolves once ACM publishes.*
 > ORCID: [0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283)
 
 For the full framework — rationale, motivation and argumentation — consult the paper. This document covers only the engineering parameters needed to apply the framework here. Any deployment claiming SFC alignment MUST cite the paper above.
@@ -139,6 +139,6 @@ Single-use ASIC-class mining hardware is rejected at onboarding. HSMs for instit
 ---
 
 * **Profile version:** `SFC-PROFILE v1.1` (2026-05-23).
-* **Framework:** Besleaga (2026), https://doi.org/10.1145/3809296. Future revisions of the paper trigger a new profile version.
+* **Framework:** Besleaga (2026), https://doi.org/10.1145/3809296 *(in press)*. Future revisions of the paper trigger a new profile version.
 * **Author identifier:** ORCID [0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283).
 * **Scope reminder:** this profile applies the framework — it does not reproduce its rationale or argumentation. Read the paper.

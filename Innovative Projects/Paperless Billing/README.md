@@ -22,6 +22,9 @@ Paper billing has a real environmental cost. Green America's *Skip the Slip* res
 
 #### **Architectural Diagram**
 
+![Flow: the vendor app encrypts and pins the bill to IPFS and receives a CID, then submits an anchor transaction carrying the bill hash, CID and totals to a smart contract on NEAR/EVM, which emits a BillIssued event to the ledger log; the customer app reads the anchor and fetches and decrypts the bill, while an auditor reads the audit event log and decrypts with a grant.](architecture.png)
+
+
 ```mermaid
 graph LR
     Vendor[Vendor App] -->|1. Encrypt + pin| IPFS[IPFS Storage]
@@ -69,7 +72,7 @@ graph LR
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296), [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **NEAR Protocol** — sharded PoS, certified Climate-Neutral Product (South Pole, 2021), measured network energy is far below the SFC 1 GWh / yr cap. Per-receipt amortised on-chain energy negligible.
 * **Hardware lifecycle (criterion 2).** No ASICs anywhere; NEAR validators run general-purpose servers. Project gateways run on standard cloud VMs. Hardware reuse / WEEE-certified recycling policy required for self-hosted gateways.
