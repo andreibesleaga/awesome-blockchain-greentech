@@ -39,7 +39,7 @@ Any deployment that uses or builds on these projects MUST cite the paper above.
 
 *No energy or carbon figure of these designs has been measured: every energy budget in these documents is a design target, and every sizing figure is an assumption.*
 
-* **Repository text:** v1.2 (2026-10-03); Zenodo deposit v1.2: <v1.2 DOI — reserved at upload> (v1.1: [10.5281/zenodo.22681205](https://doi.org/10.5281/zenodo.22681205), 2026-09-09, not changed); see [Corrections](#corrections-2026-10-03) below.
+* **Repository text:** v1.2 (2026-10-03); Zenodo deposit v1.2: [10.5281/zenodo.23122082](https://doi.org/10.5281/zenodo.23122082) (v1.1: [10.5281/zenodo.22681205](https://doi.org/10.5281/zenodo.22681205), 2026-09-09, not changed); see [Corrections](#corrections-2026-10-03) below.
 
 ### License
 
