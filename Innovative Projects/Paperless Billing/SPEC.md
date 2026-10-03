@@ -131,9 +131,9 @@ A bill can only be claimed once. Claiming binds the bill to a customer DID but d
 
 ## 9. Sustainability Events & API (SFC profile)
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Gateway operators publish `EnergyAttested` and `CarbonAttested` events monthly (chain-tier energy reported by the NEAR Foundation per their public certification). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §4–§5](../SFC_COMPLIANCE.md).
+Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Gateway operators publish `EnergyAttested` and `CarbonAttested` events monthly (chain-tier energy reported by the NEAR Foundation per their public certification). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
-CSRD-in-scope retailers using this project ingest the signed ESRS E1 block as a Scope-3 input for the digital-receipt service they consume.
+Retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) using this project ingest the signed ESRS E1 block as a Scope-3 input for the digital-receipt service they consume.
 
 ## 10. Versioning
 

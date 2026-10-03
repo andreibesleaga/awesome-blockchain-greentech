@@ -160,7 +160,7 @@ Errors follow RFC 7807.
 
 Conforms to and *self-applies* [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. Where the operator retires offsets to satisfy Net Zero, the retirement events used MAY be drawn from this very registry (`Retired` events on `CreditBatch`es) — closing the loop and enabling auditors to trace every claimed offset back to a verified MRV chain.
 
-API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §4–§5](../SFC_COMPLIANCE.md).
+API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 ## 11. Versioning
 

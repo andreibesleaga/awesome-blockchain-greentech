@@ -4,7 +4,7 @@
 
 ## 1. Problem
 
-Paper receipts and small-format invoices are a daily-life waste stream: ~300 billion paper receipts are produced globally each year (Green America, *Skip the Slip*), most thermal-paper is BPA/BPS-coated and not recyclable, and B2B paper invoices add reconciliation cost and fraud surface. Existing e-receipt apps are siloed per merchant or per payment processor — there is no shared verifiable receipt that a customer, a tax authority and an accounting system can all trust.
+Paper receipts and small-format invoices are a daily-life waste stream: receipt use in the US alone consumes about 3.68 million trees and 10 billion gallons of water a year (Green America, *Skip the Slip*, 2022), most thermal-paper is BPA/BPS-coated and not recyclable, and B2B paper invoices add reconciliation cost and fraud surface. Existing e-receipt apps are siloed per merchant or per payment processor — there is no shared verifiable receipt that a customer, a tax authority and an accounting system can all trust.
 
 ## 2. Vision
 
@@ -54,10 +54,10 @@ A **vendor-agnostic, ledger-anchored receipt**: the vendor's POS pins an encrypt
 * **NFR-2 Anchor latency.** Submit-to-finality < 5 s p95.
 * **NFR-3 Verify latency.** < 100 ms p95 from cache, < 1 s p95 cold.
 * **NFR-4 Privacy.** No PII on-chain; off-chain payloads encrypted with per-receipt CEKs.
-* **NFR-5 Carbon.** Run on a published carbon-neutral chain (e.g., NEAR) or commit a measured / offset footprint elsewhere.
+* **NFR-5 Carbon.** Run on a chain with a published, offset-based carbon-neutral label (e.g., NEAR) or commit a measured / offset footprint elsewhere.
 * **NFR-6 Standards.** B2B payloads conform to EN 16931 (UBL or CII syntax).
 * **NFR-7 Availability.** 99.9 % monthly for the issuance and verify APIs.
-* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total measured energy (chain + gateways) < **1 GWh / yr**; no ASICs; monthly `EnergyAttested` + `CarbonAttested` per gateway operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy (chain + gateways) < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per gateway operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
 
 ## 8. Success Metrics (KPIs)
 

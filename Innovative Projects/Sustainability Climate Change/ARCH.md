@@ -210,11 +210,11 @@ Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md).
 
 | Criterion | How this project meets it |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hedera (carbon-negative aBFT) with Guardian for methodology workflows, or Hyperledger Fabric (consortium BFT). Anchor: Polygon zkEVM. Combined measured budget well under the cap; the system's own annual footprint is published as part of every audit bundle. |
+| **1. Energy < 1 GWh / yr** | Hot path: Hedera (aBFT; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets) with Guardian for methodology workflows, or Hyperledger Fabric (consortium BFT). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured); the system's own annual footprint is published as part of every audit bundle. |
 | **2. Hardware lifecycle** | General-purpose x86 / arm64 only; ASICs forbidden. Each Operator declares `nodeProfile` with reuse / WEEE-certified retirement policy. |
 | **3. Carbon accountability** | Monthly `EnergyAttested` + `CarbonAttested` per Operator. Offsets retired against the period — preferentially through `Retired` events on this very registry, so each claimed offset is itself a `CreditBatch` with a full MRV chain. Net Zero invariant enforced. |
 | **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Buyer audit bundles already include retirement + methodology + MRV lineage; the SFC self-disclosure sits in the same bundle. |
 
 **Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's measured energy exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period. Given the credibility cost of a registry breaching its own threshold, the verifier MUST publicly flag the breach the moment it is detected, not at end-of-period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period. Given the credibility cost of a registry breaching its own threshold, the verifier MUST publicly flag the breach the moment it is detected, not at end-of-period.

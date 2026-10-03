@@ -176,9 +176,9 @@ Net Zero invariant per period: `scope2 + scope3 ≤ offsets`. Sustainability end
 * `GET /v1/sustainability/operator/{did}` — last attestation + 12-month rollup.
 * `GET /v1/sustainability/network` — network-wide rollup vs. SFC cap (1 GWh / yr).
 * `GET /v1/sustainability/csrd?period=YYYY-MM&operator=did` — signed CSRD / ESRS E1 block.
-* `GET /v1/sustainability/sfc` — SFC self-report (platform, measured annual energy, compliance status).
+* `GET /v1/sustainability/sfc` — SFC self-report (platform, annual energy, compliance status).
 
-Schema and exact field names: see [SFC_COMPLIANCE.md §4–§5](../SFC_COMPLIANCE.md).
+Schema and exact field names: see [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 ## 10. Versioning
 

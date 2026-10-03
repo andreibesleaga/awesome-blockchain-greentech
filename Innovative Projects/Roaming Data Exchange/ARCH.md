@@ -151,7 +151,7 @@ Home Operator ──/v1/vcs/{id}/revoke──▶ Registry.revoke(vcId)
 
 ## 8. Scalability and Performance
 
-* **Throughput:** Fabric / Hedera-class. Roaming volumes (tens of thousands of sessions per minute at peak across a whole consortium) sit well within published benchmarks.
+* **Throughput:** Fabric / Hedera-class. Roaming volumes (tens of thousands of sessions per minute at peak across a whole consortium) sit well within published benchmarks (e.g., Androulaki et al., EuroSys 2018, [doi:10.1145/3190508.3190538](https://doi.org/10.1145/3190508.3190538), which reports more than 3 500 tx/s for Fabric in certain configurations).
 * **Critical-path latency:** dominated by physical media attach (OCPP `RemoteStartTransaction`, RAN attach). Authorisation contract budget: ≤ 500 ms.
 * **Reads:** materialised views in the gateway; chain replay used only for audit.
 
@@ -196,11 +196,11 @@ Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md).
 
 | Criterion | How this project meets it |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric (consortium BFT, aligned with the GSMA eBusiness Network) or Hedera (carbon-negative aBFT, public). Anchor: Polygon zkEVM. Combined measured budget well under the cap. |
+| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric (consortium BFT, aligned with the GSMA eBusiness Network) or Hedera (aBFT; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets; public). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
 | **2. Hardware lifecycle** | All peers, gateways and adapter nodes run on general-purpose x86 / arm64 servers. ASICs forbidden. Each Operator declares `nodeProfile` (purchasedAt, expectedRetireAt, reusePolicy); WEEE-certified recycling at retirement. |
 | **3. Carbon accountability** | Each Operator publishes monthly `EnergyAttested` and `CarbonAttested` events. Scope 2 from peer + gateway electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied carbon. EV session ESG tags reference Guarantees-of-Origin (verifiable via the issuing certificate). Offsets retired per period; Net Zero invariant enforced. |
-| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Telecom and CPO groups are typically CSRD-in-scope undertakings; AFIR (Alternative Fuels Infrastructure Regulation) reporting for EV charging is supported via the same disclosure block. |
+| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03); telecom and CPO groups above those thresholds are in scope; AFIR (Alternative Fuels Infrastructure Regulation) reporting for EV charging is supported via the same disclosure block. |
 
 **Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's measured energy exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.

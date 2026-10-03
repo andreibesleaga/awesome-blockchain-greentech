@@ -130,7 +130,7 @@ Writes require signed JWS; reads are restricted to Registry-listed Operators or 
 
 ## 10. Sustainability Events & API (SFC profile)
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §4–§5](../SFC_COMPLIANCE.md).
+Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 For EV sessions, the `SessionEnded` payload may carry a renewable-energy ESG tag (Guarantee-of-Origin hash) — see SPEC §4.1 — and that tag's veracity is independently verifiable via the certificate referenced.
 

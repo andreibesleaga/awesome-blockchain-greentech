@@ -5,7 +5,7 @@ A curated list of awesome blockchain projects, open-source software, standards, 
 The repository contains:
 
 * **The curated list** (this file) — third-party projects and standards, organised by theme.
-* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all aligned to a shared **Sustainability-First Consensus (SFC)** engineering profile that operationalises the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
+* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all aligned to a shared **Sustainability-First Consensus (SFC)** engineering profile that operationalises the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
 
 **Scope:** This list focuses on software, protocols, and tools that utilize Distributed Ledger Technology (DLT) to solve environmental challenges (Regenerative Finance, dMRV, Circular Economy, Energy Grids, Digital Product Passports, Identity & Compliance).
 
@@ -94,7 +94,7 @@ The repository contains:
 * [**VeChain**](https://www.vechain.com/) — Enterprise BaaS platform used by BMW and DNV for component traceability and circularity.
 * [**IOTA DPP Demonstrator**](https://github.com/iotaledger/dpp-demonstrator) — Reference implementation for Digital Product Passports on IOTA's Tangle.
 * [**IBM Food Trust**](https://www.ibm.com/think/topics/blockchain-for-supply-chain) — Production blockchain platform (built on Hyperledger Fabric) for food traceability; >2 M food products digitised; well-known mango-traceability case study (7 days → 2.2 s for Walmart).
-* [**Plastic Bank**](https://plasticbank.com/) — Social fintech with a global bottle-deposit program; runs the first digitally tokenised and traceable **Plastic Credit** with blockchain-secured proof of social impact.
+* [**Plastic Bank**](https://plasticbank.com/) — Social fintech with a global bottle-deposit program; runs what it describes as the first digitally tokenised and traceable **Plastic Credit** with blockchain-secured proof of social impact.
 * [**Plastiks**](https://www.plastiks.io/) — Anti-greenwashing plastic-credits platform; PLASTIK token currently on CELO (and bridging to Cardano), with each token representing one kilogram of recovered material.
 
 ## **Digital Product Passports (DPP)**
@@ -107,15 +107,15 @@ The repository contains:
 
 ## **Low-Energy Base Layers**
 
-*Base-layer blockchains and rollups whose measured energy footprint fits sustainability-by-design budgets.*
+*Base-layer blockchains and rollups designed for low energy use. Published annual figures for the same chain differ with the boundary and the data provider, and on the MiCA boundary some current estimates are above 1 GWh a year; check a current assessment before relying on one.*
 
-* [**Algorand**](https://github.com/algorand) — Pure Proof-of-Stake L1 measured at ~0.0006 GWh/yr network-wide; [carbon-negative since 2024](https://www.algorand.foundation/sustainability) via automatic per-tx carbon-credit purchases.
-* [**Hedera**](https://github.com/hashgraph/hedera-services) — aBFT Hashgraph network; [carbon-negative](https://hedera.com/sustainability), measured at ~0.00014 kWh/tx.
-* [**IOTA**](https://github.com/iotaledger/iota) — DAG-based ledger; ~0.00011 kWh/tx; suited to high-frequency, low-value MRV streams.
-* [**NEAR Protocol**](https://near.org/) — Sharded PoS; the [first Layer-1 to receive a *Climate Neutral Product* label](https://near.foundation/blog/near-climate-neutral-product/) (South Pole assessment, 2021).
+* [**Algorand**](https://github.com/algorand) — Pure Proof-of-Stake L1; the foundation [reports](https://algorand.co/technology/sustainability) an annualised footprint of 265 tCO2 (its own model, June 2024; read 2026-10-03) and offsets it by buying carbon credits.
+* [**Hedera**](https://github.com/hashgraph/hedera-services) — aBFT Hashgraph network; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets.
+* [**IOTA**](https://github.com/iotaledger/iota) — DAG-based ledger; suited to high-frequency, low-value MRV streams.
+* [**NEAR Protocol**](https://near.org/) — Sharded PoS; awarded South Pole's [*climate neutral product* label](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects) in 2021, on the basis of purchased carbon offsets.
 * [**Chia Network**](https://github.com/Chia-Network/chia-blockchain) — Uses "Proof of Space and Time"; underpins the CAD Trust meta-registry. **Chia 3.0 with Proof of Space 2.0 hard-forks November 2026.**
 * [**Celo** (now Ethereum L2)](https://github.com/celo-org) — **Migrated from L1 to an Ethereum L2 on the OP Stack in March 2025**, retaining mobile-first ReFi focus; #1 L2 by daily active users one year after migration.
-* [**Polygon zkEVM / Polygon PoS**](https://polygon.technology/) — Low-energy EVM execution; widely used as the anchor / public-proof layer for permissioned consortium ledgers.
+* [**Polygon zkEVM / Polygon PoS**](https://polygon.technology/) — Low-energy EVM execution; widely used as the anchor / public-proof layer for permissioned consortium ledgers. **Polygon zkEVM Mainnet Beta stopped producing blocks on 3 July 2026** ([sunset notice](https://polygon.technology/polygon-zkevm)); Polygon PoS continues.
 
 ## **Identity & Verifiable Credentials**
 
@@ -149,7 +149,7 @@ The repository contains:
 *Connecting real-world sensors, weather data, and grid-intensity data to the blockchain.*
 
 * [**Chainlink**](https://github.com/smartcontractkit/chainlink) — Industry-standard oracle network used to bring weather data and satellite imagery on-chain for crop insurance and carbon-removal verification.
-* [**Electricity Maps**](https://www.electricitymaps.com/) — Real-time and historical grid-carbon-intensity API covering 160+ zones; the canonical source for measuring Scope 2 emissions of node operators.
+* [**Electricity Maps**](https://www.electricitymaps.com/) — Real-time and historical grid-carbon-intensity API by grid zone; the canonical source for measuring Scope 2 emissions of node operators.
 * [**Crypto Carbon Ratings Institute (CCRI) Sustainability API**](https://carbon-ratings.com/) — Independent network-level energy and carbon assessments for 20+ blockchains (PoS, aBFT, DAG, permissioned BFT), using the hybrid-allocation framework jointly developed with South Pole.
 * [**Cambridge Bitcoin Electricity Consumption Index (CBECI)**](https://ccaf.io/cbeci/index) — University of Cambridge methodology for measuring PoW network energy; the reference for "before/after" comparability claims.
 
@@ -194,7 +194,7 @@ The repository contains:
 * [**DePIN Urban Monitoring**](https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1626695/full) *(Academic Pilot)* — Decentralised IoT-sensor deployment in Nairobi, Kenya, monitoring environmental variables for urban green spaces; documents cost reduction and fractional income for community data collectors.
 * [**AI-Enhanced Verification Framework**](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification) *(Research Proposal)* — Architecture combining "Brilliant Contracts" with satellite-imagery analysis (U-Net / ResNet-50) for automated carbon-credit verification (>94 % claimed accuracy).
 * [**BlockRoam**](https://arxiv.org/abs/2005.04571) *(Academic Reference)* — Peer-reviewed blockchain-based roaming-management system for mobile networks; PoS consensus + Stackelberg-game incentive model.
-* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga 2026)](https://doi.org/10.1145/3809296) *(accepted; in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory.
+* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(accepted; in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory.
 
 ## **Regulations, Compliance & Governance Frameworks**
 

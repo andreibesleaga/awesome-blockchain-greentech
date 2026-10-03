@@ -57,7 +57,7 @@ Bind every certified item or batch to an **indelible physical mark** (laser-engr
 * **NFR-4 Availability.** 99.9 % monthly for the verify API.
 * **NFR-5 Interoperability.** Identifiers follow GS1 EPCIS 2.0 vocabulary; URIs follow GS1 Digital Link.
 * **NFR-6 Sensor Trust.** Where supported, IoT readings are signed in a secure element (TPM / NFC SE / ATECC608A); otherwise a trusted gateway signs and the event records the delegation explicitly.
-* **NFR-7 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total measured energy < **1 GWh / yr**; no ASICs; monthly `EnergyAttested` + `CarbonAttested` per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-7 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
 
 ## 8. Success Metrics (KPIs)
 

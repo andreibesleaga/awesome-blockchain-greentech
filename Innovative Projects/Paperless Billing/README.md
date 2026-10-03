@@ -2,14 +2,14 @@
 
 #### **Motivation**
 
-Paper billing has a real environmental cost. Green America's *Skip the Slip* research estimates **over 300 billion paper receipts are produced globally each year** — in the US alone roughly **10 billion receipts per year** consume an estimated 3.68 million trees and 10 billion gallons of water, and most thermal-paper receipts cannot be recycled because they are coated with bisphenols (BPA / BPS). On the B2B side, EU regulators are moving in the same direction: the **EU "VAT in the Digital Age" (ViDA)** package (published 25 March 2025) makes e-invoicing the default for cross-border B2B transactions inside the EU. Existing digital alternatives, however, are fragmented, hard to verify across vendors, and easy to spoof on the consumer side. A ledger-anchored receipt gives every party — vendor, customer, regulator — a single tamper-evident reference.
+Paper billing has a real environmental cost. Green America's *Skip the Slip* report (2022) estimates that receipt use in the US alone consumes about **3.68 million trees and 10 billion gallons of water** every year; most thermal-paper receipts cannot be recycled because they are coated with bisphenols (BPA / BPS). On the B2B side, EU regulators are moving in the same direction: the **EU "VAT in the Digital Age" (ViDA)** package (published 25 March 2025) makes e-invoicing the default for cross-border B2B transactions inside the EU. Existing digital alternatives, however, are fragmented, hard to verify across vendors, and easy to spoof on the consumer side. A ledger-anchored receipt gives every party — vendor, customer, regulator — a single tamper-evident reference.
 
 #### **Proposed Architecture**
 
 > The reference instantiation below mirrors the **BlockBill** case study (NEAR Protocol + IPFS). The design is platform-agnostic: any chain with low fees and standardised wallets (e.g., NEAR, Polygon PoS, an EVM L2) plus any content-addressed store (IPFS, S3-compatible with content hashing) can host the same logic.
 
 * **Core Technologies:**
-  * **Layer-1 / L2 Blockchain:** Reference choice is **NEAR Protocol** — sharded PoS, low fees, and the [first Layer-1 to receive a *Climate Neutral Product* label](https://near.foundation/blog/near-climate-neutral-product/) (South Pole assessment, 2021). EVM L2s are an equally valid substrate.
+  * **Layer-1 / L2 Blockchain:** Reference choice is **NEAR Protocol** — sharded PoS, low fees, and South Pole's [*climate neutral product* label](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects) (2021), awarded on the basis of purchased carbon offsets. EVM L2s are an equally valid substrate.
   * **Smart Contracts:** Rust / WASM on NEAR, or Solidity 0.8.x on an EVM target — implementing the receipt-anchor logic.
   * **Storage Layer:** IPFS (or any content-addressed store) for encrypted bill payloads; only the CID and a hash commit are written on-chain.
 * **Workflow:**
@@ -40,7 +40,7 @@ graph LR
 #### **Sustainability Impact**
 
 * **Waste Reduction:** Removes thermal-paper receipts (typically BPA/BPS-coated and not recyclable) where the customer accepts a digital alternative.
-* **Energy Efficiency:** A PoS blockchain such as NEAR has a published carbon-neutral certification (South Pole, 2021) and consumes orders of magnitude less energy per transaction than Proof-of-Work chains.
+* **Energy Efficiency:** A PoS blockchain such as NEAR has an offset-based carbon-neutral label (South Pole, 2021) and, like other PoS chains, consumes orders of magnitude less energy per transaction than Proof-of-Work chains (Platt et al., 2021, [doi:10.1109/QRS-C55045.2021.00168](https://doi.org/10.1109/QRS-C55045.2021.00168)).
 * **Longevity:** Content-addressed storage preserves the bill indefinitely without thermal fade, and the on-chain hash anchors its integrity.
 
 #### **Policy & ESG Alignment**
@@ -64,7 +64,7 @@ graph LR
 * [BlockBill Paperless Billing Solution — IIC Journal of Innovation (PDF)](https://www.iiconsortium.org/wp-content/uploads/sites/2/2023/04/JOI-20230426-BlockBill-Paperless-Billing-Solution.pdf)
 * [IIT Indore wins Global Best m-Gov Award at WGS 2023 (Free Press Journal)](https://www.freepressjournal.in/indore/iit-indore-wins-global-best-m-gov-award-at-the-world-government-summit-2023)
 * [BlockBill at World Government Summit 2023 (Gulf News)](https://gulfnews.com/uae/government/meet-the-indian-students-who-won-dh1-million-award-at-world-government-summit-2023-in-dubai-1.93826431)
-* [NEAR Protocol Awarded the Climate Neutral Product Label (NEAR Foundation)](https://near.foundation/blog/near-climate-neutral-product/)
+* [South Pole awards NEAR Protocol its climate neutral product label (South Pole news, 8 June 2021)](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects)
 * [Green America — Skip the Slip (paper-receipt impact)](https://reports.greenamerica.org/skip-the-slip)
 * [EU VAT in the Digital Age (ViDA)](https://finance.ec.europa.eu/taxation/vat/vat-digital-age-vida_en)
 * [Peppol BIS Billing 3.0 / EN 16931](https://docs.peppol.eu/poacc/billing/3.0/)
@@ -72,12 +72,12 @@ graph LR
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
-* **Energy (criterion 1).** Hot path on **NEAR Protocol** — sharded PoS, certified Climate-Neutral Product (South Pole, 2021), measured network energy is far below the SFC 1 GWh / yr cap. Per-receipt amortised on-chain energy negligible.
+* **Energy (criterion 1).** Hot path on **NEAR Protocol** — sharded PoS, offset-based Climate Neutral Product label (South Pole, 2021). Design assumption, not a measurement: network energy below the SFC 1 GWh / yr cap and a negligible per-receipt amortised on-chain energy, to be confirmed against independent figures (the only published annual figure found, 0.92 GWh in a MiCA disclosure for July 2025 – July 2026, is close to the cap).
 * **Hardware lifecycle (criterion 2).** No ASICs anywhere; NEAR validators run general-purpose servers. Project gateways run on standard cloud VMs. Hardware reuse / WEEE-certified recycling policy required for self-hosted gateways.
 * **Carbon accountability (criterion 3).** Gateway operators publish monthly `EnergyAttested` + `CarbonAttested` for the gateway tier (chain-side energy is reported by the NEAR Foundation per their public certification). Net Zero invariant enforced per period.
-* **Regulatory readiness (criterion 4).** `/v1/sustainability/csrd` returns signed ESRS E1 disclosures; CSRD-in-scope retailers can ingest the project's footprint as a Scope-3 input alongside their own receipts.
+* **Regulatory readiness (criterion 4).** `/v1/sustainability/csrd` returns signed ESRS E1 disclosures; retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) can ingest the project's footprint as a Scope-3 input alongside their own receipts.
 
 #### **Companion Documents**
 

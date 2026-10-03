@@ -18,6 +18,14 @@ authors:
     city: Bucharest
 license: CC-BY-SA-4.0
 version: "1.1"
+doi: 10.5281/zenodo.22681205
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22681205
+    description: "Zenodo deposit, version 1.1 (2026-09-09)"
+  - type: doi
+    value: 10.5281/zenodo.22681204
+    description: "Zenodo concept DOI (all versions)"
 keywords:
   - distributed ledger technology
   - blockchain
@@ -37,7 +45,7 @@ references:
       - family-names: Besleaga
         given-names: Andrei Nicolae
         orcid: "https://orcid.org/0009-0001-3464-5283"
-    year: 2026
+    journal: "Communications of the ACM"
     publisher:
       name: Association for Computing Machinery
     doi: 10.1145/3809296

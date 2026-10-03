@@ -193,7 +193,7 @@ Pharmacy ──sign──▶ Dispense.execute(rxId, sgtins) ──▶ Prescripti
 ## 11. Build / Tech Choices (indicative)
 
 * **Permissioned core:** Hyperledger Fabric 2.x (Go chaincode) or R3 Corda 5 (Kotlin).
-* **Public layer:** Polygon zkEVM or Arbitrum (Solidity 0.8.x).
+* **Public layer:** Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)) or Arbitrum (Solidity 0.8.x).
 * **API gateway:** Go (Echo) or Node.js (Fastify); JOSE for JWS; DID-core libs.
 * **FHIR engine:** HAPI FHIR (Java) or fhir.js / Medplum on Node.
 * **Storage:** PostgreSQL for materialised views; S3-compatible object store; KMS for CEK wrapping.
@@ -213,11 +213,11 @@ Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md).
 
 | Criterion | How this project meets it |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric (consortium BFT) on general-purpose servers (≤ ~15 peers + gateways across the consortium). Anchor: Polygon zkEVM. Combined measured budget well under the cap. |
+| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric (consortium BFT) on general-purpose servers (≤ ~15 peers + gateways across the consortium). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
 | **2. Hardware lifecycle** | General-purpose x86 / arm64 only; HSMs (FIPS 140-2 L3) for institutional key custody — HSMs are general-purpose, not single-use ASICs. Every institution declares `nodeProfile`; WEEE-certified recycling at retirement. |
 | **3. Carbon accountability** | Each institution publishes monthly `EnergyAttested` + `CarbonAttested` events. Scope 2 derived from peer + gateway + HSM electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied carbon of hardware. Offsets retired per period; Net Zero invariant enforced by verifier. |
-| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Hospital groups and pharma manufacturers are typically CSRD-in-scope undertakings — the disclosure block plugs directly into their corporate ESG tooling. |
+| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03); for the hospital groups and pharma manufacturers that remain in scope, the disclosure block plugs directly into their corporate ESG tooling. |
 
 **Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's measured energy exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.

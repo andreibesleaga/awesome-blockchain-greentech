@@ -59,7 +59,7 @@ A ledger-anchored **access-control and integrity layer** that sits beside existi
 * **NFR-5 Standards.** EHR payloads conform to HL7 FHIR R5; drug identifiers follow GS1 SGTIN / GTIN; DIDs and VCs follow W3C specs.
 * **NFR-6 Cryptography.** Signatures Ed25519 or ECDSA-P256 (HSM-backed for institutional keys).
 * **NFR-7 Auditability.** 100 % of accesses, dispenses and supply-chain events are signed and replayable.
-* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total measured energy < **1 GWh / yr**; no ASICs; monthly `EnergyAttested` + `CarbonAttested` per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
 
 ## 8. Success Metrics (KPIs)
 

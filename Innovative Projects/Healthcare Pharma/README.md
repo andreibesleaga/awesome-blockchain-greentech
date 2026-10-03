@@ -40,7 +40,7 @@ graph TD
 Healthcare applications demand strict adherence to data integrity, privacy, and auditability:
 
 * **Decentralized Off-Chain Storage:** To preserve privacy and scalability, **Protected Health Information (PHI)** is encrypted and stored off-chain. Only access-control logic and cryptographic hashes reside on the ledger; this also keeps PHI legally deletable under GDPR.
-* **Interoperable, Permissioned DLT:** Frameworks such as **Hyperledger Fabric** and **R3 Corda** are preferred for multi-party networks (hospitals, pharmacies, regulators). Published benchmarks show throughput well above 1 000 tx/s on tuned Fabric deployments (results vary with consensus, endorsement policy and hardware); both platforms offer low energy use and granular privacy controls suitable for GDPR / HIPAA-aligned designs.
+* **Interoperable, Permissioned DLT:** Frameworks such as **Hyperledger Fabric** and **R3 Corda** are preferred for multi-party networks (hospitals, pharmacies, regulators). Published benchmarks (e.g., Androulaki et al., EuroSys 2018, [doi:10.1145/3190508.3190538](https://doi.org/10.1145/3190508.3190538), which reports more than 3 500 tx/s for Fabric in certain configurations) show throughput well above 1 000 tx/s on tuned Fabric deployments (results vary with consensus, endorsement policy and hardware); both platforms offer low energy use and granular privacy controls suitable for GDPR / HIPAA-aligned designs.
 * **Zero-Knowledge Proofs (ZKP):** Enable selective disclosure — for example, proving "patient is over 18" or "insurance policy P is valid for service S" without revealing the patient's identity or the policy contents.
 
 #### **Example Data Flow**
@@ -88,12 +88,12 @@ Healthcare applications demand strict adherence to data integrity, privacy, and 
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
-* **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (HSM-bound institutional keys, general-purpose servers); daily Merkle anchor on **Polygon zkEVM**. Total measured energy < **1 GWh / yr** network-wide.
+* **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (HSM-bound institutional keys, general-purpose servers); daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Total energy < **1 GWh / yr** network-wide — a design target, not a measurement.
 * **Hardware lifecycle (criterion 2).** No ASICs; peers on general-purpose servers; per-operator `nodeProfile` declares purchase / retirement / WEEE-certified reuse.
 * **Carbon accountability (criterion 3).** Monthly `EnergyAttested` + `CarbonAttested` events per institution; Net Zero per period enforced.
-* **Regulatory readiness (criterion 4).** Sustainability API returns CSRD / ESRS E1 disclosures — relevant to hospital groups and pharma manufacturers under CSRD reporting obligations.
+* **Regulatory readiness (criterion 4).** Sustainability API returns CSRD / ESRS E1 disclosures — relevant to those hospital groups and pharma manufacturers that are under CSRD reporting obligations (narrowed in 2026 by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)).
 
 #### **Companion Documents**
 

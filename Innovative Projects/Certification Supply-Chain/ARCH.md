@@ -169,7 +169,7 @@ Scan UID ──▶ Verify Portal ──▶ resolve tokenId
 ## 11. Build / Tech Choices (indicative)
 
 * **Permissioned core:** Hyperledger Fabric 2.x (Go chaincode).
-* **Public layer:** Polygon zkEVM, Arbitrum, or VeChainThor (Solidity 0.8.x).
+* **Public layer:** Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)), Arbitrum, or VeChainThor (Solidity 0.8.x).
 * **API gateway:** Go (Echo) or Node.js (Fastify); JOSE for JWS; DID-core libs.
 * **Storage:** PostgreSQL materialised views; S3-compatible object store for blobs.
 * **Observability:** OpenTelemetry + Prometheus + Loki.
@@ -187,11 +187,11 @@ Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md).
 
 | Criterion | How this project meets it |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers, or VeChainThor (Authority masternodes — published low-energy footprint). Anchor: Polygon zkEVM. Combined budget well under the cap. |
+| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers, or VeChainThor (Authority masternodes; footprint to be confirmed from an independent source). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
 | **2. Hardware lifecycle** | General-purpose x86 / arm64 only; ASICs forbidden. Every operator declares `nodeProfile` (purchasedAt, expectedRetireAt, reusePolicy). |
 | **3. Carbon accountability** | Monthly `EnergyAttested` and `CarbonAttested` events per operator. Scope 2 from peer + gateway electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied hardware carbon. Offsets retired against the period; verifier enforces Net Zero. |
 | **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. CSRD reporting integrates with corporate ESG tools without PDF round-trips. |
 
 **Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's measured energy exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.

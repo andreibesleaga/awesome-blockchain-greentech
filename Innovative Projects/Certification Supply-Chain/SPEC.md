@@ -180,7 +180,7 @@ Net Zero invariant: `scope2 + scope3 ≤ offsets`. API endpoints (all signed JOS
 * `GET /v1/sustainability/csrd?period=YYYY-MM&operator=did` — signed CSRD / ESRS E1 block.
 * `GET /v1/sustainability/sfc` — SFC self-report.
 
-Schema details: [SFC_COMPLIANCE.md §4–§5](../SFC_COMPLIANCE.md).
+Schema details: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 ## 11. Versioning
 

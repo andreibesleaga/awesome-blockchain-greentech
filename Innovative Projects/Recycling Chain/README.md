@@ -153,11 +153,11 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 ### **Sustainability-First Consensus (SFC) Compliance**
 
-RecyclingChain is designed to satisfy all four [SFC criteria](../SFC_COMPLIANCE.md) defined in Besleaga (2026), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+RecyclingChain is designed to satisfy all four [SFC criteria](../SFC_COMPLIANCE.md) defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
-* **Energy (criterion 1).** Hot-path on **Hyperledger Fabric** (consortium BFT, general-purpose servers). Daily Merkle anchor on **Polygon zkEVM**. Combined measured energy budget < **1 GWh / yr** network-wide.
+* **Energy (criterion 1).** Hot-path on **Hyperledger Fabric** (consortium BFT, general-purpose servers). Daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined energy budget < **1 GWh / yr** network-wide — a design target, not a measurement.
 * **Hardware lifecycle (criterion 2).** Every peer node runs on general-purpose x86 / arm64 servers; no ASICs anywhere in the design. Hardware reuse / WEEE-recycling policy mandatory in every operator's Registry record.
-* **Carbon accountability (criterion 3).** Operators publish monthly `EnergyAttested` + `CarbonAttested` events ([SFC_COMPLIANCE.md §4](../SFC_COMPLIANCE.md)), measured via CCRI methodology + Electricity Maps grid intensity. Net Zero invariant `scope2 + scope3 ≤ offsets` checked by the verifier.
+* **Carbon accountability (criterion 3).** Operators publish monthly `EnergyAttested` + `CarbonAttested` events ([SFC_COMPLIANCE.md §3](../SFC_COMPLIANCE.md)), to be measured via CCRI methodology + Electricity Maps grid intensity. Net Zero invariant `scope2 + scope3 ≤ offsets` checked by the verifier.
 * **Regulatory readiness (criterion 4).** Sustainability API (`/v1/sustainability/*`) returns signed CSRD / ESRS E1 disclosures.
 
 ### **Companion Documents**

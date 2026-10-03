@@ -63,7 +63,7 @@ We do not replace OCPI or GSMA processes. We augment them so existing operators 
 * **NFR-4 Availability.** 99.95 % monthly for the authorisation and settlement APIs.
 * **NFR-5 Privacy.** No PII on-chain; selective disclosure via ZKP for service authorisation.
 * **NFR-6 Standards.** Identity follows W3C DID / VC; EV session records map cleanly to OCPI 2.2+ CDRs; telecom records map to current GSMA / BCE formats.
-* **NFR-7 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total measured energy < **1 GWh / yr**; no ASICs; monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand. Hot-path platform from SFC §2 (Fabric / Hedera / NEAR-class).
+* **NFR-7 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand. Hot-path platform from SFC §2 (Fabric / Hedera / NEAR-class).
 
 ## 8. Success Metrics (KPIs)
 
