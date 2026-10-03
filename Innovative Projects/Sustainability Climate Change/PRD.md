@@ -71,7 +71,7 @@ The system **interoperates with** existing registries (Verra, Gold Standard, Pur
 * **NFR-4 Privacy.** No PII on-chain; project documents can be encrypted off-chain.
 * **NFR-5 Carbon footprint.** Run on a low-energy DLT (Hedera, Hyperledger Fabric, Polygon zkEVM [no longer producing blocks since 3 July 2026]). The carbon footprint of the system itself is published.
 * **NFR-6 Standards.** Identifiers and event payloads align with **VCMI** / **ICVCM** integrity expectations and the **GHG Protocol Product Standard**; methodology hashes reference published Verra / Gold Standard / Puro documents where applicable.
-* **NFR-7 Sustainability (SFC, self-applied).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero per period via offsets *retired through this very registry* where possible. Failure to self-comply breaks the trust premise of the system.
+* **NFR-7 Sustainability (SFC, self-applied).** Network compliant with [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero per period via offsets *retired through this very registry* where possible. Failure to self-comply breaks the trust premise of the system.
 
 ## 8. Success Metrics (KPIs)
 

@@ -88,12 +88,12 @@ Healthcare applications demand strict adherence to data integrity, privacy, and 
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (HSM-bound institutional keys, general-purpose servers); daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Total energy < **1 GWh / yr** network-wide — a design target, not a measurement.
 * **Hardware lifecycle (criterion 2).** No ASICs; peers on general-purpose servers; per-operator `nodeProfile` declares purchase / retirement / WEEE-certified reuse.
 * **Carbon accountability (criterion 3).** Monthly `EnergyAttested` + `CarbonAttested` events per institution; Net Zero per period enforced.
-* **Regulatory readiness (criterion 4).** Sustainability API returns CSRD / ESRS E1 disclosures — relevant to those hospital groups and pharma manufacturers that are under CSRD reporting obligations (narrowed in 2026 by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)).
+* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities — relevant to those hospital groups and pharma manufacturers that are under CSRD reporting obligations (narrowed in 2026 by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)).
 
 #### **Companion Documents**
 

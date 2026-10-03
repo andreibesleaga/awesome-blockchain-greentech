@@ -168,17 +168,12 @@ Errors follow RFC 7807.
 
 ## 10. Sustainability Events & API (SFC profile)
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Event vocabulary extended with:
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with:
 
 * `EnergyAttested` — monthly per-operator electricity consumption (kWh, CCRI methodology, evidence CID).
 * `CarbonAttested` — monthly per-operator Scope 2 + Scope 3 kgCO2e, grid-intensity reference, offsets retired, Net Zero boolean.
 
-Net Zero invariant: `scope2 + scope3 ≤ offsets`. API endpoints (all signed JOSE):
-
-* `GET /v1/sustainability/operator/{did}` — last attestation + 12-month rollup.
-* `GET /v1/sustainability/network` — network-wide rollup vs. SFC cap (1 GWh / yr).
-* `GET /v1/sustainability/csrd?period=YYYY-MM&operator=did` — signed CSRD / ESRS E1 block.
-* `GET /v1/sustainability/sfc` — SFC self-report.
+Net Zero invariant: `scope2 + scope3 ≤ offsets`. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.)
 
 Schema details: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
@@ -186,4 +181,4 @@ Schema details: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 * Spec follows SemVer.
 * Event envelopes carry the Registry-published schema CID; clients MUST refuse unknown schema CIDs.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.1`.
+* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

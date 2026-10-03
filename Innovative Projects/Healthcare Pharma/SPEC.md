@@ -169,12 +169,12 @@ Errors follow RFC 7807.
 
 ## 10. Sustainability Events & API (SFC profile)
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per institution). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per institution). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
-Particular relevance for healthcare: large hospital groups and pharma manufacturers can fall within CSRD scope. Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03). For those in scope, the signed ESRS E1 block emitted by `/v1/sustainability/csrd` can be ingested directly by their corporate ESG tooling.
+Particular relevance for healthcare: large hospital groups and pharma manufacturers can fall within CSRD scope. Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03). For those in scope, the filed reports named through the signed declaration's `disclosure-uri` can be ingested directly by their corporate ESG tooling.
 
 ## 11. Versioning
 
 * Spec follows SemVer; breaking schema changes bump MAJOR.
 * Event envelopes carry the Registry's schema CID; clients MUST refuse unknown schema CIDs.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.1`.
+* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

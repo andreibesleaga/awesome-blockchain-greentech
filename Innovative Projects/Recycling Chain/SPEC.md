@@ -166,17 +166,12 @@ Canonical signed payload (kept short for QR density):
 
 ## 9. Sustainability Events & API (SFC profile)
 
-This project conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). The event vocabulary is extended with:
+This project conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). The event vocabulary is extended with:
 
 * `EnergyAttested` — monthly per-operator electricity consumption (kWh, CCRI-aligned methodology, evidence CID).
 * `CarbonAttested` — monthly per-operator Scope 2 + Scope 3 kgCO2e, grid-intensity reference, offsets retired, Net Zero boolean.
 
-Net Zero invariant per period: `scope2 + scope3 ≤ offsets`. Sustainability endpoints exposed by the gateway:
-
-* `GET /v1/sustainability/operator/{did}` — last attestation + 12-month rollup.
-* `GET /v1/sustainability/network` — network-wide rollup vs. SFC cap (1 GWh / yr).
-* `GET /v1/sustainability/csrd?period=YYYY-MM&operator=did` — signed CSRD / ESRS E1 block.
-* `GET /v1/sustainability/sfc` — SFC self-report (platform, annual energy, compliance status).
+Net Zero invariant per period: `scope2 + scope3 ≤ offsets`. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four gateway endpoints under `/v1/sustainability/`; they are retired.)
 
 Schema and exact field names: see [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
@@ -184,4 +179,4 @@ Schema and exact field names: see [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANC
 
 * Spec follows SemVer. Breaking schema changes bump MAJOR.
 * Event envelopes carry an implicit version via the Registry's published schema CID; clients MUST refuse events whose schema CID is unknown.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.1`.
+* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

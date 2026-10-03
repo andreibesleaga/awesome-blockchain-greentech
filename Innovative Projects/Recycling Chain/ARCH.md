@@ -180,15 +180,15 @@ Any third party can later replay `events_today` from the core, recompute `root`,
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.1`.
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
 
 | Criterion | How this project meets it |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers (sizing estimate, not a measurement, resting on an assumed ~150 W per peer: ≤ 12 peers → ≤ ~15 MWh / yr peer power; ≤ ~50 MWh / yr including replication & gateways). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)) (assumed well below the cap). Design target: total under 1 GWh / yr. |
+| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers (sizing estimate, not a measurement, resting on an assumed ~150 W per peer: ≤ 12 peers → ≤ ~15.8 MWh / yr peer power (12 × 150 W × 8,760 h = 15.77 MWh); ≤ ~50 MWh / yr including replication & gateways). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)) (assumed well below the cap). Design target: total under 1 GWh / yr. |
 | **2. Hardware lifecycle** | All peers run on general-purpose x86 / arm64 servers; ASICs forbidden. Each operator declares `nodeProfile` (purchasedAt, expectedRetireAt, reusePolicy) in the Registry. Hardware reuse policy (donate / refurbish / WEEE-certified recycle) mandatory. |
 | **3. Carbon accountability** | Operators emit `EnergyAttested` and `CarbonAttested` events monthly. Scope 2 = peer + gateway electricity, derived from Electricity Maps `gCO2eq/kWh` per region × measured kWh. Scope 3 = amortised embodied carbon of hardware over expected useful life. Offsets retired against the period; verifier enforces `scope2 + scope3 ≤ offsets` (Net Zero). |
-| **4. Regulatory readiness** | Gateway exposes `/v1/sustainability/csrd` returning ESRS E1 climate-disclosure JSON (gross Scopes 1/2/3, removals, intensity), signed `application/jose+json`. Also `/v1/sustainability/network` for the network-wide rollup. |
+| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1: each operator's own declaration and the network-wide annual declaration, with gross Scopes 1/2/3 and intensity mapping onto ESRS E1 quantities; filed reports are named through `disclosure-uri` (v1.1: `/v1/sustainability/csrd` and `/v1/sustainability/network`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). |
 
 **Measurement sources.** Per [SFC_COMPLIANCE.md §6](../SFC_COMPLIANCE.md): CCRI Sustainability API for the platform-level baseline (Fabric / Polygon zkEVM; zkEVM stopped producing blocks on 3 July 2026), Electricity Maps API for per-node grid intensity, IEA emission factors as fallback, GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.

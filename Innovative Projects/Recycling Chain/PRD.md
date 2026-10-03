@@ -60,7 +60,7 @@ A ledger-backed traceability system that captures every product's lifecycle from
 * **NFR-5 Integrity.** Every event is signed by the originating actor and verifiable against the Registry; daily Merkle anchor to a public L2.
 * **NFR-6 Interoperability.** Event payloads map to GS1 EPCIS 2.0; identifiers expressible as URNs/DIDs.
 * **NFR-7 Cost.** Per-event amortised cost ≤ $0.001 (batched + anchored).
-* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` events per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` events per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
 
 ## 8. Success Metrics (KPIs)
 

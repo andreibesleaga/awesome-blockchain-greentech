@@ -72,12 +72,12 @@ graph LR
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **NEAR Protocol** — sharded PoS, offset-based Climate Neutral Product label (South Pole, 2021). Design assumption, not a measurement: network energy below the SFC 1 GWh / yr cap and a negligible per-receipt amortised on-chain energy, to be confirmed against independent figures (the only published annual figure found, 0.92 GWh in a MiCA disclosure for July 2025 – July 2026, is close to the cap).
 * **Hardware lifecycle (criterion 2).** No ASICs anywhere; NEAR validators run general-purpose servers. Project gateways run on standard cloud VMs. Hardware reuse / WEEE-certified recycling policy required for self-hosted gateways.
-* **Carbon accountability (criterion 3).** Gateway operators publish monthly `EnergyAttested` + `CarbonAttested` for the gateway tier (chain-side energy is reported by the NEAR Foundation per their public certification). Net Zero invariant enforced per period.
-* **Regulatory readiness (criterion 4).** `/v1/sustainability/csrd` returns signed ESRS E1 disclosures; retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) can ingest the project's footprint as a Scope-3 input alongside their own receipts.
+* **Carbon accountability (criterion 3).** Gateway operators publish monthly `EnergyAttested` + `CarbonAttested` for the gateway tier (chain-side energy is taken from a current public assessment, cited as the profile's §2.2 requires). Net Zero invariant enforced per period.
+* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities; retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) can ingest the project's footprint as a Scope-3 input alongside their own receipts.
 
 #### **Companion Documents**
 

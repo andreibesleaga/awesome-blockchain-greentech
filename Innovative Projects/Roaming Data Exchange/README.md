@@ -79,12 +79,12 @@ sequenceDiagram
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+Conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (aligned with the GSMA eBusiness Network) or **Hedera** (aBFT; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets). Anchor on Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined energy budget < **1 GWh / yr** network-wide — a design target, not a measurement.
 * **Hardware lifecycle (criterion 2).** General-purpose servers only; no ASICs; each Operator declares `nodeProfile` with WEEE-certified retirement.
 * **Carbon accountability (criterion 3).** Monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero invariant enforced. ESG renewable-energy tags on EV sessions are independently verifiable.
-* **Regulatory readiness (criterion 4).** `/v1/sustainability/csrd` returns signed ESRS E1 disclosures — relevant for telecom and CPO groups that fall within CSRD scope (narrowed in 2026 by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) and for AFIR-aligned reporting on EV charging.
+* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities — relevant for telecom and CPO groups that fall within CSRD scope (narrowed in 2026 by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) and for AFIR-aligned reporting on EV charging.
 
 #### **Companion Documents**
 

@@ -73,12 +73,12 @@ graph LR
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-This project conforms to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
+This project conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
 
 * **Energy (criterion 1).** Hot path on **Hyperledger Fabric** or **VeChainThor**; daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined energy budget < **1 GWh / yr** network-wide — a design target, not a measurement.
 * **Hardware lifecycle (criterion 2).** General-purpose servers only; no ASICs; reuse / WEEE-certified recycling policy in every operator's Registry record.
 * **Carbon accountability (criterion 3).** Monthly `EnergyAttested` + `CarbonAttested` events (CCRI methodology + Electricity Maps grid intensity). Net Zero enforced per period.
-* **Regulatory readiness (criterion 4).** `/v1/sustainability/csrd` returns signed ESRS E1 disclosures for CSRD reporting.
+* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; its figures map onto ESRS E1 quantities for CSRD reporting (it is not a regulatory filing).
 
 #### **Companion Documents**
 

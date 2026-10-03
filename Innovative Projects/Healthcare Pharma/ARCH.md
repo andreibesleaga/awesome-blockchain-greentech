@@ -209,15 +209,15 @@ Pharmacy ──sign──▶ Dispense.execute(rxId, sgtins) ──▶ Prescripti
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.1`.
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
 
 | Criterion | How this project meets it |
 |---|---|
 | **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric (consortium BFT) on general-purpose servers (≤ ~15 peers + gateways across the consortium). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
 | **2. Hardware lifecycle** | General-purpose x86 / arm64 only; HSMs (FIPS 140-2 L3) for institutional key custody — HSMs are general-purpose, not single-use ASICs. Every institution declares `nodeProfile`; WEEE-certified recycling at retirement. |
 | **3. Carbon accountability** | Each institution publishes monthly `EnergyAttested` + `CarbonAttested` events. Scope 2 derived from peer + gateway + HSM electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied carbon of hardware. Offsets retired per period; Net Zero invariant enforced by verifier. |
-| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03); for the hospital groups and pharma manufacturers that remain in scope, the disclosure block plugs directly into their corporate ESG tooling. |
+| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03); for the hospital groups and pharma manufacturers that remain in scope, the disclosure block plugs directly into their corporate ESG tooling. |
 
 **Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.

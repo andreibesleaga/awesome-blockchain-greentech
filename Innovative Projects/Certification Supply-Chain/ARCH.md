@@ -178,20 +178,20 @@ Scan UID ──▶ Verify Portal ──▶ resolve tokenId
 ## 12. Open Architecture Questions
 
 * Public chain selection (Polygon vs. VeChainThor vs. Arbitrum) — driven by ecosystem reach vs. domain fit, subject to the SFC §2 platform matrix.
-* Whether to expose the daily Merkle root as an OpenTimestamps proof in addition to the on-chain commit.
+* Whether to expose the daily Merkle root as an OpenTimestamps proof in addition to the on-chain commit. *(Note, profile v1.2: OpenTimestamps commits to Bitcoin, a proof-of-work chain, so it is not an allowed anchor under [SFC_COMPLIANCE.md §2.2](../SFC_COMPLIANCE.md); the daily fingerprint goes to an anchor chosen per the chain-agnostic rule, any public chain that is not proof-of-work.)*
 * Whether ERP adapters should write directly or via an outbox pattern in the participant's own systems.
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.1`.
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
 
 | Criterion | How this project meets it |
 |---|---|
 | **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers, or VeChainThor (Authority masternodes; footprint to be confirmed from an independent source). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
 | **2. Hardware lifecycle** | General-purpose x86 / arm64 only; ASICs forbidden. Every operator declares `nodeProfile` (purchasedAt, expectedRetireAt, reusePolicy). |
 | **3. Carbon accountability** | Monthly `EnergyAttested` and `CarbonAttested` events per operator. Scope 2 from peer + gateway electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied hardware carbon. Offsets retired against the period; verifier enforces Net Zero. |
-| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. CSRD reporting integrates with corporate ESG tools without PDF round-trips. |
+| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). CSRD reporting integrates with corporate ESG tools without PDF round-trips. |
 
 **Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.

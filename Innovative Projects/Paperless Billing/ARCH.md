@@ -183,15 +183,15 @@ POS ──sign──▶ API ──▶ BillAnchor.refund(originalHash, amount, re
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.1`.
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
 
 | Criterion | How this project meets it |
 |---|---|
 | **1. Energy < 1 GWh / yr** | Hot path: NEAR Protocol — sharded PoS with an offset-based Climate Neutral Product label (South Pole, 2021); v1.1 assumed, without a measurement, that its network energy is well below the SFC cap; the only published annual figure found (0.92 GWh, Crypto Risk Metrics data in a MiCA disclosure, July 2025 – July 2026, combined across three chains) is close to the cap, so the assessment must be confirmed under [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) before deployment. Gateway tier (encrypt + pin + submit) sized to a handful of general-purpose VMs per region. |
 | **2. Hardware lifecycle** | NEAR validators run general-purpose servers. Our own gateway VMs are general-purpose; if self-hosted, declared in `nodeProfile` with WEEE-certified retirement. No ASICs anywhere. |
-| **3. Carbon accountability** | Gateway operators publish monthly `EnergyAttested` and `CarbonAttested` events. Chain-tier energy disclosed via NEAR Foundation's published certification (pulled into `/v1/sustainability/network` as a separately attributed line). Scope 2 = VM electricity × regional intensity (Electricity Maps); Scope 3 = amortised embodied carbon of self-hosted gateway hardware. Offsets retired per period. |
-| **4. Regulatory readiness** | `/v1/sustainability/csrd` returns signed ESRS E1 JSON. Customer retailers can pull the project's per-vendor footprint as a Scope-3 input for their own CSRD disclosure. |
+| **3. Carbon accountability** | Gateway operators publish monthly `EnergyAttested` and `CarbonAttested` events. Chain-tier energy taken from a current public assessment, cited as [SFC_COMPLIANCE.md §2.2](../SFC_COMPLIANCE.md) requires (C-SFC-6) (reported in the network declaration at `/.well-known/sustainability-data` as a separately attributed line; v1.1: `/v1/sustainability/network`). Scope 2 = VM electricity × regional intensity (Electricity Maps); Scope 3 = amortised embodied carbon of self-hosted gateway hardware. Offsets retired per period. |
+| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). Customer retailers can pull the project's per-vendor footprint as a Scope-3 input for their own CSRD disclosure. |
 
-**Measurement sources.** NEAR Foundation public certification (chain tier); CCRI Sustainability API for cross-comparison; Electricity Maps API for per-region grid intensity; IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
+**Measurement sources.** A current public assessment of NEAR on the C1 boundary (chain tier); CCRI Sustainability API for cross-comparison; Electricity Maps API for per-region grid intensity; IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
 
-**Migration clause.** If NEAR's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §1](../SFC_COMPLIANCE.md)) ever rises above the SFC 1 GWh / yr cap, the project migrates to another platform that qualifies under [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) (e.g., Hedera) within one reporting period. The receipt anchor format is platform-agnostic by design (cf. SPEC §3).
+**Migration clause.** If NEAR's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) ever rises above the SFC 1 GWh / yr cap, the project migrates to another platform that qualifies under [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) (e.g., Hedera) within one reporting period. The receipt anchor format is platform-agnostic by design (cf. SPEC §3).

@@ -131,7 +131,7 @@ A bill can only be claimed once. Claiming binds the bill to a customer DID but d
 
 ## 9. Sustainability Events & API (SFC profile)
 
-Conforms to [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Gateway operators publish `EnergyAttested` and `CarbonAttested` events monthly (chain-tier energy reported by the NEAR Foundation per their public certification). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
+Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Gateway operators publish `EnergyAttested` and `CarbonAttested` events monthly (chain-tier energy taken from a current public assessment, cited as [SFC_COMPLIANCE.md §2.2](../SFC_COMPLIANCE.md) requires). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 Retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) using this project ingest the signed ESRS E1 block as a Scope-3 input for the digital-receipt service they consume.
 
@@ -139,4 +139,4 @@ Retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur
 
 * Spec follows SemVer.
 * Anchor contract uses an upgrade pattern with explicit version pinning per bill (a bill is bound to the contract version active at issuance time).
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.1`.
+* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

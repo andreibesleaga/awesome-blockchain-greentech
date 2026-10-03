@@ -67,12 +67,12 @@ The simplest implementable subset (what [SPEC.md](SPEC.md) and [ARCH.md](ARCH.md
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Of all six projects in this catalogue, a *carbon-credit registry running on a non-SFC-compliant chain* would be the most self-defeating. This project therefore conforms strictly to the [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md) applying the framework:
+Of all six projects in this catalogue, a *carbon-credit registry running on a non-SFC-compliant chain* would be the most self-defeating. This project therefore conforms strictly to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework:
 
 * **Energy (criterion 1).** Hot path on **Hedera with Guardian** (aBFT; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets) or **Hyperledger Fabric** (consortium, general-purpose servers). Total energy < **1 GWh / yr** network-wide — a design target, not a measurement; the system's own footprint is published as part of every signed audit bundle.
 * **Hardware lifecycle (criterion 2).** No ASICs; all nodes general-purpose; `nodeProfile` declared per Operator.
 * **Carbon accountability (criterion 3).** Self-applies the same standards it enforces on others: monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero per period via verified offsets. Offsets retired through this very registry where possible, closing the loop.
-* **Regulatory readiness (criterion 4).** Buyer audit bundles already include CSRD / ESRS E1 climate disclosures; `/v1/sustainability/csrd` is part of the same surface.
+* **Regulatory readiness (criterion 4).** Buyer audit bundles already include CSRD / ESRS E1 climate disclosures; a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1 is part of the same surface.
 
 #### **Companion Documents**
 

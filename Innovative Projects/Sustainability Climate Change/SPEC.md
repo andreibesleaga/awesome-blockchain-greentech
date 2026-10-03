@@ -158,13 +158,13 @@ Errors follow RFC 7807.
 
 ## 10. Sustainability Events & API (SFC profile, self-applied)
 
-Conforms to and *self-applies* [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. Where the operator retires offsets to satisfy Net Zero, the retirement events used MAY be drawn from this very registry (`Retired` events on `CreditBatch`es) — closing the loop and enabling auditors to trace every claimed offset back to a verified MRV chain.
+Conforms to and *self-applies* [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. Where the operator retires offsets to satisfy Net Zero, the retirement events used MAY be drawn from this very registry (`Retired` events on `CreditBatch`es) — closing the loop and enabling auditors to trace every claimed offset back to a verified MRV chain.
 
-API endpoints (signed JOSE): `/v1/sustainability/operator/{did}`, `/v1/sustainability/network`, `/v1/sustainability/csrd?period=YYYY-MM&operator=did`, `/v1/sustainability/sfc`. Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
+Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
 
 ## 11. Versioning
 
 * Spec follows SemVer.
 * Methodology versions are immutable; supersession is explicit via `supersedes`.
 * Event schema CIDs are pinned in the Registry; clients MUST refuse unknown schema CIDs.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.1`.
+* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

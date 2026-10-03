@@ -57,7 +57,7 @@ A **vendor-agnostic, ledger-anchored receipt**: the vendor's POS pins an encrypt
 * **NFR-5 Carbon.** Run on a chain with a published, offset-based carbon-neutral label (e.g., NEAR) or commit a measured / offset footprint elsewhere.
 * **NFR-6 Standards.** B2B payloads conform to EN 16931 (UBL or CII syntax).
 * **NFR-7 Availability.** 99.9 % monthly for the issuance and verify APIs.
-* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.1](../SFC_COMPLIANCE.md): total energy (chain + gateways) < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per gateway operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md): total energy (chain + gateways) < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per gateway operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
 
 ## 8. Success Metrics (KPIs)
 
