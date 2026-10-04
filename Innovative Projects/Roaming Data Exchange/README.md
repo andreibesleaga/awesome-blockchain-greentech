@@ -63,7 +63,7 @@ sequenceDiagram
 
 #### **Standards Touched**
 
-* **EV charging:** [OCPI 2.2+ — Open Charge Point Interface](https://evroaming.org/ocpi-protocol) (EVRoaming Foundation) and [OCPP 2.0.1 / 2.1 — Open Charge Point Protocol](https://openchargealliance.org/protocols/open-charge-point-protocol/) (Open Charge Alliance; OCPP 2.0.1 ed3 approved as **IEC 63584** in 2024).
+* **EV charging:** [OCPI 2.2+ — Open Charge Point Interface](https://evroaming.org/ocpi/) (EVRoaming Foundation) and [OCPP 2.0.1 / 2.1 — Open Charge Point Protocol](https://openchargealliance.org/protocols/open-charge-point-protocol/) (Open Charge Alliance; OCPP 2.0.1 ed3 approved as **IEC 63584** in 2024).
 * **Telecom roaming:** [GSMA eBusiness Network](https://www.gsma.com/solutions-and-impact/industry-services/blog/how-blockchain-is-evolving-wholesale-roaming-processes/) (Hyperledger Fabric, in production since 2021); BCE / TADIG processes.
 * **Identity:** [W3C DID Core](https://www.w3.org/TR/did-core/) and [W3C Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/).
 * **Regulatory (EU):** [Roaming Regulation 2022/612](https://eur-lex.europa.eu/eli/reg/2022/612/oj), [AFIR](https://transport.ec.europa.eu/transport-themes/clean-transport/alternative-fuels-sustainable-mobility-europe/alternative-fuels-infrastructure_en), [CBAM](https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en), [CSRD](https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en).
@@ -73,7 +73,7 @@ sequenceDiagram
 * [GSMA — How blockchain is evolving wholesale roaming processes](https://www.gsma.com/solutions-and-impact/industry-services/blog/how-blockchain-is-evolving-wholesale-roaming-processes/)
 * [GSMA — Blockchain for Wholesale Roaming MVP Report (PDF)](https://www.gsma.com/newsroom/wp-content/uploads/GSMA-Blockchain-for-Wholesale-Roaming-MVP-Report.pdf)
 * [BlockRoam: Blockchain-based Roaming Management System (arXiv 2005.04571)](https://arxiv.org/abs/2005.04571)
-* [OCPI Protocol — EVRoaming Foundation](https://evroaming.org/ocpi-protocol)
+* [OCPI Protocol — EVRoaming Foundation](https://evroaming.org/ocpi/)
 * [Chainlink CCIP](https://chain.link/cross-chain)
 * [IBC Protocol](https://ibcprotocol.org/)
 

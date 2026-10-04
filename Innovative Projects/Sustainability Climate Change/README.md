@@ -7,7 +7,7 @@ DLT-native climate platforms (e.g., **Hedera Guardian**, the [**DLT Earth**](htt
 **Catalogue references:**
 
 * [DLT Earth — grant program for climate-DLT projects](https://www.dltearth.com/)
-* [Hedera Guardian — open-source MRV / ESG asset toolkit](https://docs.hedera.com/guardian/getting-started/guardian-overview)
+* [Hedera Guardian — open-source MRV / ESG asset toolkit](https://docs.hedera.com/guardian)
 * [Toucan Protocol](https://toucan.earth/)
 * [Regen Network](https://www.regen.network/)
 * [Open Forest Protocol](https://www.openforestprotocol.org/)

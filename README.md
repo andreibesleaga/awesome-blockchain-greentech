@@ -242,7 +242,7 @@ The repository contains:
 
 ### BIS Innovation Hub — DLT / tokenisation projects
 * [**Project Agorá**](https://www.bis.org/about/bisih/topics/fmis/agora.htm) — Public-private cross-border tokenised-payments project led by the BIS Innovation Hub with seven central banks and ~40 private financial institutions; in build / testing phase, prototype report expected H1 2026.
-* [**Project mBridge**](https://www.bis.org/about/bisih/topics/fmis/mcbdc_bridge.htm) — Multi-CBDC cross-border platform (BIS exited Oct 2024; the participating central banks of China, Hong Kong, Thailand, the UAE and Saudi Arabia continue — over **$55.5 B settled** to date).
+* [**Project mBridge**](https://www.bis.org/project/mbridge) — Multi-CBDC cross-border platform (BIS exited Oct 2024; the participating central banks of China, Hong Kong, Thailand, the UAE and Saudi Arabia continue — over **$55.5 B settled** to date).
 * [**BIS Innovation Hub — Projects portal**](https://www.bis.org/about/bisih/projects.htm) — Index of completed / active DLT-related Hub projects (Mariana, Helvetia, Tourbillon, Polaris, etc.).
 
 ### OECD policy work

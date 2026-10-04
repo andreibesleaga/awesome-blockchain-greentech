@@ -66,7 +66,7 @@ graph LR
 * [BlockBill at World Government Summit 2023 (Gulf News)](https://gulfnews.com/uae/government/meet-the-indian-students-who-won-dh1-million-award-at-world-government-summit-2023-in-dubai-1.93826431)
 * [South Pole awards NEAR Protocol its climate neutral product label (South Pole news, 8 June 2021)](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects)
 * [Green America — Skip the Slip (paper-receipt impact)](https://reports.greenamerica.org/skip-the-slip)
-* [EU VAT in the Digital Age (ViDA)](https://finance.ec.europa.eu/taxation/vat/vat-digital-age-vida_en)
+* [EU VAT in the Digital Age (ViDA)](https://taxation-customs.ec.europa.eu/taxation/vat/vat-digital-age-vida_en)
 * [Peppol BIS Billing 3.0 / EN 16931](https://docs.peppol.eu/poacc/billing/3.0/)
 * [IEEE Std 2142.1 — Recommended Practice for E-Invoice Business Using Blockchain](https://standards.ieee.org/ieee/2142.1/10643/)
 
