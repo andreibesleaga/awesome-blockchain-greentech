@@ -8,7 +8,7 @@ A **thin anchor-and-event ledger** sitting beside existing vendor systems:
 
 1. **Edge Layer** — vendor POS / e-commerce checkout / ERP, customer wallet, auditor / tax-authority client.
 2. **Gateway / API Layer** — encrypts payloads, pins them to a content-addressed store, builds and submits the on-chain anchor.
-3. **Ledger Layer** — a single contract holds `BillIssued` / `BillVoided` / `BillRefunded` events; that's all.
+3. **Ledger Layer** — two contracts on the hot path: `BillAnchor` holds `BillIssued` / `BillVoided` / `BillRefunded` events; `SfcRegistry` holds the SFC Registry entries and the operators' `EnergyAttested` / `CarbonAttested` chains (section 13).
 4. **Off-chain Storage** — IPFS pinning service (or S3-compatible content-addressed bucket) for encrypted bill payloads.
 
 The ledger is intentionally minimal: hashes, totals and pointers — never line items, never customer identity.
@@ -41,6 +41,10 @@ The ledger is intentionally minimal: hashes, totals and pointers — never line 
 │        │   BillAnchor contract  (NEAR Rust  or  EVM Sol)  │          │
 │        │   events: BillIssued | BillVoided | BillRefunded │          │
 │        └──────────────────────────────────────────────────┘          │
+│        ┌──────────────────────────────────────────────────┐          │
+│        │   SfcRegistry contract — Registry entries |      │          │
+│        │   EnergyAttested | CarbonAttested                │          │
+│        └──────────────────────────────────────────────────┘          │
 └──────────────────────────┬──────────────────────────────────────────┘
                            │
                            ▼
@@ -64,10 +68,11 @@ The ledger is intentionally minimal: hashes, totals and pointers — never line 
 | C5 | REST API | Gateway | JWS validation; rate-limiting; routing. |
 | C6 | EN 16931 / Peppol BIS validator | Gateway | Static validation of B2B payloads before anchor. |
 | C7 | Encrypt & Pin worker | Gateway | Generates CEK; wraps for vendor + customer + grantees; pins to IPFS. |
-| C8 | Verify cache | Gateway | Materialised views over the contract's events. |
+| C8 | Verify cache | Gateway | Materialised views over the contracts' events; serves the profile's ledger read (section 5.7) as a ledger excerpt at the `ledger-access-uri`. |
 | C9 | BillAnchor contract | Ledger | Holds anchor events; enforces uniqueness, void / refund invariants. |
 | C10 | Off-chain store | Storage | IPFS pinning service or S3-compatible bucket (content-addressed). |
 | C11 | Adapter (national e-invoicing) | Gateway | Translates UBL into national clearance formats where required. |
+| C12 | SfcRegistry contract | Ledger | Holds registrar-signed Registry entries and the attestation chains; rejects an event that breaks an acceptance rule of the profile (section 5.5); assigns strictly increasing commit instants. |
 
 ## 4. Key Sequences
 
@@ -131,6 +136,7 @@ POS ──sign──▶ API ──▶ BillAnchor.refund(originalHash, amount, re
 | Data | Where | Notes |
 |---|---|---|
 | Anchor events (hashes, totals, CIDs) | On-chain | Authoritative. |
+| SFC Registry entries and attestations | On-chain (SfcRegistry) | Authoritative; the gateway exports them as a ledger excerpt for verifiers. |
 | Encrypted bill payloads | IPFS / S3 (content-addressed) | Referenced by CID. |
 | Wrapped CEKs | Off-chain (per-grantee) | Vendor keeps the master wrap; per-grantee wraps emitted on demand. |
 | Materialised views (verify cache, vendor periods) | Gateway RDBMS | Rebuilt from chain on demand. |
@@ -138,7 +144,7 @@ POS ──sign──▶ API ──▶ BillAnchor.refund(originalHash, amount, re
 
 ## 7. Deployment View
 
-* **Chain:** NEAR mainnet (reference) or an EVM L2 (Polygon PoS / Arbitrum). Carbon-neutral certification preferred.
+* **Chain:** NEAR mainnet (reference) or an EVM chain (Polygon PoS or the Arbitrum L2) that qualifies under SFC profile 2.0.
 * **Gateway:** stateless containers behind a regional LB; horizontal autoscale.
 * **IPFS:** at least two pinning services in different regions, or a self-hosted cluster + a public-pinning failover.
 * **Observability:** OpenTelemetry traces, Prometheus metrics, signed audit logs to a regulator-accessible bucket.
@@ -183,15 +189,17 @@ POS ──sign──▶ API ──▶ BillAnchor.refund(originalHash, amount, re
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md). Framework: Besleaga, A. N. "'Sustainability-First Consensus' Ledgers for a Green Digital Future", *Communications of the ACM*, Opinion, in press, [doi:10.1145/3809296](https://doi.org/10.1145/3809296). The profile holds the rules and checks; this section holds the project facts only.
 
-| Criterion | How this project meets it |
+| Project fact | This design |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: NEAR Protocol — sharded PoS with an offset-based Climate Neutral Product label (South Pole, 2021); v1.1 assumed, without a measurement, that its network energy is well below the SFC cap; the only published annual figure found (0.92 GWh, Crypto Risk Metrics data in a MiCA disclosure, July 2025 – July 2026, combined across three chains) is close to the cap, so the assessment must be confirmed under [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) before deployment. Gateway tier (encrypt + pin + submit) sized to a handful of general-purpose VMs per region. |
-| **2. Hardware lifecycle** | NEAR validators run general-purpose servers. Our own gateway VMs are general-purpose; if self-hosted, declared in `nodeProfile` with WEEE-certified retirement. No ASICs anywhere. |
-| **3. Carbon accountability** | Gateway operators publish monthly `EnergyAttested` and `CarbonAttested` events. Chain-tier energy taken from a current public assessment, cited as [SFC_COMPLIANCE.md §2.2](../SFC_COMPLIANCE.md) requires (C-SFC-6) (reported in the network declaration at `/.well-known/sustainability-data` as a separately attributed line; v1.1: `/v1/sustainability/network`). Scope 2 = VM electricity × regional intensity (Electricity Maps); Scope 3 = amortised embodied carbon of self-hosted gateway hardware. Offsets retired per period. |
-| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). Customer retailers can pull the project's per-vendor footprint as a Scope-3 input for their own CSRD disclosure. |
-
-**Measurement sources.** A current public assessment of NEAR on the C1 boundary (chain tier); CCRI Sustainability API for cross-comparison; Electricity Maps API for per-region grid intensity; IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
-
-**Migration clause.** If NEAR's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) ever rises above the SFC 1 GWh / yr cap, the project migrates to another platform that qualifies under [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) (e.g., Hedera) within one reporting period. The receipt anchor format is platform-agnostic by design (cf. SPEC §3).
+| **Hot path and platform case** | Public: NEAR Protocol (sharded proof of stake). A public hot path needs a public assessment below 1 GWh on the profile's boundary, and NEAR's energy is shown through that platform check, not through this network's attestations. NEAR holds an offset-based Climate Neutral Product label (South Pole, 2021), which is not an energy measurement and not a qualification. The only published figure found for NEAR is a token-level MiCA sustainability indicator from a crypto-asset service provider; read the current disclosure and its boundary at the source (spec E.1). It is the energy attributed to the NEAR token, so it is a token-level share and not a bound on the network, and it is not a network-boundary assessment; one must still be found or commissioned before deployment. The methodology document names the NEAR validator energy as excluded from the declaration and points to the public assessment used for C-SFC-6. |
+| **Attesting operators** | The gateway operators (encrypt, pin and submit), each attesting its own energy and carbon. |
+| **Node count and registered-node bound** | Gateway tier sized to a handful of general-purpose VMs per region. The registered-node bound applies to a permissioned hot path only, so it does not apply to NEAR. |
+| **Hardware** | NEAR validators run general-purpose servers; they are outside this network's Registry and are not declared here. The gateway VMs are general-purpose; no ASICs. Every gateway operator declares them in its Registry entry (`nodeProfile`): `cloud-instance` for rented VMs, with the instance start as the purchase date, or `general-purpose-x86` / `arm64-server` when self-hosted. Each entry carries the planned retirement date and a reuse policy from the profile's list (WEEE-certified recycling for owned hardware). |
+| **Scope 1** | None, stated in the methodology document. |
+| **Scope 2** | Market-based (the declared figure); location-based optional, using Electricity Maps regional intensity with IEA emission factors as fallback. Electricity of the gateway VMs. |
+| **Scope 3** | Categories named in the methodology document, including the embodied carbon of the hardware. |
+| **Offset coverage** | Offset coverage, checked: every month each operator's retired credits are compared with its gross emissions. This is not a net-zero or neutrality claim. This design is consumer-facing (receipts), so it makes no consumer-facing claim of carbon neutrality (Directive (EU) 2024/825). The same rule applies to every design (spec section 6). |
+| **Anchor** | Not needed: the hot path is already a public chain. |
+| **Project-specific rules** | The network declaration holds the deployment's own operators, the gateway operators, and carries only their attested kWh. It does not carry NEAR's energy. The Registry entries and the attestation chains are committed to the `SfcRegistry` contract on NEAR, beside the bill anchors. The registrar is the gateway operators' consortium; its keys are listed in the methodology document (`registrar-keys`). The `ledger-access-uri` in `ledger-evidence-2` is the gateway's read endpoint, which exports the contract's records as a ledger excerpt (profile section 5.8). |

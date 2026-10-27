@@ -8,7 +8,7 @@ A **hybrid distributed ledger** with three layers:
 
 1. **Edge Layer** — labels, scanners, IoT (smart scales, spectrometers), mobile/PWA portals.
 2. **Permissioned Core** — high-throughput consortium ledger (Hyperledger Fabric or Corda) holding the authoritative event log.
-3. **Public Proof Layer** — an EVM L2 (e.g., Polygon) holding daily Merkle anchors and the `MaterialToken` smart contracts for open consumer/brand verification.
+3. **Public Proof Layer** — an EVM L2 (for example Arbitrum) holding the `MaterialToken` smart contracts for open consumer/brand verification. Daily Merkle anchors are optional (SFC profile 2.0, Appendix E.2) and, if deployed, go to a public chain that is not proof-of-work.
 
 This separates *operational throughput* (handled by the permissioned core) from *open trust* (handled by the public chain).
 
@@ -69,8 +69,8 @@ This separates *operational throughput* (handled by the permissioned core) from 
 | C10 | Lockbox contract | Core | Mutual-exclusion lock during decommission. |
 | C11 | RewardsVault contract | Core | Escrows deposits and bounties; pays out on verified events. |
 | C12 | Event Log | Core | Append-only, signature-verified, chained per subject. |
-| C13 | Anchor Job | Core → Public | Computes daily Merkle root and commits to `PublicAnchor`. |
-| C14 | PublicAnchor contract | Public | Records `(day, merkleRoot, signerSet)` for external verification. |
+| C13 | Anchor Job (optional) | Core → Public | Computes daily Merkle root and commits to `PublicAnchor`. |
+| C14 | PublicAnchor contract (optional) | Public | Records `(day, merkleRoot, signerSet)` for external verification. |
 | C15 | MaterialERC20 (public mirror) | Public | Tradable / retirable recycled-content units. |
 
 ## 4. Key Sequences
@@ -99,7 +99,9 @@ Recycler ──(sign)──▶ API ──▶ Lockbox.acquire(itemId)
    └─ already locked ─▶ 409 Conflict
 ```
 
-### 4.3 Daily public anchoring
+### 4.3 Daily public anchoring (optional)
+
+The anchor is optional and informative (SFC profile 2.0, Appendix E.2). When deployed:
 
 ```
 Anchor Job (cron, 00:10 UTC):
@@ -157,7 +159,7 @@ Any third party can later replay `events_today` from the core, recompute `root`,
 
 | Failure | Effect | Recovery |
 |---|---|---|
-| Anchor job missed | Public root not committed for a day. | Catch-up commit; verifiers tolerate gaps with explicit `MissingDay` markers. |
+| Anchor job missed (only if the anchor is deployed) | Public root not committed for a day. | Catch-up commit; verifiers tolerate gaps with explicit `MissingDay` markers. |
 | Oracle device compromised | Forged measurements until detected. | Registry revocation; rejected events replayed against the new key set. |
 | Core node loss | Reduced fault tolerance window. | Add replacement node; resync from peers. |
 | Public L2 outage | Verifier UX degraded. | Cache last good root; show staleness banner. |
@@ -166,7 +168,7 @@ Any third party can later replay `events_today` from the core, recompute `root`,
 ## 11. Build / Tech Choices (indicative)
 
 * **Permissioned core:** Hyperledger Fabric 2.x (Go chaincode) **or** R3 Corda 5 (Kotlin).
-* **Public layer:** Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)) or Arbitrum (Solidity 0.8.x).
+* **Public layer:** Arbitrum or another public chain that is not proof-of-work (Solidity 0.8.x).
 * **API gateway:** Node.js (Fastify) or Go (Echo); JOSE for JWS/JWE; DID-core libs.
 * **Storage:** PostgreSQL for materialised views, S3-compatible for blobs/photos.
 * **Observability:** OpenTelemetry + Prometheus + Loki.
@@ -180,15 +182,17 @@ Any third party can later replay `events_today` from the core, recompute `root`,
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md). Framework: Besleaga, A. N. "'Sustainability-First Consensus' Ledgers for a Green Digital Future", *Communications of the ACM*, Opinion, in press, [doi:10.1145/3809296](https://doi.org/10.1145/3809296). The profile holds the rules and checks; this section holds the project facts only.
 
-| Criterion | How this project meets it |
+| Project fact | This design |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers (sizing estimate, not a measurement, resting on an assumed ~150 W per peer: ≤ 12 peers → ≤ ~15.8 MWh / yr peer power (12 × 150 W × 8,760 h = 15.77 MWh); ≤ ~50 MWh / yr including replication & gateways). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)) (assumed well below the cap). Design target: total under 1 GWh / yr. |
-| **2. Hardware lifecycle** | All peers run on general-purpose x86 / arm64 servers; ASICs forbidden. Each operator declares `nodeProfile` (purchasedAt, expectedRetireAt, reusePolicy) in the Registry. Hardware reuse policy (donate / refurbish / WEEE-certified recycle) mandatory. |
-| **3. Carbon accountability** | Operators emit `EnergyAttested` and `CarbonAttested` events monthly. Scope 2 = peer + gateway electricity, derived from Electricity Maps `gCO2eq/kWh` per region × measured kWh. Scope 3 = amortised embodied carbon of hardware over expected useful life. Offsets retired against the period; verifier enforces `scope2 + scope3 ≤ offsets` (Net Zero). |
-| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1: each operator's own declaration and the network-wide annual declaration, with gross Scopes 1/2/3 and intensity mapping onto ESRS E1 quantities; filed reports are named through `disclosure-uri` (v1.1: `/v1/sustainability/csrd` and `/v1/sustainability/network`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). |
-
-**Measurement sources.** Per [SFC_COMPLIANCE.md §6](../SFC_COMPLIANCE.md): CCRI Sustainability API for the platform-level baseline (Fabric / Polygon zkEVM; zkEVM stopped producing blocks on 3 July 2026), Electricity Maps API for per-node grid intensity, IEA emission factors as fallback, GHG Protocol Scopes 2 & 3 for boundary definition.
-
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+| **Hot path and platform case** | Permissioned: Hyperledger Fabric (Raft ordering, mechanism crash-fault-tolerant; a BFT ordering service would name bft) on general-purpose servers, run only by the registered operators; Corda is the open alternative. Platform case: the network's own ledger figure. |
+| **Attesting operators** | The consortium operators: OEM consortium, neutral foundation and two recyclers, each attesting its own energy and carbon. |
+| **Node count and registered-node bound** | At least 4 operators; at most 12 peers. Example, with an assumed 4 gateway nodes added to 12 peers: N = 16 → 16 × 1 976.4 = 31 622.4 kWh. Registered-node bound, to be met before the first full year: N × P × O × 8 784 h / 1 000 < 1 000 000 kWh, where P = rated power in watts of the worst hardware class in use, N = greatest number of nodes the registered operators may run (gateways and adapter nodes inside the C1 boundary included) and O = data-centre overhead factor, which has no default. With an assumed 150 W per node and an assumed overhead factor of 1.5 (both assumptions, to be fixed in the methodology document), each node adds 1 976.4 kWh, so the bound stays below the cap up to 505 nodes. |
+| **Hardware** | General-purpose x86 / arm64 only; no ASICs. Each operator declares its hardware in its Registry entry (purchase date, planned retirement date, reuse policy). A hardware reuse policy (donate, refurbish or WEEE-certified recycling) is mandatory. |
+| **Scope 1** | None, stated in the methodology document. |
+| **Scope 2** | Market-based (the declared figure); location-based optional, using Electricity Maps regional intensity with IEA emission factors as fallback. Electricity of peers and gateways. |
+| **Scope 3** | Categories named in the methodology document, including the embodied carbon of the hardware. |
+| **Offset coverage** | Offset coverage, checked: every month each operator's retired credits are compared with its gross emissions. This is not a net-zero or neutrality claim. |
+| **Anchor** | Optional and informative only; to be chosen per deployment (a public chain that is not proof-of-work). |
+| **Public proof layer** | The `MaterialERC20` mirror runs on a public chain that is not proof-of-work (section 11). It is not the hot path and carries no event SFC 2 relies on. Its share of that chain's energy is named as excluded in the methodology document (SFC profile 2.0, 4.2), as the anchor chain's share is when the anchor is deployed. |

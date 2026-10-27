@@ -54,10 +54,10 @@ A **vendor-agnostic, ledger-anchored receipt**: the vendor's POS pins an encrypt
 * **NFR-2 Anchor latency.** Submit-to-finality < 5 s p95.
 * **NFR-3 Verify latency.** < 100 ms p95 from cache, < 1 s p95 cold.
 * **NFR-4 Privacy.** No PII on-chain; off-chain payloads encrypted with per-receipt CEKs.
-* **NFR-5 Carbon.** Run on a chain with a published, offset-based carbon-neutral label (e.g., NEAR) or commit a measured / offset footprint elsewhere.
+* **NFR-5 Carbon.** Offset coverage is checked, not claimed: retired credits are compared with gross emissions every month, and the project makes no consumer-facing claim of carbon neutrality (Directive (EU) 2024/825).
 * **NFR-6 Standards.** B2B payloads conform to EN 16931 (UBL or CII syntax).
 * **NFR-7 Availability.** 99.9 % monthly for the issuance and verify APIs.
-* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md): total energy (chain + gateways) < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per gateway operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-8 Sustainability (SFC).** SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 ## 8. Success Metrics (KPIs)
 

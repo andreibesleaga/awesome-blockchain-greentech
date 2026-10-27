@@ -83,6 +83,8 @@ Signed envelope shared by all events:
 }
 ```
 
+The chain is per subject and type: `prev` is the hash of the previous event of the same `subject` and `type`.
+
 ### 4.1 Per-type payloads (essentials)
 
 | Type | Required payload |
@@ -149,22 +151,20 @@ Errors follow RFC 7807.
 * **C-6** While `status == disputed`, any transfer or retirement is rejected.
 * **C-7** Buyer audit bundle reconstructs to the same retirement totals as the on-chain events alone.
 * **C-8** Tampering with any event byte invalidates the signature check.
+* **C-SFC** Run the profile 2.0 deep check (9.4) on the network declaration with a read of the network's ledger. The overall result (9.5) is PASS, with the C-SFC-3 row DECLARED. Without a read, D1 and C-SFC-7 are NOT-EVALUABLE ("no ledger read given"), so the overall result cannot be PASS.
 
 ## 9. Methodology and Reporting Alignment
 
 * Methodologies referenced SHOULD be published by recognised bodies (Verra, Gold Standard, Puro.earth, national programs registered through Hedera Guardian).
 * Buyer retirement claims SHOULD use scopes aligned with the [GHG Protocol Corporate Standard](https://ghgprotocol.org/corporate-standard) and the [GHG Protocol Product Standard](https://ghgprotocol.org/product-standard).
-* For EU buyers: align retirement claims with [CSRD ESRS E1](https://efrag.org/lab6) climate disclosures and, where relevant, [CBAM](https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en) reporting.
+* For EU buyers: disclose retirements separately from gross emissions under [CSRD ESRS E1](https://www.efrag.org/en/sustainability-reporting); credits are not netted from the greenhouse-gas inventory. Credits are not [CBAM](https://taxation-customs.ec.europa.eu/carbon-border-adjustment-mechanism_en) certificates and do not reduce CBAM obligations.
 
-## 10. Sustainability Events & API (SFC profile, self-applied)
+## 10. Sustainability events and API (defined in SFC profile 2.0)
 
-Conforms to and *self-applies* [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. Where the operator retires offsets to satisfy Net Zero, the retirement events used MAY be drawn from this very registry (`Retired` events on `CreditBatch`es) — closing the loop and enabling auditors to trace every claimed offset back to a verified MRV chain.
-
-Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile". The profile defines the events in sections 5.2 to 5.4 and the declaration in sections 7 and 8.
 
 ## 11. Versioning
 
 * Spec follows SemVer.
 * Methodology versions are immutable; supersession is explicit via `supersedes`.
 * Event schema CIDs are pinned in the Registry; clients MUST refuse unknown schema CIDs.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

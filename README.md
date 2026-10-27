@@ -5,7 +5,7 @@ A curated list of awesome blockchain projects, open-source software, standards, 
 The repository contains:
 
 * **The curated list** (this file) — third-party projects and standards, organised by theme.
-* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all aligned to a shared **Sustainability-First Consensus (SFC)** engineering profile that operationalises the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
+* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all following **SFC profile 2.0** (Sustainability-First Consensus; [`SFC_COMPLIANCE.md`](./Innovative%20Projects/SFC_COMPLIANCE.md)), which operationalises the framework defined in Besleaga (in press, Opinion), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
 
 **Scope:** This list focuses on software, protocols, and tools that utilize Distributed Ledger Technology (DLT) to solve environmental challenges (Regenerative Finance, dMRV, Circular Economy, Energy Grids, Digital Product Passports, Identity & Compliance).
 
@@ -41,11 +41,11 @@ The repository contains:
 * [**Blockchain Carbon Accounting**](https://github.com/hyperledger-labs/blockchain-carbon-accounting) — An open-source LFDT-Labs initiative to develop a shared ledger for carbon accounting and emissions tracking.
 
 ### Token, supply-chain and integrity standards
-* [**Token Taxonomy Framework (TTF)**](https://github.com/InterWorkAlliance/TokenTaxonomyFramework) — Managed by the **InterWork Alliance (IWA)**, an initiative of the [Global Blockchain Business Council (GBBC)](https://www.gbbc.io/interwork-alliance), providing a common language for defining tokenized assets, including profiles for carbon credits and ESG assets.
+* [**Token Taxonomy Framework (TTF)**](https://github.com/InterWorkAlliance/TokenTaxonomyFramework) — Managed by the **InterWork Alliance (IWA)**, an initiative of the [Global Blockchain Business Council (GBBC)](https://gbbc.io/), providing a common language for defining tokenized assets, including profiles for carbon credits and ESG assets.
 * [**GS1 EPCIS 2.0**](https://www.gs1.org/standards/epcis) — Event-based traceability standard (ratified June 2022). Adds JSON / JSON-LD format, sensor data ("How" dimension), and `AssociationEvent`; the de-facto interoperability vocabulary for supply-chain events.
 * [**GS1 Digital Link**](https://www.gs1.org/standards/gs1-digital-link) — URI syntax that turns GS1 identifiers (GTIN, SGTIN, GLN) into resolvable Web URIs — the carrier for many DPP and traceability deployments.
 * [**IETF SCITT — Supply Chain Integrity, Transparency and Trust**](https://datatracker.ietf.org/doc/charter-ietf-scitt/) — IETF working group developing standards (e.g., [`draft-ietf-scitt-architecture`](https://datatracker.ietf.org/doc/draft-ietf-scitt-architecture/)) for transparent registries of signed supply-chain statements, with verifiable data structures and notarisation flows.
-* [**IEEE 2142.1**](https://standards.ieee.org/ieee/2142.1/10643/) — Recommended Practice for E-Invoice Business Using Blockchain Technology.
+* [**IEEE 2142.1-2021**](https://standards.ieee.org/ieee/2142.1/7590/) — Recommended Practice for E-Invoice Business Using Blockchain Technology.
 * [**ITU-T F.751.4**](https://www.itu.int/rec/T-REC-F.751.4) — ITU framework for electronic invoices based on distributed ledger technology.
 
 ### Climate-accounting & disclosure
@@ -62,7 +62,7 @@ The repository contains:
 * [**Switchboard dApp**](https://github.com/energywebfoundation/switchboard-dapp) — Identity and access management UI for the Energy Web ecosystem, giving energy assets (batteries, EVs) self-sovereign identities (DIDs).
 * [**Power Ledger**](https://www.powerledger.io/) — A leading P2P energy trading platform with live deployments across four continents (Origin Energy in Australia; CESC in India with >1 000 participants). **Migrated from Ethereum to Solana in 2026** via Wormhole NTT; dual-token model (POWR utility + Sparkz settlement).
 * [**Open Charge Point Protocol (OCPP)**](https://openchargealliance.org/protocols/open-charge-point-protocol/) — Open Charge Alliance protocol for EV charge point ↔ backend communication. **OCPP 2.0.1 ed3 was approved as IEC 63584 in 2024.**
-* [**Open Charge Point Interface (OCPI)**](https://evroaming.org/ocpi-protocol) — EVRoaming Foundation protocol for EV-charging roaming between charge-point operators (CPOs) and e-mobility service providers (eMSPs).
+* [**Open Charge Point Interface (OCPI)**](https://evroaming.org/ocpi/) — EVRoaming Foundation protocol for EV-charging roaming between charge-point operators (CPOs) and e-mobility service providers (eMSPs).
 
 ## **Digital Carbon Markets (ReFi)**
 
@@ -158,11 +158,11 @@ The repository contains:
 *Open foundations, alliances and observer organisations driving the green-DLT space.*
 
 * [**LF Decentralized Trust**](https://www.lfdecentralizedtrust.org/) — Linux Foundation umbrella (launched Sept 2024) hosting Hyperledger Fabric, Indy, Aries, Cacti, Identus, Besu and other DLT projects.
-* [**Global Blockchain Business Council (GBBC) — InterWork Alliance**](https://www.gbbc.io/interwork-alliance) — Standards body for tokenised ecosystems; stewards the Token Taxonomy Framework.
+* [**Global Blockchain Business Council (GBBC)**](https://gbbc.io/) — Standards body for tokenised ecosystems; its InterWork Alliance (IWA) stewards the Token Taxonomy Framework.
 * [**Energy Web Foundation**](https://www.energyweb.org/) — Non-profit advancing decentralised energy with the Energy Web Chain, EW-DOS, and Energy Web X.
 * [**Hedera Foundation — Sustainable Impact Fund**](https://hedera.foundation/) — Co-funds the [DLT Earth](https://www.dltearth.com/) grant program (with Exponential Science) for climate-DLT projects.
-* [**Crypto Climate Accord**](https://cryptoclimate.org/) — Industry initiative (launched by Energy Web, RMI, AIR; 250+ supporters) targeting net-zero electricity-emissions for signatories by 2030 and full crypto-industry net-zero by 2040.
-* [**Climate Chain Coalition (CCC)**](https://climatechaincoalition.org/) — UNFCCC observer organisation (360+ member orgs) advancing DLT and related digital innovations for climate finance and MRV.
+* [**Crypto Climate Accord**](https://web.archive.org/web/20261017183346/https://cryptoclimate.org/) (archived 17 Oct 2026; the live site https://cryptoclimate.org/ answered 503 Service Unavailable on 26 and 27 Oct 2026) — Industry initiative (launched by Energy Web, RMI, AIR; 250+ supporters) targeting net-zero electricity-emissions for signatories by 2030 and full crypto-industry net-zero by 2040.
+* [**Climate Chain Coalition (CCC)**](https://web.archive.org/web/20261005215238/https://climatechaincoalition.org/) (archived 5 Oct 2026; the live site did not respond on 26 Oct 2026) — UNFCCC observer organisation (360+ member orgs) advancing DLT and related digital innovations for climate finance and MRV.
 * [**International Emissions Trading Association (IETA)**](https://www.ieta.org/) — Founding partner of CAD Trust; sets industry voice on Article 6 / carbon markets.
 * [**EVRoaming Foundation**](https://evroaming.org/) — Stewards the OCPI roaming standard for EV charging.
 * [**Open Charge Alliance**](https://openchargealliance.org/) — Stewards OCPP for charger ↔ backend communication.
@@ -186,7 +186,7 @@ The repository contains:
 * [**Klima Protocol Japan**](https://carboncredits.com/klimadao-japan-launches-blockchain-powered-carbon-credits-market/) — Strategic pilot with **SoftBank** and **Mizuho** for a regulated digital carbon-credit market in Japan (tokenising J-Credits via the Carbonmark API). *(Klima Protocol was rebranded from KlimaDAO in Feb 2026.)*
 * [**CarbonX 2.0 Finalist**](https://static.www.tencent.com/attachments/ssv/2025/CarbonX%202.0%20Finalists.pdf) — Kenya pilot selected by Tencent's CarbonX program, focused on Direct Air Capture (DAC) powered by renewable geothermal energy, with on-chain verification of carbon-removal credits.
 * [**GSMA eBusiness Network**](https://www.gsma.com/solutions-and-impact/industry-services/blog/how-blockchain-is-evolving-wholesale-roaming-processes/) — Hyperledger Fabric–based commercial network (live since 2021) automating wholesale telecom-roaming settlement between major MNOs (DT, CK Hutchison, Orange, Telefónica, Verizon, Vodafone).
-* [**MediLedger Network**](https://coldchaincheck.com/news/how-mediledger-blockchain-is-transforming-pharmaceutical-supply-chain-compliance) — Production pharma traceability network on Hyperledger Fabric; ~1.6 B transactions/year, 27 manufacturers, 18 distributors. The Product Verification System was acquired by [**NABP**](https://nabp.pharmacy/news/news-releases/nabp-acquires-patient-safety-tool-from-chronicled-inc/) in late 2024 for *Pulse by NABP*, aligned with US DSCSA.
+* [**MediLedger Network**](https://mediledger.com/) — Production pharma traceability network on Hyperledger Fabric; ~1.6 B transactions/year, 27 manufacturers, 18 distributors. The Product Verification System was acquired by [**NABP**](https://nabp.pharmacy/news/news-releases/nabp-acquires-patient-safety-tool-from-chronicled-inc/) in late 2024 for *Pulse by NABP*, aligned with US DSCSA.
 
 ### **📜 Patents & Academic Proposals**
 
@@ -194,7 +194,7 @@ The repository contains:
 * [**DePIN Urban Monitoring**](https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1626695/full) *(Academic Pilot)* — Decentralised IoT-sensor deployment in Nairobi, Kenya, monitoring environmental variables for urban green spaces; documents cost reduction and fractional income for community data collectors.
 * [**AI-Enhanced Verification Framework**](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification) *(Research Proposal)* — Architecture combining "Brilliant Contracts" with satellite-imagery analysis (U-Net / ResNet-50) for automated carbon-credit verification (>94 % claimed accuracy).
 * [**BlockRoam**](https://arxiv.org/abs/2005.04571) *(Academic Reference)* — Peer-reviewed blockchain-based roaming-management system for mobile networks; PoS consensus + Stackelberg-game incentive model.
-* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(accepted; in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory.
+* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(Opinion; accepted, in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory through [SFC profile 2.0](./Innovative%20Projects/SFC_COMPLIANCE.md).
 
 ## **Regulations, Compliance & Governance Frameworks**
 
@@ -207,13 +207,12 @@ The repository contains:
 * [**ISO/IEC 21031:2024 — Software Carbon Intensity (SCI) Specification**](https://www.iso.org/standard/86612.html) — ISO/IEC publication of the Green Software Foundation SCI spec; relevant to measuring blockchain-node and dApp footprint.
 
 ### IEEE standards
-* [**IEEE Blockchain — Standards portal**](https://blockchain.ieee.org/standards) — Index of active IEEE blockchain standards and working groups.
-* [**IEEE 2418.1**](https://sagroups.ieee.org/2418-1/) — Framework for blockchain use, implementation and interaction with IoT (security / privacy in blockchain-IoT integration).
-* [**IEEE 2418.2-2020**](https://sagroups.ieee.org/2418-2/) — Data Format for Blockchain Systems (data structure, classification, identifiers, length).
+* [**IEEE Blockchain — Standards portal**](https://blockchain.ieee.org/standards) — Index of active IEEE blockchain standards and working groups; also lists P2418.1 (Framework of Blockchain Use in IoT), still under development, which has no public IEEE SA project page.
+* [**IEEE 2418.2-2020**](https://standards.ieee.org/ieee/2418.2/7309/) — Data Format for Blockchain Systems (data structure, classification, identifiers, length).
 * [**IEEE 2418.5-2025 — DLT for the Energy Sector**](https://standards.ieee.org/ieee/2418.5/11217/) — Open, common, interoperable reference framework for DLT in energy; directly applicable to green-grid use cases.
 * [**IEEE 2418.10-2022 — Blockchain-based Digital Asset Management**](https://ieeexplore.ieee.org/document/9810177/) — Baseline architectural framework, use cases, functional and security requirements.
 * [**IEEE 2145-2023 — Framework and Definitions for Blockchain Governance**](https://standards.ieee.org/ieee/2145/10143/) — Trial-Use Recommended Practice: common nomenclature and governance framework across public, private, permissioned, permissionless and hybrid blockchains.
-* [**IEEE 2142.1**](https://standards.ieee.org/ieee/2142.1/10643/) — Recommended Practice for E-Invoice Business Using Blockchain (cross-listed above).
+* [**IEEE 2142.1-2021**](https://standards.ieee.org/ieee/2142.1/7590/) — Recommended Practice for E-Invoice Business Using Blockchain (cross-listed above).
 
 ### EU DLT-specific regulations
 * [**MiCA — Markets in Crypto-Assets Regulation (EU) 2023/1114**](https://eur-lex.europa.eu/eli/reg/2023/1114/oj/eng) — Full crypto-asset regulatory framework. **ARTs & EMTs in application since 30 June 2024; full regime including CASPs in application since 30 December 2024.** [ESMA hub](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica).
@@ -232,7 +231,7 @@ The repository contains:
 
 ### NIST (US)
 * [**NIST IR 8202 — Blockchain Technology Overview**](https://csrc.nist.gov/pubs/ir/8202/final) — High-level technical reference on DLT concepts, consensus models and cryptographic mechanisms; the canonical US public-sector reference text.
-* [**NIST IR 8408 — Stablecoin Terminology**](https://csrc.nist.gov/pubs/ir/8408/final) — Companion vocabulary for the tokenised-money portion of the DLT landscape.
+* [**NIST IR 8408 — Understanding Stablecoin Technology and Related Security Considerations**](https://doi.org/10.6028/NIST.IR.8408) — Technical and security overview of stablecoins for the tokenised-money portion of the DLT landscape; not a vocabulary.
 
 ### Financial-stability, AML and prudential bodies
 * [**FATF Recommendation 15 — Virtual Assets & VASPs**](https://www.fatf-gafi.org/en/topics/virtual-assets.html) — Global AML/CFT standard for virtual assets, including the **Travel Rule** for VASP-to-VASP transfers.

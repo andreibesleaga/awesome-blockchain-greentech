@@ -11,7 +11,7 @@ This repository has **two parts with different rules**:
 | Part | What it is | Contributions accepted? |
 |---|---|---|
 | The curated list (root `README.md`) | Third-party projects, standards and tools | ✅ Yes — PRs welcome, see below. |
-| [`Innovative Projects/`](./Innovative%20Projects/) | Original system proposals authored by the maintainer (README + PRD + SPEC + ARCH per project, plus `SFC_COMPLIANCE.md`) | Licensed **CC BY-SA 4.0**, like the rest of the repository. Issues and discussion are welcome; corrections and improvements may be incorporated by the maintainer with credit. |
+| [`Innovative Projects/`](./Innovative%20Projects/) | Original system proposals authored by the maintainer (README + PRD + SPEC + ARCH per project, plus [`SFC_COMPLIANCE.md`](./Innovative%20Projects/SFC_COMPLIANCE.md), the SFC profile 2.0) | Licensed **CC BY-SA 4.0**, like the rest of the repository. Issues and discussion are welcome; corrections and improvements may be incorporated by the maintainer with credit. |
 
 ## How to contribute to the curated list
 

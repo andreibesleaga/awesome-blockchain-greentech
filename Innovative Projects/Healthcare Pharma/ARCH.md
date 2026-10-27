@@ -163,7 +163,7 @@ Pharmacy ──sign──▶ Dispense.execute(rxId, sgtins) ──▶ Prescripti
 * **Core nodes:** ≥ 5 operators across the consortium (multiple hospitals + pharmacy chain + manufacturer + neutral foundation). Raft / BFT consensus.
 * **Gateway:** stateless containers behind a regional load balancer; horizontal autoscale.
 * **Anchor Job:** singleton cron with leader election; idempotent.
-* **HSMs:** institutional signing keys protected in HSMs (FIPS 140-2 Level 3 or equivalent).
+* **HSMs:** institutional signing keys protected in HSMs (FIPS 140-3 Level 3 or equivalent).
 * **Observability:** OpenTelemetry traces, Prometheus metrics, signed audit logs streamed to a regulator-accessible bucket.
 
 ## 8. Scalability and Performance
@@ -193,7 +193,7 @@ Pharmacy ──sign──▶ Dispense.execute(rxId, sgtins) ──▶ Prescripti
 ## 11. Build / Tech Choices (indicative)
 
 * **Permissioned core:** Hyperledger Fabric 2.x (Go chaincode) or R3 Corda 5 (Kotlin).
-* **Public layer:** Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)) or Arbitrum (Solidity 0.8.x).
+* **Public layer:** Arbitrum or another public chain that is not proof-of-work (Solidity 0.8.x).
 * **API gateway:** Go (Echo) or Node.js (Fastify); JOSE for JWS; DID-core libs.
 * **FHIR engine:** HAPI FHIR (Java) or fhir.js / Medplum on Node.
 * **Storage:** PostgreSQL for materialised views; S3-compatible object store; KMS for CEK wrapping.
@@ -202,22 +202,23 @@ Pharmacy ──sign──▶ Dispense.execute(rxId, sgtins) ──▶ Prescripti
 
 ## 12. Open Architecture Questions
 
-* Fabric vs Corda for the permissioned core (both meet SFC §2 when run on general-purpose hardware).
+* Fabric vs Corda for the permissioned core (both are candidates under the platform case of SFC profile 2.0).
 * Whether to add a circuit-specific ZK toolchain (Circom / Noir) or rely on selective-disclosure JWT VCs for regulator exports.
 * Per-country vs. supranational deployment (e.g., one EU-wide network vs. national networks anchored to one public root).
 * Emergency-access (break-the-glass) policy formalisation.
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md). Framework: Besleaga, A. N. "'Sustainability-First Consensus' Ledgers for a Green Digital Future", *Communications of the ACM*, Opinion, in press, [doi:10.1145/3809296](https://doi.org/10.1145/3809296). The profile holds the rules and checks; this section holds the project facts only.
 
-| Criterion | How this project meets it |
+| Project fact | This design |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric (consortium BFT) on general-purpose servers (≤ ~15 peers + gateways across the consortium). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
-| **2. Hardware lifecycle** | General-purpose x86 / arm64 only; HSMs (FIPS 140-2 L3) for institutional key custody — HSMs are general-purpose, not single-use ASICs. Every institution declares `nodeProfile`; WEEE-certified recycling at retirement. |
-| **3. Carbon accountability** | Each institution publishes monthly `EnergyAttested` + `CarbonAttested` events. Scope 2 derived from peer + gateway + HSM electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied carbon of hardware. Offsets retired per period; Net Zero invariant enforced by verifier. |
-| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03); for the hospital groups and pharma manufacturers that remain in scope, the disclosure block plugs directly into their corporate ESG tooling. |
-
-**Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
-
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+| **Hot path and platform case** | Permissioned: Hyperledger Fabric (Raft ordering, mechanism crash-fault-tolerant; a BFT ordering service would name bft) or R3 Corda (Raft notary names crash-fault-tolerant; a BFT-SMaRt notary names bft) on general-purpose servers, run only by the registered institutions. Platform case: the network's own ledger figure. |
+| **Attesting operators** | The consortium institutions: hospitals, pharmacy chain, manufacturer and neutral foundation, each attesting its own energy and carbon. |
+| **Node count and registered-node bound** | At least 5 operators (Raft / BFT); sized to at most about 15 peers plus gateways. Example, with an assumed 5 gateway nodes added to 15 peers: N = 20 → 20 × 1 976.4 = 39 528 kWh. Registered-node bound, to be met before the first full year: N × P × O × 8 784 h / 1 000 < 1 000 000 kWh, where P = rated power in watts of the worst hardware class in use, N = greatest number of nodes the registered operators may run (gateways and adapter nodes inside the C1 boundary included) and O = data-centre overhead factor, which has no default. With an assumed 150 W per node and an assumed overhead factor of 1.5 (both assumptions, to be fixed in the methodology document), each node adds 1 976.4 kWh, so the bound stays below the cap up to 505 nodes. |
+| **Hardware** | General-purpose x86 / arm64 only. HSMs (FIPS 140-3 L3) hold institutional keys; the profile accepts key-custody HSMs (SFC profile 2.0, section 5.1). Every institution declares its hardware in its Registry entry, with WEEE-certified recycling at retirement. |
+| **Scope 1** | None, stated in the methodology document. |
+| **Scope 2** | Market-based (the declared figure); location-based optional, using Electricity Maps regional intensity with IEA emission factors as fallback. Electricity of peers, gateways and HSMs. |
+| **Scope 3** | Categories named in the methodology document, including the embodied carbon of the hardware. |
+| **Offset coverage** | Offset coverage, checked: every month each operator's retired credits are compared with its gross emissions. This is not a net-zero or neutrality claim. |
+| **Anchor** | Optional and informative only; to be chosen per deployment (a public chain that is not proof-of-work). |

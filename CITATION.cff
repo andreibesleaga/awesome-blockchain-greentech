@@ -1,15 +1,15 @@
 cff-version: 1.2.0
-message: "If you use these designs or the SFC engineering profile, please cite this deposit and the framework paper listed under references."
-title: "Sustainability-First Distributed Ledger Systems: Six Reference Designs and a Shared SFC Engineering Profile"
+message: "If you use these designs or SFC profile 2.0, please cite this deposit and the framework paper listed under references."
+title: "Sustainability-First Distributed Ledger Systems: Six Reference Designs and SFC Profile 2.0"
 abstract: >-
   Six original distributed-ledger system designs addressing ecological challenges in supply-chain
   certification, healthcare and pharmacy interchange, paperless billing, recycling and material
-  recovery, cross-operator roaming, and carbon-credit MRV. All six share one Sustainability-First
-  Consensus engineering profile that turns sustainability criteria into verifiable properties: an
+  recovery, cross-operator roaming, and carbon-credit MRV. All six follow SFC profile 2.0, one
+  Sustainability-First Consensus engineering profile that turns sustainability criteria into checkable properties: an
   annual energy budget, hardware-lifecycle constraints, signed on-chain energy and carbon attestations
-  with an offset-coverage rule (the framework's Net Zero), disclosure through the sustainability-data
-  well-known URI with an evidence-to-disclosure bridge, and a rule separating hot-path from anchor-only
-  ledger platforms. All work is documented at design level; no system is implemented or deployed.
+  with an offset-coverage rule (a narrowed reading of the framework's Net Zero criterion, not a net-zero claim), disclosure through the sustainability-data
+  well-known URI with an evidence-to-disclosure bridge, and a platform rule with a public case (public energy
+  assessment) and a permissioned case (the deployment's own energy check or a registered-node bound). All work is documented at design level; no system is implemented or deployed.
 type: dataset
 authors:
   - family-names: Besleaga
@@ -18,16 +18,16 @@ authors:
     country: RO
     city: Bucharest
 license: CC-BY-SA-4.0
-version: "1.2"
-date-released: 2026-10-03
-doi: 10.5281/zenodo.23122082
+# At the Zenodo 2.0 deposit: add version "2.0", date-released (the deposit date) and the 2.0
+# version DOI as top-level doi, and add it to identifiers.
+doi: 10.5281/zenodo.22681204
 identifiers:
   - type: doi
     value: 10.5281/zenodo.22681205
-    description: "Zenodo deposit, version 1.1 (2026-09-09)"
+    description: "Zenodo deposit, version 1.1 (2026-09-09), earlier version"
   - type: doi
     value: 10.5281/zenodo.23122082
-    description: "Zenodo deposit, version 1.2 (2026-10-03)"
+    description: "Zenodo deposit, version 1.2 (2026-10-03), earlier version"
   - type: doi
     value: 10.5281/zenodo.22681204
     description: "Zenodo concept DOI (all versions)"
@@ -54,4 +54,12 @@ references:
     publisher:
       name: Association for Computing Machinery
     doi: 10.1145/3809296
-    notes: "Accepted; in press. The DOI resolves once ACM publishes."
+    notes: "Opinion. Accepted; in press. The DOI resolves once ACM publishes."
+  - type: generic
+    title: "SFC profile 2.0 checker, JSON Schemas, test vectors and examples"
+    authors:
+      - family-names: Besleaga
+        given-names: Andrei Nicolae
+        orcid: "https://orcid.org/0009-0001-3464-5283"
+    url: "https://github.com/andreibesleaga/rfc-sustainability-wellknown/tree/main/sfc-compliance"
+    notes: "Tools for SFC_COMPLIANCE.md (the profile text, in this repository), in the rfc-sustainability-wellknown repository."

@@ -17,7 +17,7 @@ Supply chains for ecological or fair-trade goods (e.g., organic foods, luxury go
 
 * **Physical Identifier:** Indelible laser-engraved UID prevents label swapping on hard goods; batch marks are bound to a `BatchToken` with explicit split/merge semantics for produce and other commodities.
 * **IoT Integration:** Automated capture at handoffs reduces human error. Sensors that hold a secure element (TPM, NFC SE, or ATECC608A-class chip) sign measurements before upload; sensors without secure storage submit measurements via a trusted gateway that signs on their behalf, and this distinction is recorded on the event.
-* **Blockchain Layer:** A public or permissioned ledger (e.g., Hyperledger Fabric for consortium use, Polygon / VeChainThor for public auditability) acts as the authoritative event log; identifiers and event payloads follow GS1 EPCIS 2.0 vocabulary where applicable.
+* **Blockchain Layer:** A public or permissioned ledger (e.g., Hyperledger Fabric for consortium use, Polygon PoS / VeChainThor for public auditability) acts as the authoritative event log; identifiers and event payloads follow GS1 EPCIS 2.0 vocabulary where applicable.
 * **Smart Contracts:** Enforce token-level invariants (one mint per UID; only the registered custodian can transfer; conservation of mass on batch split/merge) and **emit events** that off-chain workers consume to dispatch external alerts (temperature breach, geofence violation) and to compute producer rewards.
 
 #### **Data and Privacy**
@@ -59,8 +59,8 @@ graph LR
 
 #### **Real-World Innovations & Ledger Suitability**
 
-* **Ethereum (Layer 2) / Polygon:** Best for public auditability and consumer access via standard wallets.
-* **VeChain / Algorand:** High throughput and low energy costs; ideal for high-volume FMCG (Fast-Moving Consumer Goods).
+* **Ethereum (Layer 2) / Polygon PoS:** Best for public auditability and consumer access via standard wallets.
+* **VeChain:** High throughput; energy to be assessed under SFC profile 2.0; ideal for high-volume FMCG (Fast-Moving Consumer Goods).
 * **Hyperledger Fabric:** Suitable for private, enterprise-only supply chain consortia requiring strict data privacy.
 
 **References:**
@@ -73,18 +73,13 @@ graph LR
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-This project conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
-
-* **Energy (criterion 1).** Hot path on **Hyperledger Fabric** or **VeChainThor**; daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined energy budget < **1 GWh / yr** network-wide — a design target, not a measurement.
-* **Hardware lifecycle (criterion 2).** General-purpose servers only; no ASICs; reuse / WEEE-certified recycling policy in every operator's Registry record.
-* **Carbon accountability (criterion 3).** Monthly `EnergyAttested` + `CarbonAttested` events (CCRI methodology + Electricity Maps grid intensity). Net Zero enforced per period.
-* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; its figures map onto ESRS E1 quantities for CSRD reporting (it is not a regulatory filing).
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 #### **Companion Documents**
 
 * [PRD.md](PRD.md) — Product Requirements.
 * [SPEC.md](SPEC.md) — Technical Specification (tokens, events, APIs, marking rules).
 * [ARCH.md](ARCH.md) — Architecture (components, trust boundaries, deployment).
-* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — Shared Sustainability-First Consensus profile.
+* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — SFC profile 2.0 (Sustainability-First Consensus).
 
 ---

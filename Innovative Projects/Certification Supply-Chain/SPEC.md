@@ -92,7 +92,7 @@ Every event is a signed envelope:
 }
 ```
 
-The contract MUST reject any event whose `prev` does not equal the current head of `subject`.
+The contract MUST reject any event whose `prev` does not equal the current head of the chain for its `subject` and `type` (one chain per subject and type).
 
 ### 4.1 Per-type payloads (essentials)
 
@@ -141,7 +141,7 @@ Errors follow RFC 7807.
 * **Hashing:** SHA-256 for event chaining and VC anchoring.
 * **Canonical JSON:** RFC 8785 JCS before signing.
 * **Key custody:** Participants manage their own keys; rotation expressed via a `KeyRotated` VC.
-* **Anchoring (hybrid mode):** Daily Merkle root committed to a public EVM L2 contract `PublicAnchor.commit(root, dayUtc)`.
+* **Anchoring (hybrid mode):** Daily Merkle root committed to a public chain that is not proof-of-work, as an EVM L2 contract `PublicAnchor.commit(root, dayUtc)`.
 
 ## 8. Smart Contracts (Core)
 
@@ -163,22 +163,15 @@ Errors follow RFC 7807.
 * **C-4** Batch split / merge conserves mass within declared `lossKg`.
 * **C-5** A certification VC whose hash on-chain does not match the off-chain document fails verification.
 * **C-6** A revoked sensor key's measurement is rejected, even if otherwise well-formed.
-* **C-7** The daily anchored Merkle root verifies against the public-chain `PublicAnchor` record.
+* **C-7** When the optional anchor is deployed (SFC profile 2.0, Appendix E.2), the daily anchored Merkle root verifies against the public-chain `PublicAnchor` record.
 * **C-8** Two identical scans within an impossible-velocity window raise an anomaly flag.
+* **C-SFC** Run the profile 2.0 deep check (9.4) on the network declaration with a read of the network's ledger. The overall result (9.5) is PASS, with the C-SFC-3 row DECLARED. Without a read, D1 and C-SFC-7 are NOT-EVALUABLE ("no ledger read given"), so the overall result cannot be PASS.
 
-## 10. Sustainability Events & API (SFC profile)
+## 10. Sustainability events and API (defined in SFC profile 2.0)
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with:
-
-* `EnergyAttested` — monthly per-operator electricity consumption (kWh, CCRI methodology, evidence CID).
-* `CarbonAttested` — monthly per-operator Scope 2 + Scope 3 kgCO2e, grid-intensity reference, offsets retired, Net Zero boolean.
-
-Net Zero invariant: `scope2 + scope3 ≤ offsets`. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.)
-
-Schema details: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile". The profile defines the events in sections 5.2 to 5.4 and the declaration in sections 7 and 8.
 
 ## 11. Versioning
 
 * Spec follows SemVer.
 * Event envelopes carry the Registry-published schema CID; clients MUST refuse unknown schema CIDs.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

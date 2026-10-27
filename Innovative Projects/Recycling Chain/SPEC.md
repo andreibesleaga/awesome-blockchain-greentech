@@ -84,7 +84,7 @@ All events share an envelope:
 }
 ```
 
-Events are append-only. The ledger MUST reject any event whose `prev` does not match the current head of `subject` (optimistic concurrency).
+Events are append-only. The ledger MUST reject any event whose `prev` does not match the current head of the chain for its `subject` and `type` (optimistic concurrency, one chain per subject and type).
 
 ### 3.1 Per-type payloads (essentials)
 
@@ -140,7 +140,7 @@ Canonical signed payload (kept short for QR density):
 * **Signature suite:** Ed25519 (primary); ECDSA-P256 accepted for HSM-bound keys.
 * **Hashing:** SHA-256 for event chaining; BLAKE3 permitted for IoT-side batching.
 * **Key custody:** Participants are responsible for their keys; the Registry MUST support key rotation via a `KeyRotated` Verifiable Credential.
-* **Anchoring:** A daily Merkle root of all core-ledger events is committed to an EVM L2 contract (`PublicAnchor.commit(root, dayUtc)`).
+* **Anchoring:** A daily Merkle root of all core-ledger events is committed, when the optional anchor is deployed (SFC profile 2.0, Appendix E.2), to a public chain that is not proof-of-work, as an EVM L2 contract (`PublicAnchor.commit(root, dayUtc)`).
 
 ## 7. Smart Contracts (Core)
 
@@ -152,7 +152,7 @@ Canonical signed payload (kept short for QR density):
 | `MaterialERC20` | Mint on `RecycleCompleted`; burn on brand retirement. |
 | `Lockbox` | Single-active-decommission lock keyed by `itemId`. |
 | `RewardsVault` | Escrow + payout for deposits, bounties, eco-credits. |
-| `PublicAnchor` | Receives daily Merkle roots from the core ledger. |
+| `PublicAnchor` | Optional. Receives daily Merkle roots from the core ledger when the anchor is deployed. |
 | `OracleAdapter` | Verifies oracle signatures and forwards to event ingestion. |
 
 ## 8. Conformance Tests (minimum set)
@@ -161,22 +161,15 @@ Canonical signed payload (kept short for QR density):
 * **C-2** Attempting a second `DecommissionRequested` on a locked item is rejected.
 * **C-3** `RecycleCompleted` yields + residues sum (within ε) to accepted mass.
 * **C-4** Tampering with any event byte invalidates the signature check.
-* **C-5** Daily anchored Merkle root verifies against the on-chain `PublicAnchor` record.
+* **C-5** When the optional anchor is deployed (SFC profile 2.0, Appendix E.2), the daily anchored Merkle root verifies against the on-chain `PublicAnchor` record.
 * **C-6** EPR export round-trips: signed JSON parses back to identical event set.
+* **C-SFC** Run the profile 2.0 deep check (9.4) on the network declaration with a read of the network's ledger. The overall result (9.5) is PASS, with the C-SFC-3 row DECLARED. Without a read, D1 and C-SFC-7 are NOT-EVALUABLE ("no ledger read given"), so the overall result cannot be PASS.
 
-## 9. Sustainability Events & API (SFC profile)
+## 9. Sustainability events and API (defined in SFC profile 2.0)
 
-This project conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). The event vocabulary is extended with:
-
-* `EnergyAttested` — monthly per-operator electricity consumption (kWh, CCRI-aligned methodology, evidence CID).
-* `CarbonAttested` — monthly per-operator Scope 2 + Scope 3 kgCO2e, grid-intensity reference, offsets retired, Net Zero boolean.
-
-Net Zero invariant per period: `scope2 + scope3 ≤ offsets`. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four gateway endpoints under `/v1/sustainability/`; they are retired.)
-
-Schema and exact field names: see [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile". The profile defines the events in sections 5.2 to 5.4 and the declaration in sections 7 and 8.
 
 ## 10. Versioning
 
 * Spec follows SemVer. Breaking schema changes bump MAJOR.
 * Event envelopes carry an implicit version via the Registry's published schema CID; clients MUST refuse events whose schema CID is unknown.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

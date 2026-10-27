@@ -65,6 +65,8 @@ Every event uses a signed envelope:
 }
 ```
 
+The chain is per subject and type: `prev` is the hash of the previous event of the same `subject` and `type`.
+
 ### 4.1 Per-type payloads (essentials)
 
 | Type | Required payload |
@@ -121,6 +123,7 @@ Writes require signed JWS; reads are restricted to Registry-listed Operators or 
 * **C-6** A second concurrent `SessionStarted` against the same `userDid` + same `serviceType` is rejected (single-active-session invariant).
 * **C-7** Tampering with any event byte invalidates the signature check.
 * **C-8** A renewable-energy ESG tag references a verifiable Guarantee-of-Origin or is dropped.
+* **C-SFC** Run the profile 2.0 deep check (9.4) on the network declaration with a read of the network's ledger. The overall result (9.5) is PASS, with the C-SFC-3 row DECLARED. Without a read, D1 and C-SFC-7 are NOT-EVALUABLE ("no ledger read given"), so the overall result cannot be PASS.
 
 ## 9. Privacy and GDPR
 
@@ -128,14 +131,11 @@ Writes require signed JWS; reads are restricted to Registry-listed Operators or 
 * Session records on-chain reference `userDid`s issued ephemerally per Home Operator policy (rotation possible).
 * Right-to-be-forgotten: Home Operator can stop issuing new VCs and request purge of off-chain payloads; on-chain pseudonymous events remain but no longer link to a person.
 
-## 10. Sustainability Events & API (SFC profile)
+## 10. Sustainability events and API (defined in SFC profile 2.0)
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per Operator). Net Zero invariant per period. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
-
-For EV sessions, the `SessionEnded` payload may carry a renewable-energy ESG tag (Guarantee-of-Origin hash) — see SPEC §4.1 — and that tag's veracity is independently verifiable via the certificate referenced.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile". The profile defines the events in sections 5.2 to 5.4 and the declaration in sections 7 and 8.
 
 ## 11. Versioning
 
 * Spec follows SemVer.
 * Contracts upgrade via a registry-pinned version per `PairAgreement`.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

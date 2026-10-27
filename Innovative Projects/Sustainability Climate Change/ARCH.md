@@ -163,7 +163,7 @@ Reverse direction symmetric: BridgeMinted requires verified BridgeBurned on sour
 * **Gateway:** stateless containers behind a regional LB; horizontal autoscale.
 * **Anchor Job:** singleton cron with leader election (if hybrid mode used).
 * **Observability:** OpenTelemetry traces, Prometheus metrics, signed audit logs to a regulator-accessible bucket.
-* **Carbon footprint:** the system's own annual footprint MUST be measured and published as part of [PRD.md NFR-5](PRD.md).
+* **Carbon footprint:** the system's own annual footprint MUST be reported (method named) and published as part of [PRD.md NFR-5](PRD.md).
 
 ## 8. Scalability and Performance
 
@@ -199,22 +199,24 @@ Reverse direction symmetric: BridgeMinted requires verified BridgeBurned on sour
 
 ## 12. Open Architecture Questions
 
-* Fabric vs Hedera Guardian as the primary core (both meet SFC §2).
+* Fabric vs Hedera Guardian as the primary core (each subject to the platform case of SFC profile 2.0).
 * Whether to integrate the Bridge at all in Phase 1, or defer until reliable cross-chain proof patterns are battle-tested for credits.
 * Public anchor: always-on vs. opt-in per Operator.
 * Whether biodiversity credits get a separate contract from carbon credits (likely yes — different invariants).
 
 ## 13. SFC Compliance Profile (self-applied)
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`. Self-application matters here above all other projects — a registry that issues green claims while burning energy itself would be incoherent.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md). Framework: Besleaga, A. N. "'Sustainability-First Consensus' Ledgers for a Green Digital Future", *Communications of the ACM*, Opinion, in press, [doi:10.1145/3809296](https://doi.org/10.1145/3809296). The profile holds the rules and checks; this section holds the project facts only. Self-application matters here above all other projects: a registry that issues green claims while burning energy itself would be incoherent.
 
-| Criterion | How this project meets it |
+| Project fact | This design |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hedera (aBFT; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets) with Guardian for methodology workflows, or Hyperledger Fabric (consortium BFT). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured); the system's own annual footprint is published as part of every audit bundle. |
-| **2. Hardware lifecycle** | General-purpose x86 / arm64 only; ASICs forbidden. Each Operator declares `nodeProfile` with reuse / WEEE-certified retirement policy. |
-| **3. Carbon accountability** | Monthly `EnergyAttested` + `CarbonAttested` per Operator. Offsets retired against the period — preferentially through `Retired` events on this very registry, so each claimed offset is itself a `CreditBatch` with a full MRV chain. Net Zero invariant enforced. |
-| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). Buyer audit bundles already include retirement + methodology + MRV lineage; the SFC self-disclosure sits in the same bundle. |
-
-**Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
-
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period. Given the credibility cost of a registry breaching its own threshold, the verifier MUST publicly flag the breach the moment it is detected, not at end-of-period.
+| **Hot path and platform case** | Permissioned: Hyperledger Fabric (Raft ordering, mechanism crash-fault-tolerant; a BFT ordering service would name bft), run only by the registered operators. Platform case: the network's own ledger figure. The alternative, Hedera (aBFT) with Guardian for methodology workflows, would be a public hot path and would need a public assessment below 1 GWh on the profile's boundary; the vendor [states it is carbon-negative](https://hedera.com/blog/going-carbon-negative-at-hedera-hashgraph) through purchased offsets, which is not an energy measurement. |
+| **Attesting operators** | The registry operator, a recognised verifier, the neutral foundation and at least one buyer or auditor, each attesting its own energy and carbon. |
+| **Node count and registered-node bound** | At least 4 operators (BFT / Raft). The maximum node count is fixed in the methodology document. Example: 4 nodes → 4 × 1 976.4 = 7 905.6 kWh. Registered-node bound, to be met before the first full year: N × P × O × 8 784 h / 1 000 < 1 000 000 kWh, where P = rated power in watts of the worst hardware class in use, N = greatest number of nodes the registered operators may run (gateways and adapter nodes inside the C1 boundary included) and O = data-centre overhead factor, which has no default. With an assumed 150 W per node and an assumed overhead factor of 1.5 (both assumptions, to be fixed in the methodology document), each node adds 1 976.4 kWh, so the bound stays below the cap up to 505 nodes. |
+| **Hardware** | General-purpose x86 / arm64 only; no ASICs. Each operator declares its hardware in its Registry entry, with a reuse and WEEE-certified retirement policy. |
+| **Scope 1** | None, stated in the methodology document. |
+| **Scope 2** | Market-based (the declared figure); location-based optional, using Electricity Maps regional intensity with IEA emission factors as fallback. |
+| **Scope 3** | Categories named in the methodology document, including the embodied carbon of the hardware. |
+| **Offset coverage** | Offset coverage, checked: every month each operator's retired credits are compared with its gross emissions. This is not a net-zero or neutrality claim. |
+| **Anchor** | Optional and informative only; to be chosen per deployment (a public chain that is not proof-of-work). |
+| **Project-specific rules** | Breach flag: the verifier publicly flags a breach of the energy cap the moment it is detected, not at the end of the period. Offsets are retired preferably through `Retired` events on this registry, so each claimed offset is a `CreditBatch` with a full MRV chain. The system's own annual footprint is published in every audit bundle. |

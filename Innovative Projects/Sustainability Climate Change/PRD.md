@@ -11,7 +11,7 @@ Voluntary carbon and biodiversity markets suffer from:
 * slow and expensive third-party audit,
 * MRV data trapped in PDFs that are not machine-verifiable.
 
-Buyers (corporates under CSRD / CBAM), regulators, and project developers all need a single tamper-evident view of *what was measured, by whom, with what methodology, and what was issued / retired against it*.
+Buyers (corporates reporting under CSRD), regulators, and project developers all need a single tamper-evident view of *what was measured, by whom, with what methodology, and what was issued / retired against it*.
 
 ## 2. Vision
 
@@ -31,7 +31,7 @@ The system **interoperates with** existing registries (Verra, Gold Standard, Pur
 | Project Developer | Register a project, attach methodology, submit MRV data, get credits issued. |
 | Validator / Verifier | Review MRV evidence and methodology fit; sign or reject issuance requests. |
 | Registry Operator | Issue credits against approved validation; monitor lineage. |
-| Corporate Buyer | Buy credits with auditable lineage; retire them against CSRD / CBAM reporting. |
+| Corporate Buyer | Buy credits with auditable lineage; retire them and disclose the retirements separately from gross emissions (ESRS E1); credits do not reduce CBAM obligations or reported inventories. |
 | Regulator / Auditor | Audit issuance, transfers, retirements; check methodology compliance. |
 | MRV Sensor / Data Provider | Submit signed measurements (weather stations, satellite-derived indices, in-situ sensors). |
 
@@ -40,7 +40,7 @@ The system **interoperates with** existing registries (Verra, Gold Standard, Pur
 1. **G1 — No double retirement.** A credit cannot be retired twice; bridge events to other chains require burn proof.
 2. **G2 — Methodology binding.** Every issued credit carries the SHA-256 of the methodology version it was issued under.
 3. **G3 — MRV anchored.** Every issuance references at least one MRV evidence CID with a verifier signature.
-4. **G4 — Regulator-ready exports.** Signed CBAM / CSRD bundles for any buyer in < 60 s per period.
+4. **G4 — Regulator-ready exports.** Signed CSRD audit bundles (retirements shown separately from gross emissions) for any buyer in < 60 s per period.
 5. **G5 — Pilot adoption.** At least one project type (forestry or biochar) live in production with a Registry Operator, ≥ 3 corporate buyers and one auditor.
 
 ## 5. Non-Goals
@@ -69,9 +69,9 @@ The system **interoperates with** existing registries (Verra, Gold Standard, Pur
 * **NFR-2 Throughput.** ≥ 200 events/sec sustained; pilot volumes will be far below this.
 * **NFR-3 Latency.** Public lineage-read endpoint < 1 s p95.
 * **NFR-4 Privacy.** No PII on-chain; project documents can be encrypted off-chain.
-* **NFR-5 Carbon footprint.** Run on a low-energy DLT (Hedera, Hyperledger Fabric, Polygon zkEVM [no longer producing blocks since 3 July 2026]). The carbon footprint of the system itself is published.
+* **NFR-5 Carbon footprint.** Run on a hot-path platform that qualifies under SFC profile 2.0 (candidates: Hedera, Hyperledger Fabric). The carbon footprint of the system itself is published.
 * **NFR-6 Standards.** Identifiers and event payloads align with **VCMI** / **ICVCM** integrity expectations and the **GHG Protocol Product Standard**; methodology hashes reference published Verra / Gold Standard / Puro documents where applicable.
-* **NFR-7 Sustainability (SFC, self-applied).** Network compliant with [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` per Operator; Net Zero per period via offsets *retired through this very registry* where possible. Failure to self-comply breaks the trust premise of the system.
+* **NFR-7 Sustainability (SFC, self-applied).** SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 ## 8. Success Metrics (KPIs)
 
@@ -88,7 +88,7 @@ The system **interoperates with** existing registries (Verra, Gold Standard, Pur
 * Recognised Verifiers exist and will adopt DIDs.
 * Methodology bodies (Verra, Gold Standard, Puro) publish stable, versioned methodologies that can be hashed.
 * The chosen DLT has carbon-footprint disclosure.
-* Buyers' CSRD / CBAM reporting tooling can ingest signed JSON+PDF bundles.
+* Buyers' CSRD reporting tooling can ingest signed JSON+PDF bundles.
 
 ## 10. Out-of-Scope (Phase 1)
 

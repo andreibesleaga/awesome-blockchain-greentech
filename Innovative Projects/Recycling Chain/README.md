@@ -76,7 +76,7 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 ### **Architecture and Smart Contracts**
 
-* **Deployment Pattern:** Hybrid approach. A **Permissioned Core** (Hyperledger/Corda) allows for industry governance and high throughput, while **Public Proofs** (Ethereum L2/Polygon) are anchored periodically for consumer transparency and trust.
+* **Deployment Pattern:** Hybrid approach. A **Permissioned Core** (Hyperledger/Corda) allows for industry governance and high throughput, while **Public Proofs** (Ethereum L2/Polygon PoS) are anchored periodically for consumer transparency and trust.
 
 ![Hybrid deployment: permissioned core ledger anchored periodically to a public L2 for consumer-facing proofs.](image-3.png)
 
@@ -153,18 +153,13 @@ We need a system that is real and accountable: a product shouldn’t just disapp
 
 ### **Sustainability-First Consensus (SFC) Compliance**
 
-RecyclingChain is designed to satisfy all four [SFC criteria](../SFC_COMPLIANCE.md) defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
-
-* **Energy (criterion 1).** Hot-path on **Hyperledger Fabric** (consortium BFT, general-purpose servers). Daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined energy budget < **1 GWh / yr** network-wide — a design target, not a measurement.
-* **Hardware lifecycle (criterion 2).** Every peer node runs on general-purpose x86 / arm64 servers; no ASICs anywhere in the design. Hardware reuse / WEEE-recycling policy mandatory in every operator's Registry record.
-* **Carbon accountability (criterion 3).** Operators publish monthly `EnergyAttested` + `CarbonAttested` events ([SFC_COMPLIANCE.md §3](../SFC_COMPLIANCE.md)), to be measured via CCRI methodology + Electricity Maps grid intensity. Net Zero invariant `scope2 + scope3 ≤ offsets` checked by the verifier.
-* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto CSRD / ESRS E1 quantities.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 ### **Companion Documents**
 
 * [PRD.md](PRD.md) — Product Requirements Document.
 * [SPEC.md](SPEC.md) — Technical Specification (data model, events, APIs).
 * [ARCH.md](ARCH.md) — Architecture (components, deployment, trust boundaries).
-* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — Shared Sustainability-First Consensus profile.
+* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — SFC profile 2.0 (Sustainability-First Consensus).
 
 ---

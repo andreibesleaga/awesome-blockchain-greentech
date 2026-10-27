@@ -57,10 +57,10 @@ A ledger-backed traceability system that captures every product's lifecycle from
 * **NFR-2 Latency.** Public verify endpoint < 2 s end-to-end at p95.
 * **NFR-3 Privacy.** No PII on-chain; consumer accounts are pseudonymous; off-chain stores are GDPR-compliant.
 * **NFR-4 Availability.** 99.9 % monthly for the core ledger and verify API.
-* **NFR-5 Integrity.** Every event is signed by the originating actor and verifiable against the Registry; daily Merkle anchor to a public L2.
+* **NFR-5 Integrity.** Every event is signed by the originating actor and verifiable against the Registry; when the optional anchor is deployed (SFC profile 2.0, Appendix E.2), a daily Merkle anchor to a public chain that is not proof-of-work.
 * **NFR-6 Interoperability.** Event payloads map to GS1 EPCIS 2.0; identifiers expressible as URNs/DIDs.
 * **NFR-7 Cost.** Per-event amortised cost ≤ $0.001 (batched + anchored).
-* **NFR-8 Sustainability (SFC).** Network compliant with [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md): total energy < **1 GWh / yr** (design target; to be measured once deployed); no ASICs; monthly `EnergyAttested` + `CarbonAttested` events per operator; Net Zero per period via verified offsets; CSRD / ESRS E1 export on demand.
+* **NFR-8 Sustainability (SFC).** SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 ## 8. Success Metrics (KPIs)
 
@@ -78,7 +78,7 @@ A ledger-backed traceability system that captures every product's lifecycle from
 * Regulatory landscape: EU CSRD, EU Green Claims Directive, EU Digital Product Passport, regional EPR schemes — all moving targets, schema must be versioned.
 * Pilot participants will run their existing ERP/WMS; integration is via REST/event adapters, not a rip-and-replace.
 * Hardware (smart scales, NFC SE labels) is available off-the-shelf at acceptable BOM cost.
-* Public-chain anchoring uses an EVM L2 with predictable fees.
+* Optional public-chain anchoring uses a public chain that is not proof-of-work, with predictable fees (for example an EVM L2).
 
 ## 10. Out-of-Scope (Phase 1)
 

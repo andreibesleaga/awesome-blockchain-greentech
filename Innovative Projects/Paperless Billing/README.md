@@ -9,7 +9,7 @@ Paper billing has a real environmental cost. Green America's *Skip the Slip* rep
 > The reference instantiation below mirrors the **BlockBill** case study (NEAR Protocol + IPFS). The design is platform-agnostic: any chain with low fees and standardised wallets (e.g., NEAR, Polygon PoS, an EVM L2) plus any content-addressed store (IPFS, S3-compatible with content hashing) can host the same logic.
 
 * **Core Technologies:**
-  * **Layer-1 / L2 Blockchain:** Reference choice is **NEAR Protocol** — sharded PoS, low fees, and South Pole's [*climate neutral product* label](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects) (2021), awarded on the basis of purchased carbon offsets. EVM L2s are an equally valid substrate.
+  * **Layer-1 / L2 Blockchain:** Reference choice is **NEAR Protocol** — sharded PoS, low fees, and South Pole's [*climate neutral product* label](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects) (2021), awarded on the basis of purchased carbon offsets. An EVM L2 is possible only if it qualifies under SFC profile 2.0.
   * **Smart Contracts:** Rust / WASM on NEAR, or Solidity 0.8.x on an EVM target — implementing the receipt-anchor logic.
   * **Storage Layer:** IPFS (or any content-addressed store) for encrypted bill payloads; only the CID and a hash commit are written on-chain.
 * **Workflow:**
@@ -40,7 +40,7 @@ graph LR
 #### **Sustainability Impact**
 
 * **Waste Reduction:** Removes thermal-paper receipts (typically BPA/BPS-coated and not recyclable) where the customer accepts a digital alternative.
-* **Energy Efficiency:** A PoS blockchain such as NEAR has an offset-based carbon-neutral label (South Pole, 2021) and, like other PoS chains, consumes orders of magnitude less energy per transaction than Proof-of-Work chains (Platt et al., 2021, [doi:10.1109/QRS-C55045.2021.00168](https://doi.org/10.1109/QRS-C55045.2021.00168)).
+* **Energy Efficiency:** A PoS blockchain such as NEAR, like other PoS chains, consumes orders of magnitude less energy per transaction than Proof-of-Work chains (Platt et al., 2021, [doi:10.1109/QRS-C55045.2021.00168](https://doi.org/10.1109/QRS-C55045.2021.00168)).
 * **Longevity:** Content-addressed storage preserves the bill indefinitely without thermal fade, and the on-chain hash anchors its integrity.
 
 #### **Policy & ESG Alignment**
@@ -64,26 +64,21 @@ graph LR
 * [BlockBill Paperless Billing Solution — IIC Journal of Innovation (PDF)](https://www.iiconsortium.org/wp-content/uploads/sites/2/2023/04/JOI-20230426-BlockBill-Paperless-Billing-Solution.pdf)
 * [IIT Indore wins Global Best m-Gov Award at WGS 2023 (Free Press Journal)](https://www.freepressjournal.in/indore/iit-indore-wins-global-best-m-gov-award-at-the-world-government-summit-2023)
 * [BlockBill at World Government Summit 2023 (Gulf News)](https://gulfnews.com/uae/government/meet-the-indian-students-who-won-dh1-million-award-at-world-government-summit-2023-in-dubai-1.93826431)
-* [South Pole awards NEAR Protocol its climate neutral product label (South Pole news, 8 June 2021)](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects)
+* [NEAR Foundation, South Pole and Mintbase announce Green NFT auction (South Pole press release, 8 June 2021; mentions the climate neutral product label)](https://www.southpole.com/news/auction-of-sustainable-blockchain-powered-art-funds-key-climate-projects)
 * [Green America — Skip the Slip (paper-receipt impact)](https://reports.greenamerica.org/skip-the-slip)
 * [EU VAT in the Digital Age (ViDA)](https://taxation-customs.ec.europa.eu/taxation/vat/vat-digital-age-vida_en)
 * [Peppol BIS Billing 3.0 / EN 16931](https://docs.peppol.eu/poacc/billing/3.0/)
-* [IEEE Std 2142.1 — Recommended Practice for E-Invoice Business Using Blockchain](https://standards.ieee.org/ieee/2142.1/10643/)
+* [IEEE Std 2142.1-2021 — Recommended Practice for E-Invoice Business Using Blockchain](https://standards.ieee.org/ieee/2142.1/7590/)
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
-
-* **Energy (criterion 1).** Hot path on **NEAR Protocol** — sharded PoS, offset-based Climate Neutral Product label (South Pole, 2021). Design assumption, not a measurement: network energy below the SFC 1 GWh / yr cap and a negligible per-receipt amortised on-chain energy, to be confirmed against independent figures (the only published annual figure found, 0.92 GWh in a MiCA disclosure for July 2025 – July 2026, is close to the cap).
-* **Hardware lifecycle (criterion 2).** No ASICs anywhere; NEAR validators run general-purpose servers. Project gateways run on standard cloud VMs. Hardware reuse / WEEE-certified recycling policy required for self-hosted gateways.
-* **Carbon accountability (criterion 3).** Gateway operators publish monthly `EnergyAttested` + `CarbonAttested` for the gateway tier (chain-side energy is taken from a current public assessment, cited as the profile's §2.2 requires). Net Zero invariant enforced per period.
-* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities; retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) can ingest the project's footprint as a Scope-3 input alongside their own receipts.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 #### **Companion Documents**
 
 * [PRD.md](PRD.md) — Product Requirements.
 * [SPEC.md](SPEC.md) — Technical Specification (data model, anchor schema, APIs).
 * [ARCH.md](ARCH.md) — Architecture (components, trust boundaries, deployment).
-* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — Shared Sustainability-First Consensus profile.
+* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — SFC profile 2.0 (Sustainability-First Consensus).
 
 ---

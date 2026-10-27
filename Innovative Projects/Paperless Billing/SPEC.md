@@ -128,15 +128,13 @@ A bill can only be claimed once. Claiming binds the bill to a customer DID but d
 * **C-6** A vendor cannot issue / void a bill whose `vendor` field does not match the signing DID.
 * **C-7** A regulator with a valid grant VC can decrypt; without the grant, decryption is impossible (no on-chain leakage).
 * **C-8** Audit export for a vendor + period reconstructs to the same `totals` from the on-chain events alone (no off-chain dependency for the totals).
+* **C-SFC** Run the profile 2.0 deep check (9.4) on the network declaration with a read of the network's ledger. The overall result (9.5) is PASS, with the C-SFC-3 row DECLARED. Without a read, D1 and C-SFC-7 are NOT-EVALUABLE ("no ledger read given"), so the overall result cannot be PASS.
 
-## 9. Sustainability Events & API (SFC profile)
+## 9. Sustainability events and API (defined in SFC profile 2.0)
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Gateway operators publish `EnergyAttested` and `CarbonAttested` events monthly (chain-tier energy taken from a current public assessment, cited as [SFC_COMPLIANCE.md §2.2](../SFC_COMPLIANCE.md) requires). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
-
-Retailers within CSRD scope (as amended by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)) using this project ingest the signed ESRS E1 block as a Scope-3 input for the digital-receipt service they consume.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile". The profile defines the events in sections 5.2 to 5.4 and the declaration in sections 7 and 8.
 
 ## 10. Versioning
 
 * Spec follows SemVer.
 * Anchor contract uses an upgrade pattern with explicit version pinning per bill (a bill is bound to the contract version active at issuance time).
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

@@ -87,7 +87,7 @@ Signed envelope used by every event:
 }
 ```
 
-The contract MUST reject any event whose `prev` does not equal the current head of `subject` (per-subject optimistic concurrency).
+The contract MUST reject any event whose `prev` does not equal the current head of the chain for its `subject` and `type` (optimistic concurrency, one chain per subject and type).
 
 ### 4.1 Per-type payloads (essentials)
 
@@ -158,6 +158,7 @@ Errors follow RFC 7807.
 * **C-6** A ZK-proof asserting "all dispenses in period P were authorised" verifies against the on-chain access log without revealing patient identities.
 * **C-7** A DrugUnit verify call rejects an SGTIN whose chain shows no `DrugUnitMinted` event for the claimed manufacturer.
 * **C-8** Tampering with any event byte invalidates the signature check.
+* **C-SFC** Run the profile 2.0 deep check (9.4) on the network declaration with a read of the network's ledger. The overall result (9.5) is PASS, with the C-SFC-3 row DECLARED. Without a read, D1 and C-SFC-7 are NOT-EVALUABLE ("no ledger read given"), so the overall result cannot be PASS.
 
 ## 9. Compliance and Regulatory Alignment
 
@@ -167,14 +168,11 @@ Errors follow RFC 7807.
 * **EU FMD / EMVS:** Pack-level verification at dispense; integrate with national medicines verification systems where applicable.
 * **HL7 FHIR R5:** Mandatory for clinical record payloads.
 
-## 10. Sustainability Events & API (SFC profile)
+## 10. Sustainability events and API (defined in SFC profile 2.0)
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Event vocabulary extended with `EnergyAttested` and `CarbonAttested` (monthly per institution). Net Zero invariant: `scope2 + scope3 ≤ offsets` per period. Disclosure: a signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md). (v1.1 listed four signed-JOSE endpoints under `/v1/sustainability/`; they are retired.) Field schemas: [SFC_COMPLIANCE.md §3–§5](../SFC_COMPLIANCE.md).
-
-Particular relevance for healthcare: large hospital groups and pharma manufacturers can fall within CSRD scope. Since Directive (EU) 2026/470 (in force 18 March 2026), CSRD reporting applies only to undertakings and groups exceeding EUR 450 million net turnover and 1 000 employees on average ([EUR-Lex](https://eur-lex.europa.eu/eli/dir/2026/470/oj), read 2026-10-03). For those in scope, the filed reports named through the signed declaration's `disclosure-uri` can be ingested directly by their corporate ESG tooling.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile". The profile defines the events in sections 5.2 to 5.4 and the declaration in sections 7 and 8.
 
 ## 11. Versioning
 
 * Spec follows SemVer; breaking schema changes bump MAJOR.
 * Event envelopes carry the Registry's schema CID; clients MUST refuse unknown schema CIDs.
-* Project's SFC pin: `sustainability-profile: SFC-PROFILE v1.2`.

@@ -8,7 +8,7 @@ A **three-layer event-sourced architecture**:
 
 1. **Edge Layer** — laser-marking stations, mobile/PWA scanners, IoT condition sensors, ERP/WMS adapters.
 2. **Gateway / API Layer** — stateless services that authenticate, canonicalise, and forward signed events to the ledger.
-3. **Ledger Layer** — a permissioned core (Hyperledger Fabric or similar) that holds the authoritative event log and token state, anchored daily to a public EVM L2 for open consumer verification.
+3. **Ledger Layer** — a permissioned core (Hyperledger Fabric or similar) that holds the authoritative event log and token state, with optional daily anchoring (SFC profile 2.0, Appendix E.2) to a public chain that is not proof-of-work, for open consumer verification.
 
 Trust is **signature-based end-to-end**: an event is only valid if signed by a key the Registry recognises for that action on that subject.
 
@@ -107,13 +107,15 @@ Scan UID ──▶ Verify Portal ──▶ resolve tokenId
                                 └─ return verdict + summary (< 1 s p95)
 ```
 
-### 4.4 Daily public anchoring
+### 4.4 Daily public anchoring (optional)
+
+Optional and informative only (SFC profile 2.0, Appendix E.2); chosen per deployment.
 
 ```
 00:10 UTC cron:
   events_prev_day = EventLog.range(00:00..23:59 previous day)
   root            = merkle(events_prev_day)
-  PublicAnchor.commit(root, day) on EVM L2
+  PublicAnchor.commit(root, day) on the chosen public chain, if anchoring is enabled
 ```
 
 ## 5. Trust Boundaries
@@ -147,7 +149,7 @@ Scan UID ──▶ Verify Portal ──▶ resolve tokenId
 
 * Throughput targeted via batching of low-value commodity events under `BatchToken`.
 * Reads served from materialised views in the gateway, not by replaying the chain.
-* Optional ZK-Rollup of anchored proofs in a later phase to compress L2 gas costs.
+* Optional ZK-Rollup of anchored proofs in a later phase, if anchoring is enabled, to compress L2 gas costs.
 
 ## 9. Security and Privacy
 
@@ -169,7 +171,7 @@ Scan UID ──▶ Verify Portal ──▶ resolve tokenId
 ## 11. Build / Tech Choices (indicative)
 
 * **Permissioned core:** Hyperledger Fabric 2.x (Go chaincode).
-* **Public layer:** Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)), Arbitrum, or VeChainThor (Solidity 0.8.x).
+* **Public layer:** Arbitrum, another public chain that is not proof-of-work, or VeChainThor (Solidity 0.8.x).
 * **API gateway:** Go (Echo) or Node.js (Fastify); JOSE for JWS; DID-core libs.
 * **Storage:** PostgreSQL materialised views; S3-compatible object store for blobs.
 * **Observability:** OpenTelemetry + Prometheus + Loki.
@@ -177,21 +179,22 @@ Scan UID ──▶ Verify Portal ──▶ resolve tokenId
 
 ## 12. Open Architecture Questions
 
-* Public chain selection (Polygon vs. VeChainThor vs. Arbitrum) — driven by ecosystem reach vs. domain fit, subject to the SFC §2 platform matrix.
-* Whether to expose the daily Merkle root as an OpenTimestamps proof in addition to the on-chain commit. *(Note, profile v1.2: OpenTimestamps commits to Bitcoin, a proof-of-work chain, so it is not an allowed anchor under [SFC_COMPLIANCE.md §2.2](../SFC_COMPLIANCE.md); the daily fingerprint goes to an anchor chosen per the chain-agnostic rule, any public chain that is not proof-of-work.)*
+* Public chain selection (Polygon PoS vs. VeChainThor vs. Arbitrum) — driven by ecosystem reach vs. domain fit, subject to the platform case of SFC profile 2.0.
+* Whether to expose the daily Merkle root as an OpenTimestamps proof in addition to the on-chain commit. *(Note: OpenTimestamps commits to Bitcoin, a proof-of-work chain, so it falls outside the profile's anchor option (Appendix E.2: a public chain that is not proof-of-work); the daily fingerprint goes to an anchor chosen per deployment on such a chain.)*
 * Whether ERP adapters should write directly or via an outbox pattern in the participant's own systems.
 
 ## 13. SFC Compliance Profile
 
-Conforms to [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md). Project pin: `sustainability-profile: SFC-PROFILE v1.2`.
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md). Framework: Besleaga, A. N. "'Sustainability-First Consensus' Ledgers for a Green Digital Future", *Communications of the ACM*, Opinion, in press, [doi:10.1145/3809296](https://doi.org/10.1145/3809296). The profile holds the rules and checks; this section holds the project facts only.
 
-| Criterion | How this project meets it |
+| Project fact | This design |
 |---|---|
-| **1. Energy < 1 GWh / yr** | Hot path: Hyperledger Fabric on general-purpose servers, or VeChainThor (Authority masternodes; footprint to be confirmed from an independent source). Anchor: Polygon zkEVM (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Combined budget designed to stay under the cap (design target; nothing has been measured). |
-| **2. Hardware lifecycle** | General-purpose x86 / arm64 only; ASICs forbidden. Every operator declares `nodeProfile` (purchasedAt, expectedRetireAt, reusePolicy). |
-| **3. Carbon accountability** | Monthly `EnergyAttested` and `CarbonAttested` events per operator. Scope 2 from peer + gateway electricity weighted by Electricity Maps regional intensity; Scope 3 from amortised embodied hardware carbon. Offsets retired against the period; verifier enforces Net Zero. |
-| **4. Regulatory readiness** | A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities (v1.1: `/v1/sustainability/csrd`; see the mapping table in [SFC_COMPLIANCE.md §8](../SFC_COMPLIANCE.md)). CSRD reporting integrates with corporate ESG tools without PDF round-trips. |
-
-**Measurement sources.** CCRI Sustainability API + Electricity Maps API + IEA emission factors (fallback). GHG Protocol Scopes 2 & 3 for boundary definition.
-
-**Migration clause.** If the chosen platform's assessed energy (on the C1 boundary of [SFC_COMPLIANCE.md §2.1](../SFC_COMPLIANCE.md)) exceeds 1 GWh / yr in any 12-month window, the project migrates to another platform from [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md) within one reporting period.
+| **Hot path and platform case** | Permissioned: Hyperledger Fabric on general-purpose servers, run only by the registered consortium operators. Platform case: the network's own ledger figure (the operators' attested energy sums to less than 1 GWh). The alternative, VeChainThor (Authority masternodes), would be a public hot path and would need a public assessment below 1 GWh on the profile's boundary; its footprint is still to be confirmed from an independent source. |
+| **Attesting operators** | Consortium members: producers, certifier and neutral foundation, each running core nodes and attesting its own energy and carbon. |
+| **Node count and registered-node bound** | At least 4 operators in the consortium (Raft / BFT). The maximum node count is fixed in the methodology document. Example: 4 nodes → 4 × 1 976.4 = 7 905.6 kWh. Registered-node bound, to be met before the first full year: N × P × O × 8 784 h / 1 000 < 1 000 000 kWh, where P = rated power in watts of the worst hardware class in use, N = greatest number of nodes the registered operators may run (gateways and adapter nodes inside the C1 boundary included) and O = data-centre overhead factor, which has no default. With an assumed 150 W per node and an assumed overhead factor of 1.5 (both assumptions, to be fixed in the methodology document), each node adds 1 976.4 kWh, so the bound stays below the cap up to 505 nodes. |
+| **Hardware** | General-purpose x86 / arm64 only; no ASICs. Every operator declares its hardware in its Registry entry (purchase date, planned retirement date, reuse policy). |
+| **Scope 1** | None, stated in the methodology document. |
+| **Scope 2** | Market-based (the declared figure); location-based optional, using Electricity Maps regional intensity with IEA emission factors as fallback. Electricity of peers and gateways. |
+| **Scope 3** | Categories named in the methodology document, including the embodied carbon of the hardware. |
+| **Offset coverage** | Offset coverage, checked: every month each operator's retired credits are compared with its gross emissions. This is not a net-zero or neutrality claim. |
+| **Anchor** | Optional and informative only; to be chosen per deployment (a public chain that is not proof-of-work). |

@@ -7,7 +7,7 @@ Current centralized or paper-based healthcare systems suffer from data fragmenta
 #### **Proposed Architecture**
 
 * **Core Technologies:**
-  * **Smart Contract Platform:** Permissioned ledgers (e.g., Hyperledger Fabric, R3 Corda) for privacy-sensitive consortium workloads, with optional public-chain anchoring (e.g., Polygon) for tamper-evident audit hashes.
+  * **Smart Contract Platform:** Permissioned ledgers (e.g., Hyperledger Fabric, R3 Corda) for privacy-sensitive consortium workloads, with optional public-chain anchoring (e.g., Polygon PoS) for tamper-evident audit hashes.
   * **Off-Chain Storage:** IPFS or an encrypted, access-controlled object store for documents — kept off the main chain to preserve privacy and scalability and to keep PHI deletable.
   * **Identity Management:** Self-Sovereign Identity (SSI) using W3C Verifiable Credentials (VCs) and Decentralized Identifiers (DIDs) for patients and providers.
 * **Workflow:**
@@ -40,7 +40,7 @@ graph TD
 Healthcare applications demand strict adherence to data integrity, privacy, and auditability:
 
 * **Decentralized Off-Chain Storage:** To preserve privacy and scalability, **Protected Health Information (PHI)** is encrypted and stored off-chain. Only access-control logic and cryptographic hashes reside on the ledger; this also keeps PHI legally deletable under GDPR.
-* **Interoperable, Permissioned DLT:** Frameworks such as **Hyperledger Fabric** and **R3 Corda** are preferred for multi-party networks (hospitals, pharmacies, regulators). Published benchmarks (e.g., Androulaki et al., EuroSys 2018, [doi:10.1145/3190508.3190538](https://doi.org/10.1145/3190508.3190538), which reports more than 3 500 tx/s for Fabric in certain configurations) show throughput well above 1 000 tx/s on tuned Fabric deployments (results vary with consensus, endorsement policy and hardware); both platforms offer low energy use and granular privacy controls suitable for GDPR / HIPAA-aligned designs.
+* **Interoperable, Permissioned DLT:** Frameworks such as **Hyperledger Fabric** and **R3 Corda** are preferred for multi-party networks (hospitals, pharmacies, regulators). Published benchmarks (e.g., Androulaki et al., EuroSys 2018, [doi:10.1145/3190508.3190538](https://doi.org/10.1145/3190508.3190538), which reports more than 3 500 tx/s for Fabric in certain configurations) show throughput well above 1 000 tx/s on tuned Fabric deployments (results vary with consensus, endorsement policy and hardware); both are permissioned, so energy is bounded by node count times node power (SFC profile 2.0, 4.4); both give granular privacy controls suitable for GDPR / HIPAA-aligned designs.
 * **Zero-Knowledge Proofs (ZKP):** Enable selective disclosure — for example, proving "patient is over 18" or "insurance policy P is valid for service S" without revealing the patient's identity or the policy contents.
 
 #### **Example Data Flow**
@@ -73,7 +73,7 @@ Healthcare applications demand strict adherence to data integrity, privacy, and 
 #### **Suitable Ledgers**
 
 * **Private/Permissioned:** Hyperledger Fabric, R3 Corda (Ideal for hospital consortia and private records).
-* **Public/Hybrid:** Ethereum/Polygon (Ideal for public verification of credentials or non-sensitive supply chain transparency).
+* **Public/Hybrid:** Ethereum/Polygon PoS (Ideal for public verification of credentials or non-sensitive supply chain transparency).
 
 #### **References**
 
@@ -88,18 +88,13 @@ Healthcare applications demand strict adherence to data integrity, privacy, and 
 
 #### **Sustainability-First Consensus (SFC) Compliance**
 
-Conforms to the [Sustainability-First Consensus profile v1.2](../SFC_COMPLIANCE.md) applying the framework defined in Besleaga (in press), [doi:10.1145/3809296](https://doi.org/10.1145/3809296) *(in press)*, [ORCID 0009-0001-3464-5283](https://orcid.org/0009-0001-3464-5283):
-
-* **Energy (criterion 1).** Hot path on **Hyperledger Fabric** (HSM-bound institutional keys, general-purpose servers); daily Merkle anchor on **Polygon zkEVM** (stopped producing blocks on 3 July 2026; anchor to be re-chosen per [SFC_COMPLIANCE.md §2](../SFC_COMPLIANCE.md)). Total energy < **1 GWh / yr** network-wide — a design target, not a measurement.
-* **Hardware lifecycle (criterion 2).** No ASICs; peers on general-purpose servers; per-operator `nodeProfile` declares purchase / retirement / WEEE-certified reuse.
-* **Carbon accountability (criterion 3).** Monthly `EnergyAttested` + `CarbonAttested` events per institution; Net Zero per period enforced.
-* **Regulatory readiness (criterion 4).** A signed declaration at `/.well-known/sustainability-data` under the SFC disclosure profile 1.1, with figures that map onto ESRS E1 quantities — relevant to those hospital groups and pharma manufacturers that are under CSRD reporting obligations (narrowed in 2026 by [Directive (EU) 2026/470](https://eur-lex.europa.eu/eli/dir/2026/470/oj)).
+SFC: this design follows [SFC profile 2.0](../SFC_COMPLIANCE.md); its project facts are in ARCH.md, section "SFC Compliance Profile".
 
 #### **Companion Documents**
 
 * [PRD.md](PRD.md) — Product Requirements.
 * [SPEC.md](SPEC.md) — Technical Specification (data model, events, APIs, crypto).
 * [ARCH.md](ARCH.md) — Architecture (components, trust boundaries, deployment).
-* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — Shared Sustainability-First Consensus profile.
+* [../SFC_COMPLIANCE.md](../SFC_COMPLIANCE.md) — SFC profile 2.0 (Sustainability-First Consensus).
 
 ---
