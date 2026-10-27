@@ -5,7 +5,7 @@ A curated list of awesome blockchain projects, open-source software, standards, 
 The repository contains:
 
 * **The curated list** (this file) — third-party projects and standards, organised by theme.
-* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all following **SFC profile 2.0** (Sustainability-First Consensus; [`SFC_COMPLIANCE.md`](./Innovative%20Projects/SFC_COMPLIANCE.md)), which operationalises the framework defined in Besleaga (in press, Opinion), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
+* **[Innovative Projects](./Innovative%20Projects/README.md)** — six original work-in-progress system proposals (README + PRD + SPEC + ARCH per project), all following **SFC profile 2.0** (Sustainability-First Consensus; [`SFC_COMPLIANCE.md`](./Innovative%20Projects/SFC_COMPLIANCE.md)), which operationalises the framework defined in Besleaga (in press, Communications of ACM, Opinion), [doi:10.1145/3809296](https://doi.org/10.1145/3809296).
 
 **Scope:** This list focuses on software, protocols, and tools that utilize Distributed Ledger Technology (DLT) to solve environmental challenges (Regenerative Finance, dMRV, Circular Economy, Energy Grids, Digital Product Passports, Identity & Compliance).
 
@@ -194,7 +194,7 @@ The repository contains:
 * [**DePIN Urban Monitoring**](https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1626695/full) *(Academic Pilot)* — Decentralised IoT-sensor deployment in Nairobi, Kenya, monitoring environmental variables for urban green spaces; documents cost reduction and fractional income for community data collectors.
 * [**AI-Enhanced Verification Framework**](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification) *(Research Proposal)* — Architecture combining "Brilliant Contracts" with satellite-imagery analysis (U-Net / ResNet-50) for automated carbon-credit verification (>94 % claimed accuracy).
 * [**BlockRoam**](https://arxiv.org/abs/2005.04571) *(Academic Reference)* — Peer-reviewed blockchain-based roaming-management system for mobile networks; PoS consensus + Stackelberg-game incentive model.
-* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(Opinion; accepted, in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory through [SFC profile 2.0](./Innovative%20Projects/SFC_COMPLIANCE.md).
+* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(; accepted, in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory through [SFC profile 2.0](./Innovative%20Projects/SFC_COMPLIANCE.md).
 
 ## **Regulations, Compliance & Governance Frameworks**
 
