@@ -1,6 +1,6 @@
 # Sustainability-First Consensus (SFC) profile, version 2.0
 
-**Short name:** SFC 2. **Version:** 2.0 (semantic versioning, 12.2). **Status:** normative profile; the adoption date is set at release. "In brief", section 2 and Appendix E are informative; everything else is normative.
+**Short name:** SFC 2. **Version:** 2.0 (semantic versioning, 12.2). **Status:** normative profile, adopted 2026-10-27 (Zenodo 10.5281/zenodo.23690948). "In brief", section 2 and Appendix E are informative; everything else is normative.
 
 
 ## In brief (informative)
@@ -54,7 +54,7 @@ Two more checks: the ledger is never proof-of-work, and its own energy stays bel
 
   > Besleaga, A. N. "'Sustainability-First Consensus' Ledgers for a Green Digital Future." *Communications of the ACM*, Opinion, in press, doi:10.1145/3809296 (the DOI resolves on publication). ORCID 0009-0001-3464-5283.
 
-- **Cite this profile** by the Zenodo concept DOI 10.5281/zenodo.22681204 (resolves to the latest version); the version DOI of 2.0 is assigned at deposit. A later paper cites the version it uses ("SFC profile 2.x") with that version's DOI, and the concept DOI only as "latest".
+- **Cite this profile** by the Zenodo concept DOI 10.5281/zenodo.22681204 (resolves to the latest version); the version DOI of 2.0 is 10.5281/zenodo.23690948. A later paper cites the version it uses ("SFC profile 2.x") with that version's DOI, and the concept DOI only as "latest".
 - **Files.** Schemas, test vectors, examples and the reference checker live in [`sfc-compliance/`](https://github.com/andreibesleaga/rfc-sustainability-wellknown/tree/main/sfc-compliance/) of the rfc-sustainability-wellknown repository (Appendices A and B).
 
 The profile states what a ledger records, how the records are summed, how the sums are published at `/.well-known/sustainability-data`, and which checks a reader can run. It does not repeat the column's argument. It changes nothing in the draft and adds no top-level member to it; what the draft lacks is carried under extension names (section 8). A published figure is a claim of the origin that served it; nothing here makes a figure true.
@@ -899,7 +899,7 @@ A deployment MAY publish periodic fingerprints (Merkle roots) of hot-path events
 
 ### E.3 History and pinned locations
 
-Ledger profile 1.1: text dated 2026-05-23, deposited 2026-09-09, Zenodo 10.5281/zenodo.22681205. Ledger profile 1.2: 2026-10-03, Zenodo 10.5281/zenodo.23122082, greentech repository commit `edb7e71`. Disclosure profile 1.0 (2026-09-16): rfc-sustainability-wellknown commit `c787378`. Disclosure profile 1.1 (2026-10-03): commit `2d4822a`. Disclosure profile 1.1.1 (checker and examples on the -10 wire, 2026-10-25): `sfc-compliance/` at tag `v0.8.0-draft-10-schema-2.0`, first -10 text of `PROFILE.md` at commit `2e341e6`; "1.1.1" is this document's label, since the header of `PROFILE.md` reads "version 1.1" at both `2d4822a` (-07 wire) and `2e341e6` (-10 wire). `SFC.md`: commit `b6d1df0`. 1.x `README.md`: commit `4eb26cf`. Gateway ledger bridge (excerpt format 1): commit `50a8d4b`. SFC 2.0: Zenodo concept DOI 10.5281/zenodo.22681204; version DOI assigned at deposit. The 1.2 text called the column a Viewpoint; it is filed as an Opinion. The IET paper under review pins ledger profile 1.2 (`edb7e71`, Zenodo 10.5281/zenodo.23122082), disclosure profile 1.1 (`2d4822a`), gateway commit `50a8d4b` and draft -07; those pins stay valid and unchanged.
+Ledger profile 1.1: text dated 2026-05-23, deposited 2026-09-09, Zenodo 10.5281/zenodo.22681205. Ledger profile 1.2: 2026-10-03, Zenodo 10.5281/zenodo.23122082, greentech repository commit `edb7e71`. Disclosure profile 1.0 (2026-09-16): rfc-sustainability-wellknown commit `c787378`. Disclosure profile 1.1 (2026-10-03): commit `2d4822a`. Disclosure profile 1.1.1 (checker and examples on the -10 wire, 2026-10-25): `sfc-compliance/` at tag `v0.8.0-draft-10-schema-2.0`, first -10 text of `PROFILE.md` at commit `2e341e6`; "1.1.1" is this document's label, since the header of `PROFILE.md` reads "version 1.1" at both `2d4822a` (-07 wire) and `2e341e6` (-10 wire). `SFC.md`: commit `b6d1df0`. 1.x `README.md`: commit `4eb26cf`. Gateway ledger bridge (excerpt format 1): commit `50a8d4b`. SFC 2.0: 2026-10-27, Zenodo 10.5281/zenodo.23690948 (concept DOI 10.5281/zenodo.22681204). The 1.2 text called the column a Viewpoint; it is filed as an Opinion. The IET paper under review pins ledger profile 1.2 (`edb7e71`, Zenodo 10.5281/zenodo.23122082), disclosure profile 1.1 (`2d4822a`), gateway commit `50a8d4b` and draft -07; those pins stay valid and unchanged.
 
 ### E.4 What changed in 2.0
 

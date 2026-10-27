@@ -18,10 +18,13 @@ authors:
     country: RO
     city: Bucharest
 license: CC-BY-SA-4.0
-# At the Zenodo 2.0 deposit: add version "2.0", date-released (the deposit date) and the 2.0
-# version DOI as top-level doi, and add it to identifiers.
-doi: 10.5281/zenodo.22681204
+version: "2.0"
+date-released: "2026-10-27"
+doi: 10.5281/zenodo.23690948
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23690948
+    description: "Zenodo deposit, version 2.0 (2026-10-27)"
   - type: doi
     value: 10.5281/zenodo.22681205
     description: "Zenodo deposit, version 1.1 (2026-09-09), earlier version"
