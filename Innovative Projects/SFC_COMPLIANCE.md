@@ -1,6 +1,49 @@
 # Sustainability-First Consensus (SFC) profile, version 2.0
 
-**Short name:** SFC 2. **Version:** 2.0 (semantic versioning, 12.2). **Status:** normative profile; the adoption date is set at release. Section 2 and Appendix E are informative; everything else is normative.
+**Short name:** SFC 2. **Version:** 2.0 (semantic versioning, 12.2). **Status:** normative profile; the adoption date is set at release. "In brief", section 2 and Appendix E are informative; everything else is normative.
+
+
+## In brief (informative)
+
+**What SFC is.** Sustainability-First Consensus (SFC) is a framework for distributed ledgers that stay within planetary limits, published as an Opinion column in *Communications of the ACM* (doi:10.1145/3809296). SFC profile 2.0 turns the column's four criteria into rules: what a ledger records, what a website publishes, and what anyone can check. This summary has no rules of its own; the numbered sections do.
+
+**The four criteria and how SFC 2 checks them**
+
+| Criterion (the column, shortened) | What SFC 2 asks | Check |
+|---|---|---|
+| C1 Energy: below 1 GWh a year, systemwide | Each registered operator attests its energy every month; the yearly total stays below 1 000 000 kWh. | C-SFC-2 |
+| C2 Hardware: general-purpose hardware, no single-use ASICs | Each operator declares its hardware class, purchase and retirement dates, and reuse policy. | C-SFC-3 (declared, never "passed") |
+| C3 Carbon: annual "Net Zero" through renewables or verified offsets | Each operator attests Scope 1, 2 and 3 emissions and its retired credits every month; the credits must cover the emissions in every month. | C-SFC-4 |
+| C4 Regulatory readiness: auditable, open APIs | The network publishes one signed declaration at `/.well-known/sustainability-data` (Internet-Draft revision 10); its figures map onto ESRS E1 and MiCA quantities. | C-SFC-5 |
+
+Two more checks: the ledger is never proof-of-work, and its own energy stays below the cap (C-SFC-6); the published figures match the ledger (C-SFC-7).
+
+**How it works**
+
+1. **Register.** Each operator has a Registry entry: its identifier, website, active months, signing key and hardware.
+2. **Attest.** After each month, each operator signs two events on the ledger, energy and carbon. Events are hashed and chained, so nothing changes silently; a correction is a new event.
+3. **Publish.** The network publishes a yearly declaration with the sums of the events, signed, plus an evidence part (`ledger-evidence-2`) from which anyone can recompute it. Scope 2 is market-based; a location-based figure may follow as a second object.
+4. **Verify.** Anyone can run the shallow check over HTTPS. With a read of the ledger, the deep check recomputes every figure. Each check answers PASS, FAIL, NOT-EVALUABLE or DECLARED.
+
+**What SFC 2 does not claim**
+
+- Offset coverage is not net zero or carbon neutrality. Never present the result with those words (section 6).
+- A figure is the publisher's claim. The checks show that figures are consistent and signed, not that they are true.
+- The figures cover registered operators only.
+
+**Who does what**
+
+| Role | Does |
+|---|---|
+| Operator | Runs nodes; signs its monthly energy and carbon events. |
+| Registrar | Keeps the Registry and signs its entries. |
+| Publisher | Sums the events; serves the signed declaration. |
+| Verifier, auditor | Runs the checks; reports each row. |
+| Reader | Reads the declaration and the claims it may carry (section 11). |
+
+**Where things are.** Rules: sections 3 to 12. Start building: section 2. Schemas, test vectors, examples and the reference checker: [`sfc-compliance/`](https://github.com/andreibesleaga/rfc-sustainability-wellknown/tree/main/sfc-compliance/). Earlier versions: Appendix E.3.
+
+**Compatibility.** Data written under the 1.x profiles is still read and judged by the 1.x rules (12.1). Every 2.x version only adds; a change of meaning would be 3.0 (12.2).
 
 ## 1. Status and citation
 
