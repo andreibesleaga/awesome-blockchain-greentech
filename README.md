@@ -194,7 +194,7 @@ The repository contains:
 * [**DePIN Urban Monitoring**](https://www.frontiersin.org/journals/blockchain/articles/10.3389/fbloc.2025.1626695/full) *(Academic Pilot)* — Decentralised IoT-sensor deployment in Nairobi, Kenya, monitoring environmental variables for urban green spaces; documents cost reduction and fractional income for community data collectors.
 * [**AI-Enhanced Verification Framework**](https://www.researchgate.net/publication/394517770_AI-Enhanced_Blockchain_Networks_for_Climate_Change_Monitoring_and_Carbon_Credit_Verification) *(Research Proposal)* — Architecture combining "Brilliant Contracts" with satellite-imagery analysis (U-Net / ResNet-50) for automated carbon-credit verification (>94 % claimed accuracy).
 * [**BlockRoam**](https://arxiv.org/abs/2005.04571) *(Academic Reference)* — Peer-reviewed blockchain-based roaming-management system for mobile networks; PoS consensus + Stackelberg-game incentive model.
-* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(; accepted, in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory through [SFC profile 2.0](./Innovative%20Projects/SFC_COMPLIANCE.md).
+* [**"Sustainability-First Consensus" Ledgers for a Green Digital Future** (Besleaga, in press)](https://doi.org/10.1145/3809296) *(accepted, in press)* — Defines the four-criterion SFC framework (energy, hardware, carbon, regulatory) applied by all projects in this repo's [Innovative Projects](./Innovative%20Projects/README.md) directory through [SFC profile 2.0](./Innovative%20Projects/SFC_COMPLIANCE.md).
 
 ## **Regulations, Compliance & Governance Frameworks**
 
@@ -240,7 +240,7 @@ The repository contains:
 * [**Basel Committee — SCO60: Cryptoasset exposures**](https://www.bis.org/basel_framework/chapter/SCO/60.htm) — Prudential treatment of banks' cryptoasset exposures (in force from 1 January 2026).
 
 ### BIS Innovation Hub — DLT / tokenisation projects
-* [**Project Agorá**](https://www.bis.org/about/bisih/topics/fmis/agora.htm) — Public-private cross-border tokenised-payments project led by the BIS Innovation Hub with seven central banks and ~40 private financial institutions; in build / testing phase, prototype report expected H1 2026.
+* [**Project Agorá**](https://www.bis.org/about/bisih/topics/fmis/agora.htm) — Public-private cross-border tokenised-payments project led by the BIS Innovation Hub with eight central banks and over 40 private financial institutions; prototype delivered and its [report](https://www.bis.org/publications/project-agora-shared-programmable-platform-wholesale-cross-border-payments) published on 27 May 2026; testing, including real-value transactions, continues.
 * [**Project mBridge**](https://www.bis.org/project/mbridge) — Multi-CBDC cross-border platform (BIS exited Oct 2024; the participating central banks of China, Hong Kong, Thailand, the UAE and Saudi Arabia continue — over **$55.5 B settled** to date).
 * [**BIS Innovation Hub — Projects portal**](https://www.bis.org/about/bisih/projects.htm) — Index of completed / active DLT-related Hub projects (Mariana, Helvetia, Tourbillon, Polaris, etc.).
 
