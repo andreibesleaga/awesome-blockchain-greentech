@@ -101,7 +101,7 @@ The repository contains:
 
 *Tools and references for the EU Digital Product Passport regime (and beyond).*
 
-* [**CIRPASS / CIRPASS-2**](https://cirpassproject.eu/) — EU-funded consortium developing the EU DPP roadmaps and Core Ontology (released March 2025). Pilots cover batteries, electronics, textiles, tyres and construction. The **EU Central DPP Registry** goes live with full ESPR application on **19 July 2026**.
+* [**CIRPASS / CIRPASS-2**](https://cirpassproject.eu/) — EU-funded consortium developing the EU DPP roadmaps and Core Ontology (released March 2025). Pilots cover batteries, electronics, textiles, tyres and construction. The **EU Central DPP Registry** went live on **20 July 2026** ([Commission announcement](https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en)); the ESPR deadline for it was 19 July 2026.
 * [**EU Battery Regulation (Regulation (EU) 2023/1542)**](https://eur-lex.europa.eu/eli/reg/2023/1542/oj) — Mandates the digital Battery Passport for EV and industrial batteries > 2 kWh from **18 February 2027**.
 * [**IOTA DPP Demonstrator**](https://github.com/iotaledger/dpp-demonstrator) — DPP reference implementation on IOTA (cross-listed above).
 
@@ -220,7 +220,7 @@ The repository contains:
 * [**eIDAS 2.0 — Regulation (EU) 2024/1183 (EUDI Wallet)**](https://eur-lex.europa.eu/eli/reg/2024/1183/oj) — Establishes the European Digital Identity (EUDI) Wallet framework; **in force since 20 May 2024**, mandatory issuance by each Member State by **31 December 2026**. Most ledger-anchored identity / verifiable-credential designs in the EU will integrate with this.
 * [**Data Act — Regulation (EU) 2023/2854**](https://eur-lex.europa.eu/eli/reg/2023/2854/oj) — IoT data access, sharing, portability and switching of cloud services; **applies from 12 September 2025**, with interoperability provisions phasing in through 2026-2027.
 * [**DORA — Digital Operational Resilience Act (Regulation (EU) 2022/2554)**](https://eur-lex.europa.eu/eli/reg/2022/2554/oj) — Operational-resilience requirements for financial entities and their critical third-party ICT providers; **in application since 17 January 2025** (touches CASPs, DLT MIs and ledger-anchored finance services).
-* [**ESPR — Ecodesign for Sustainable Products Regulation (EU) 2024/1781**](https://eur-lex.europa.eu/eli/reg/2024/1781/oj) — Enabling regulation for the EU Digital Product Passport; **EU Central DPP Registry goes live with full ESPR application on 19 July 2026**.
+* [**ESPR — Ecodesign for Sustainable Products Regulation (EU) 2024/1781**](https://eur-lex.europa.eu/eli/reg/2024/1781/oj) — Enabling regulation for the EU Digital Product Passport; **EU Central DPP Registry went live on 20 July 2026** ([Commission announcement](https://single-market-economy.ec.europa.eu/news/digital-product-passport-registry-now-live-2026-07-20_en)); the ESPR deadline for it was 19 July 2026.
 * [**EU Battery Regulation (EU) 2023/1542**](https://eur-lex.europa.eu/eli/reg/2023/1542/oj) — Digital Battery Passport mandatory for EV and industrial batteries > 2 kWh from **18 February 2027** (cross-listed under DPP).
 
 ### UN bodies and trade law
